@@ -1,0 +1,1060 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Kumbh Sans', sans-serif;
+}
+
+/* NAVBAR */
+.navbar {
+    background: #131313;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.navbar__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    width: 100%;
+    max-width: 1300px;
+    padding: 0 50px;
+    margin: 0 auto;
+}
+
+#navbar__logo {
+    background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+/* NAV MENU */
+.navbar__menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    text-align: center;
+}
+
+.navbar__item {
+    height: 80px;
+}
+
+.navbar__links {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    padding: 0 1rem;
+    height: 100%;
+}
+
+.navbar__links:hover {
+    color: #ff0844;
+    transition: all 0.3s ease;
+}
+
+.navbar__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem;
+    width: 100%;
+}
+
+/* SIGN UP BUTTON */
+.button {
+    padding: 8px 18px;
+    background: #e25036;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 1rem;
+}
+
+.button:hover {
+    background: #ff4dfc;
+}
+
+/* MOBILE MENU STYLES */
+.navbar__toggle {
+    display: none;
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    transition: all 0.3s ease-in-out;
+    background-color: #fff;
+}
+
+/* HERO SECTION */
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 100px 50px;
+    background-image: url(images/hero-bg.jpg);
+    background-size: cover;
+    background-position: center;
+    min-height: 80vh;
+}
+
+.hero-container {
+    max-width: 600px;
+}
+
+.hero-title {
+    display: flex;
+    flex-direction: column;
+}
+
+.hero-title .line1 {
+    font-size: 7rem;
+    font-weight: bold;
+    color: #ff0844;
+    display: inline-block;
+    padding: 0 6px;
+    border-radius: 12px;
+    transition: background-color 0.3s ease;
+    text-align: left;
+    line-height: 1.1;
+}
+
+.hero-title .line1:hover {
+    background: #1a11cb;
+}
+
+.hero-title .line2 {
+    margin-left: 20px;
+    font-size: 3rem;
+    font-weight: bold;
+    color: #ff0844;
+    margin-top: 10px;
+}
+
+/* ----------------------------- */
+/*         HERO SLIDER          */
+/* ----------------------------- */
+
+.hero-slider {
+    position: relative;
+    width: 650px;
+    height: 450px;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.3);
+}
+
+.slider-wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center; /* ADDED THIS LINE */
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    left: 0; /* ADDED THIS LINE */
+    top: 0; /* ADDED THIS LINE */
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+/* SLIDER BUTTONS */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.4);
+    border: none;
+    padding: 12px 18px;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: 0.3s ease;
+    z-index: 10;
+}
+
+.slider-btn:hover {
+    background: rgba(0,0,0,0.7);
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+/* ----------------------------- */
+/*       SERVICES SECTION       */
+/* ----------------------------- */
+
+.services-section {
+    padding: 80px 50px;
+    background: #f8f8f8;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    color: #ff0844;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: #ff0844;
+}
+
+.services-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 80px;
+}
+
+.service-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    flex: 1;
+    max-width: 350px;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+}
+
+.service-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.service-content {
+    padding: 25px;
+}
+
+.service-title {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #131313;
+}
+
+.service-description {
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.service-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #e25036;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+.service-btn:hover {
+    background: #ff4dfc;
+}
+
+/* KARTHIKA MASAM SECTION */
+.karthika-section {
+    background: linear-gradient(135deg, #ff0844 0%, #ffb199 100%);
+    color: white;
+    border-radius: 16px;
+    padding: 50px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.karthika-content {
+    flex: 2;
+}
+
+.karthika-title {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+}
+
+.karthika-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    opacity: 0.9;
+}
+
+.karthika-description {
+    line-height: 1.7;
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+}
+
+.karthika-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background: white;
+    color: #ff0844;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.karthika-btn:hover {
+    background: #f0f0f0;
+    transform: scale(1.05);
+}
+
+.karthika-image {
+    flex: 1;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.karthika-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+/* ----------------------------- */
+/*       PUJAS SECTION          */
+/* ----------------------------- */
+
+.pujas-section {
+    padding: 80px 50px;
+    background: white;
+}
+
+.pujas-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.puja-card {
+    background: #f8f9fa;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    border-left: 5px solid #ff0844;
+}
+
+.puja-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.puja-image {
+    flex: 0 0 300px;
+    overflow: hidden;
+}
+
+.puja-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.puja-card:hover .puja-image img {
+    transform: scale(1.05);
+}
+
+.puja-content {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.puja-title {
+    font-size: 1.8rem;
+    color: #131313;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.puja-description {
+    color: #666;
+    line-height: 1.7;
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+    flex-grow: 1;
+}
+
+.puja-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.puja-details-btn {
+    padding: 12px 25px;
+    background: transparent;
+    color: #ff0844;
+    border: 2px solid #ff0844;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.puja-details-btn:hover {
+    background: #ff0844;
+    color: white;
+}
+
+.puja-book-btn {
+    padding: 12px 25px;
+    background: #e25036;
+    color: white;
+    border: 2px solid #e25036;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.puja-book-btn:hover {
+    background: #ff4dfc;
+    border-color: #ff4dfc;
+}
+/* ----------------------------- */
+/*    PRIMARY SERVICES SECTION  */
+/* ----------------------------- */
+
+.primary-services-section {
+    padding: 150px 50px 80px 50px;
+    background: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.primary-services-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200%;
+    height: 300px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 0 0 50% 50%;
+    z-index: 1;
+}
+
+.primary-services-header {
+    text-align: center;
+    margin-bottom: 60px;
+    position: relative;
+    z-index: 2;
+}
+
+.primary-section-title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: white;
+}
+
+.primary-section-subtitle {
+    font-size: 1.3rem;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+    opacity: 0.9;
+    color: white;
+}
+
+.primary-services-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.primary-service-card {
+    background: white;
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    border: 1px solid #e0e0e0;
+    transition: all 0.3s ease;
+    flex: 1;
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.primary-service-card:hover {
+    background: #000000;
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.primary-service-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    transition: all 0.3s ease;
+}
+
+.primary-service-card:hover .primary-service-icon {
+    background: #ff0844;
+    transform: scale(1.1);
+}
+
+.service-icon-img {
+    width: 40px;
+    height: 40px;
+    filter: brightness(0) invert(1);
+}
+
+.primary-service-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.primary-service-title {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.primary-service-card:hover .primary-service-title {
+    color: white;
+}
+
+.primary-service-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    color: #666;
+    flex-grow: 1;
+    transition: all 0.3s ease;
+}
+
+.primary-service-card:hover .primary-service-description {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.primary-service-btn {
+    padding: 12px 30px;
+    background: transparent;
+    color: #667eea;
+    border: 2px solid #667eea;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.primary-service-card:hover .primary-service-btn {
+    background: white;
+    color: #000;
+    border-color: white;
+}
+
+.primary-service-btn:hover {
+    background: #667eea;
+    color: white;
+}
+/* ----------------------------- */
+/*       RESPONSIVE STYLES      */
+/* ----------------------------- */
+
+@media screen and (max-width: 1200px) {
+    .hero-title .line1 {
+        font-size: 5rem;
+    }
+    
+    .hero-title .line2 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-slider {
+        width: 500px;
+        height: 350px;
+    }
+}
+
+@media screen and (max-width: 960px) {
+    .navbar__container {
+        padding: 0 30px;
+    }
+    
+    .navbar__menu {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 80px);
+        position: absolute;
+        width: 100%;
+        top: -1000px;
+        left: 0;
+        opacity: 0;
+        transition: all 0.5s ease;
+        height: 50vh;
+        z-index: -1;
+        background: #131313;
+    }
+    
+    .navbar__menu.active {
+        background: #131313;
+        top: 100%;
+        opacity: 1;
+        transition: all 0.5s ease;
+        z-index: 99;
+        height: 50vh;
+        font-size: 1.6rem;
+    }
+    
+    #navbar__logo {
+        padding-left: 25px;
+    }
+    
+    .navbar__toggle {
+        display: block;
+        position: absolute;
+        top: 50%;
+        right: 30px;
+        transform: translateY(-50%);
+    }
+    
+    .navbar__toggle.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .navbar__toggle.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    
+    .navbar__toggle.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+    
+    .navbar__item {
+        width: 100%;
+    }
+    
+    .navbar__links {
+        text-align: center;
+        padding: 2rem;
+        width: 100%;
+        display: table;
+    }
+    
+    .navbar__btn {
+        padding-bottom: 2rem;
+    }
+    
+    .button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+        height: 80px;
+        margin: 0 auto;
+    }
+    
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+        padding: 80px 30px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .hero-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .hero-title {
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .hero-title .line1 {
+        font-size: 4rem;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .hero-title .line2 {
+        font-size: 2rem;
+        margin-left: 0;
+        text-align: center;
+        margin: 10px auto 0 auto;
+    }
+
+    .hero-slider {
+        width: 100%;
+        max-width: 500px;
+        height: 300px;
+        margin: 0 auto;
+    }
+    
+    /* FIX FOR SLIDER IMAGES ON MOBILE */
+    .slide {
+        object-position: center center !important;
+        left: 0 !important;
+        top: 0 !important;
+    }
+    
+    .services-section {
+        padding: 60px 30px;
+    }
+    
+    .services-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+    }
+    
+    .service-card {
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    .karthika-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 30px;
+        gap: 30px;
+    }
+    
+    .karthika-title {
+        font-size: 1.8rem;
+    }
+    
+    .karthika-subtitle {
+        font-size: 1.3rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .hero {
+        padding: 60px 20px;
+        min-height: 70vh;
+    }
+    
+    .hero-title .line1 {
+        font-size: 3rem;
+    }
+    
+    .hero-title .line2 {
+        font-size: 1.5rem;
+    }
+    
+    .hero-slider {
+        height: 250px;
+    }
+    
+    /* ADDITIONAL FIX FOR SMALLER SCREENS */
+    .slide {
+        object-position: center center !important;
+    }
+    
+    .services-section {
+        padding: 40px 20px;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .service-content {
+        padding: 20px;
+    }
+    
+    .service-title {
+        font-size: 1.3rem;
+    }
+    
+    .karthika-section {
+        padding: 30px 20px;
+    }
+    
+    .karthika-title {
+        font-size: 1.5rem;
+    }
+    
+    .karthika-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .karthika-description {
+        font-size: 1rem;
+    }
+    
+    .slider-btn {
+        padding: 8px 14px;
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .navbar__container {
+        padding: 0 20px;
+    }
+    
+    #navbar__logo {
+        font-size: 1.5rem;
+    }
+    
+    .hero-title .line1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-title .line2 {
+        font-size: 1.2rem;
+    }
+    
+    .hero-slider {
+        height: 200px;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .service-image {
+        height: 150px;
+    }
+    
+    .karthika-btn, .service-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    @media screen and (max-width: 960px) {
+        .pujas-section {
+            padding: 60px 30px;
+        }
+        
+        .puja-card {
+            flex-direction: column;
+        }
+        
+        .puja-image {
+            flex: 0 0 250px;
+        }
+        
+        .puja-content {
+            padding: 30px;
+        }
+        
+        .puja-title {
+            font-size: 1.6rem;
+        }
+    }
+    
+    @media screen and (max-width: 768px) {
+        .pujas-section {
+            padding: 40px 20px;
+        }
+        
+        .puja-image {
+            flex: 0 0 200px;
+        }
+        
+        .puja-content {
+            padding: 25px;
+        }
+        
+        .puja-title {
+            font-size: 1.4rem;
+        }
+        
+        .puja-buttons {
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .puja-details-btn,
+        .puja-book-btn {
+            text-align: center;
+            width: 100%;
+        }
+    }
+    
+    @media screen and (max-width: 480px) {
+        .pujas-section {
+            padding: 30px 15px;
+        }
+        
+        .puja-image {
+            flex: 0 0 180px;
+        }
+        
+        .puja-content {
+            padding: 20px;
+        }
+        
+        .puja-title {
+            font-size: 1.3rem;
+        }
+        
+        .puja-description {
+            font-size: 1rem;
+        }
+    }
+    @media screen and (max-width: 960px) {
+        .primary-services-section {
+            padding: 120px 30px 60px 30px;
+        }
+        
+        .primary-services-section::before {
+            height: 250px;
+        }
+        
+        .primary-services-container {
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        .primary-service-card {
+            max-width: 100%;
+            width: 100%;
+        }
+        
+        .primary-section-title {
+            font-size: 2.2rem;
+        }
+        
+        .primary-section-subtitle {
+            font-size: 1.2rem;
+        }
+    }
+    @media screen and (max-width: 768px) {
+        .primary-services-section {
+            padding: 100px 20px 40px 20px;
+        }
+        
+        .primary-services-section::before {
+            height: 200px;
+        }
+        
+        .primary-service-card {
+            padding: 30px 20px;
+        }
+        
+        .primary-section-title {
+            font-size: 2rem;
+        }
+        
+        .primary-section-subtitle {
+            font-size: 1.1rem;
+        }
+        
+        .primary-service-title {
+            font-size: 1.6rem;
+        }
+    }
+    @media screen and (max-width: 480px) {
+        .primary-services-section {
+            padding: 80px 15px 30px 15px;
+        }
+        
+        .primary-services-section::before {
+            height: 180px;
+        }
+        
+        .primary-service-card {
+            padding: 25px 15px;
+        }
+        
+        .primary-section-title {
+            font-size: 1.8rem;
+        }
+        
+        .primary-section-subtitle {
+            font-size: 1rem;
+        }
+        
+        .primary-service-title {
+            font-size: 1.4rem;
+        }
+        
+        .primary-service-icon {
+            width: 70px;
+            height: 70px;
+        }
+        
+        .service-icon-img {
+            width: 35px;
+            height: 35px;
+        }
+    }
+}
