@@ -192,3 +192,69 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+// -----------------------
+// SERVICES UI INTERACTIONS
+// -----------------------
+
+document.addEventListener('DOMContentLoaded', function() {
+    const serviceItems = document.querySelectorAll('.service-item');
+    
+    // Add click handlers to service items
+    serviceItems.forEach(item => {
+        item.addEventListener('click', function() {
+            const serviceType = this.getAttribute('data-service');
+            showServiceDetails(serviceType);
+        });
+        
+        // Add keyboard accessibility
+        item.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                const serviceType = this.getAttribute('data-service');
+                showServiceDetails(serviceType);
+            }
+        });
+        
+        // Make service items focusable
+        item.setAttribute('tabindex', '0');
+    });
+    
+    // Service details function
+    function showServiceDetails(serviceType) {
+        const serviceNames = {
+            'temple': 'Temple Services',
+            'priest': 'Priest Services', 
+            'pujas': 'Daily Pujas',
+            'festivals': 'Festivals',
+            'rituals': 'Rituals',
+            'youth': 'Youth Programs',
+            'kids': 'Kids Activities',
+            'seniors': 'Senior Devotees'
+        };
+        
+        const serviceName = serviceNames[serviceType] || 'Service';
+        alert(`You selected: ${serviceName}\n\nThis feature will be implemented soon with detailed information and booking options!`);
+    }
+    
+    // Add animation on scroll
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+    
+    // Observe service items for animation
+    serviceItems.forEach(item => {
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(30px)';
+        item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(item);
+    });
+});
