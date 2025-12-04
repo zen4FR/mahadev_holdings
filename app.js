@@ -529,60 +529,60 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Priest registration modal
-    function showPriestRegistrationModal() {
-        // You can replace this with an actual modal or redirect
-        const modalContent = `
-            <div style="
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0,0,0,0.8);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                z-index: 1000;
-            ">
-                <div style="
-                    background: white;
-                    padding: 40px;
-                    border-radius: 20px;
-                    text-align: center;
-                    max-width: 500px;
-                    width: 90%;
-                ">
-                    <h2 style="color: #1a2a6c; margin-bottom: 20px;">Priest Registration</h2>
-                    <p style="color: #666; margin-bottom: 30px; line-height: 1.6;">
-                        Thank you for your interest in joining Purohit Baaje! Our priest registration portal is coming soon.
-                        We'll notify you when it's ready.
-                    </p>
-                    <button onclick="closeModal()" style="
-                        background: linear-gradient(45deg, #1a2a6c, #b21f1f);
-                        color: white;
-                        border: none;
-                        padding: 12px 30px;
-                        border-radius: 25px;
-                        font-size: 1.1rem;
-                        cursor: pointer;
-                        transition: all 0.3s ease;
-                    ">Got It!</button>
-                </div>
-            </div>
-        `;
+    // function showPriestRegistrationModal() {
+    //     // You can replace this with an actual modal or redirect
+    //     const modalContent = `
+    //         <div style="
+    //             position: fixed;
+    //             top: 0;
+    //             left: 0;
+    //             width: 100%;
+    //             height: 100%;
+    //             background: rgba(0,0,0,0.8);
+    //             display: flex;
+    //             align-items: center;
+    //             justify-content: center;
+    //             z-index: 1000;
+    //         ">
+    //             <div style="
+    //                 background: white;
+    //                 padding: 40px;
+    //                 border-radius: 20px;
+    //                 text-align: center;
+    //                 max-width: 500px;
+    //                 width: 90%;
+    //             ">
+    //                 <h2 style="color: #1a2a6c; margin-bottom: 20px;">Priest Registration</h2>
+    //                 <p style="color: #666; margin-bottom: 30px; line-height: 1.6;">
+    //                     Thank you for your interest in joining Purohit Baaje! Our priest registration portal is coming soon.
+    //                     We'll notify you when it's ready.
+    //                 </p>
+    //                 <button onclick="closeModal()" style="
+    //                     background: linear-gradient(45deg, #1a2a6c, #b21f1f);
+    //                     color: white;
+    //                     border: none;
+    //                     padding: 12px 30px;
+    //                     border-radius: 25px;
+    //                     font-size: 1.1rem;
+    //                     cursor: pointer;
+    //                     transition: all 0.3s ease;
+    //                 ">Got It!</button>
+    //             </div>
+    //         </div>
+    //     `;
         
-        const modal = document.createElement('div');
-        modal.innerHTML = modalContent;
-        modal.id = 'priestRegistrationModal';
-        document.body.appendChild(modal);
+    //     const modal = document.createElement('div');
+    //     modal.innerHTML = modalContent;
+    //     modal.id = 'priestRegistrationModal';
+    //     document.body.appendChild(modal);
         
-        // Close modal when clicking outside
-        modal.addEventListener('click', function(e) {
-            if (e.target === modal) {
-                closeModal();
-            }
-        });
-    }
+    //     // Close modal when clicking outside
+    //     modal.addEventListener('click', function(e) {
+    //         if (e.target === modal) {
+    //             closeModal();
+    //         }
+    //     });
+    // }
     
     // Image upload hint
  
