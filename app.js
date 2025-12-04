@@ -113,10 +113,10 @@ const serviceButtons = document.querySelectorAll('.service-btn, .karthika-btn, .
 
 serviceButtons.forEach(button => {
     button.addEventListener('click', function(e) {
-        e.preventDefault();
+        // e.preventDefault();
         const card = this.closest('.service-card, .puja-card');
         const title = card ? card.querySelector('.service-title, .puja-title').textContent : 'Service';
-        alert(`Booking: ${title}\n\nRedirecting to booking page...`);
+        
     });
 });
 
@@ -162,11 +162,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const primaryServiceButtons = document.querySelectorAll('.primary-service-btn');
     
     primaryServiceButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
-            e.preventDefault();
-            const serviceTitle = this.closest('.primary-service-card').querySelector('.primary-service-title').textContent;
-            alert(`Learn more about: ${serviceTitle}\n\nDetailed information about this service will be shown here.`);
-        });
+        // button.addEventListener('click', function(e) {
+        //     // e.preventDefault();
+        //     const serviceTitle = this.closest('.primary-service-card').querySelector('.primary-service-title').textContent;
+        //     alert(`Learn more about: ${serviceTitle}\n\nDetailed information about this service will be shown here.`);
+        // });
     });
     
     // Add hover effects to primary service cards
@@ -492,7 +492,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (priestRegisterBtn) {
         priestRegisterBtn.addEventListener('click', function(e) {
-            e.preventDefault();
+            // e.preventDefault();
             
             // Show registration modal or redirect to registration page
             showPriestRegistrationModal();
@@ -585,9 +585,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Image upload hint
-    function showImageUploadHint() {
-        alert('Image upload functionality will be available in the priest registration form! 📸\n\nYou\'ll be able to upload your profile photo, certificates, and other documents.');
-    }
+ 
 });
 
 // Close modal function (needs to be global)
@@ -614,4 +612,108 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 2000);
         }
     }
+});
+
+// Footer animation on scroll
+function animateFooterOnScroll() {
+    const footerSections = document.querySelectorAll('.footer-section');
+    const footer = document.querySelector('.footer');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                footerSections.forEach(section => {
+                    section.classList.add('animate');
+                });
+            }
+        });
+    }, { threshold: 0.3 });
+    
+    if (footer) {
+        observer.observe(footer);
+    }
+}
+
+// Smooth scroll for footer links
+function smoothScrollFooterLinks() {
+    const footerLinks = document.querySelectorAll('.footer-section a[href^="#"]');
+    
+    footerLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+}
+
+// Subscription form handling with animation
+function handleSubscriptionForm() {
+    const subscribeForm = document.querySelector('.subscribe-form');
+    
+    if (subscribeForm) {
+        const submitButton = subscribeForm.querySelector('button[type="submit"]');
+        const emailInput = subscribeForm.querySelector('input[type="email"]');
+        
+        subscribeForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            if (emailInput.value.trim() === '') {
+                // Shake animation for empty field
+                emailInput.style.animation = 'shake 0.5s ease-in-out';
+                setTimeout(() => {
+                    emailInput.style.animation = '';
+                }, 500);
+                return;
+            }
+            
+            // Success animation
+            submitButton.innerHTML = '✓ Subscribed!';
+            submitButton.style.background = '#4CAF50';
+            submitButton.style.borderColor = '#4CAF50';
+            
+            setTimeout(() => {
+                submitButton.innerHTML = 'Subscribe';
+                submitButton.style.background = '';
+                submitButton.style.borderColor = '';
+                emailInput.value = '';
+            }, 2000);
+        });
+    }
+}
+
+// Add shake animation for form validation
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(-5px); }
+        75% { transform: translateX(5px); }
+    }
+`;
+document.head.appendChild(style);
+
+// Initialize all footer animations
+document.addEventListener('DOMContentLoaded', function() {
+    animateFooterOnScroll();
+    smoothScrollFooterLinks();
+    handleSubscriptionForm();
+});
+
+// Optional: Add hover effect to footer sections
+document.querySelectorAll('.footer-section').forEach(section => {
+    section.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-5px)';
+    });
+    
+    section.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0)';
+    });
 });
