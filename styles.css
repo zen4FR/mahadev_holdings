@@ -973,11 +973,232 @@
         font-size: 1.1rem;
     }
 }
+
 /* ----------------------------- */
 /*   REGISTER AS PRIEST SECTION  */
 /* ----------------------------- */
 
 .priest-register-section {
+    padding: 100px 50px;
+    background: linear-gradient(135deg, #1a2a6c 0%, #b21f1f 50%, #fdbb2d 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.priest-register-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative; /* Add this */
+}
+
+.priest-content {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    position: relative; /* Add this */
+}
+
+.priest-text-content {
+    flex: 1;
+    color: white;
+    position: relative; /* Add this */
+    z-index: 2; /* Add this to ensure text is above image */
+}
+
+.priest-main-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: linear-gradient(45deg, #fff, #f0f0f0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.priest-description {
+    font-size: 1.3rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    opacity: 0.95;
+    font-weight: 300;
+}
+
+.priest-register-btn {
+    display: inline-block;
+    padding: 18px 45px;
+    background: linear-gradient(45deg, #ffd700, #ffed4e);
+    color: #1a2a6c;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+    margin-top: 20px;
+    border: none;
+    cursor: pointer;
+    position: relative; /* Add this */
+    z-index: 10; /* Add this to ensure button is clickable */
+}
+
+.priest-register-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(255, 215, 0, 0.5);
+    background: linear-gradient(45deg, #ffed4e, #fff);
+}
+
+.priest-image-placeholder {
+    flex: 0 0 400px;
+    height: 400px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    position: relative; /* Add this */
+}
+
+.priest-image-placeholder:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-5px);
+}
+
+.placeholder-content {
+    text-align: center;
+    color: white;
+}
+
+.placeholder-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    opacity: 0.8;
+}
+
+.placeholder-content p {
+    font-size: 1.2rem;
+    opacity: 0.8;
+    font-weight: 300;
+}
+
+/* Responsive Design for Priest Register Section - FIXED */
+@media screen and (max-width: 968px) {
+    .priest-register-section {
+        padding: 80px 30px;
+    }
+    
+    .priest-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+    }
+    
+    .priest-main-title {
+        font-size: 3rem;
+    }
+    
+    .priest-image-placeholder {
+        flex: 0 0 300px;
+        height: 300px;
+        width: 100%;
+        max-width: 400px;
+        order: 2; /* Move image after content */
+        margin-top: 20px; /* Add space between button and image */
+    }
+    
+    .priest-text-content {
+        order: 1; /* Ensure text comes first */
+        width: 100%; /* Ensure full width */
+    }
+    
+    .priest-description {
+        font-size: 1.2rem;
+    }
+    
+    .priest-register-btn {
+        margin-top: 30px; /* Increase margin for better spacing */
+        margin-bottom: 20px; /* Add bottom margin */
+        z-index: 100; /* Ensure highest z-index */
+        position: relative; /* Ensure stacking context */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .priest-register-section {
+        padding: 60px 20px;
+    }
+    
+    .priest-main-title {
+        font-size: 2.5rem;
+    }
+    
+    .priest-description {
+        font-size: 1.1rem;
+    }
+    
+    .priest-register-btn {
+        padding: 15px 35px;
+        font-size: 1.1rem;
+        margin-top: 25px; /* Adjust spacing */
+        margin-bottom: 15px; /* Adjust spacing */
+    }
+    
+    .priest-image-placeholder {
+        height: 250px;
+        margin-top: 15px; /* Adjust spacing */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .priest-main-title {
+        font-size: 2rem;
+    }
+    
+    .priest-register-btn {
+        padding: 12px 30px;
+        font-size: 1rem;
+        width: 100%;
+        max-width: 280px;
+        margin-top: 20px;
+        margin-bottom: 20px; /* Ensure space below button */
+        z-index: 1000; /* Very high z-index for mobile */
+    }
+    
+    .priest-image-placeholder {
+        height: 200px;
+        margin-top: 20px;
+        position: relative; /* Ensure proper stacking */
+        z-index: 1; /* Lower than button */
+    }
+    
+    .priest-text-content {
+        position: relative;
+        z-index: 2;
+    }
+}
+
+/* Extra fix for very small screens */
+@media screen and (max-width: 360px) {
+    .priest-register-btn {
+        padding: 10px 25px;
+        font-size: 0.95rem;
+        max-width: 250px;
+    }
+    
+    .priest-image-placeholder {
+        height: 180px;
+        margin-top: 25px; /* More space on very small screens */
+    }
+}
+/* ----------------------------- */
+/*   REGISTER AS PRIEST SECTION  */
+/* ----------------------------- */
+
+/* .priest-register-section {
     padding: 100px 50px;
     background: linear-gradient(135deg, #1a2a6c 0%, #b21f1f 50%, #fdbb2d 100%);
     position: relative;
@@ -1048,15 +1269,15 @@
     flex: 0 0 400px;
     height: 400px;
     /* background: rgba(255, 255, 255, 0.1); */
-    border-radius: 20px;
+    /* border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     /* border: 2px dashed rgba(255, 255, 255, 0.3); */
     /* backdrop-filter: blur(10px); */
     /* -webkit-backdrop-filter: blur(10px); Safari fix */
-    transition: all 0.3s ease;
-}
+    /* transition: all 0.3s ease;
+} */ 
 
 .priest-image-placeholder:hover {
     background: rgba(255, 255, 255, 0.15);
@@ -1079,7 +1300,7 @@
     font-size: 1.2rem;
     opacity: 0.8;
     font-weight: 300;
-}
+} */
 /* Footer Styles */
 .footer {
     background: linear-gradient(135deg, #d32f2f 0%, #f57c00 50%, #ffd54f 100%);
@@ -1201,7 +1422,7 @@
     font-size: 0.9rem;
 }
 
-/* Responsive Design for Priest Register Section */
+/* Responsive Design for Priest Register Section
 @media screen and (max-width: 968px) {
     .priest-register-section {
         padding: 80px 30px;
@@ -1267,7 +1488,7 @@
     .priest-image-placeholder {
         height: 200px;
     }
-}
+} */
 /* Responsive Design for Footer */
 @media screen and (max-width: 968px) {
     .footer-container {
