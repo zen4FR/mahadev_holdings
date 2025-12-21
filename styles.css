@@ -40,7 +40,26 @@
     display: flex;
     align-items: center;
 }
+/* Logo Image Styles */
+.navbar__logo-img {
+    height: 100px; /* Adjust based on your logo's aspect ratio */
+    width: auto; /* Maintain aspect ratio */
+    display: block;
+    transition: all 0.3s ease;
+}
 
+/* For smaller screens, you might want to adjust the size */
+@media (max-width: 768px) {
+    .navbar__logo-img {
+        height: 40px; /* Smaller logo on mobile */
+    }
+}
+
+/* If you want the logo to be clickable and have hover effects */
+#navbar__logo:hover .navbar__logo-img {
+    opacity: 0.8;
+    transform: scale(1.05);
+}
 /* NAV MENU */
 .navbar__menu {
     display: flex;
@@ -150,6 +169,38 @@
     color: #ff0844;
     margin-top: 10px;
 }
+/* Hero Logo Styles */
+.hero-logo {
+    display: block;
+    max-width: 600px; /* Adjust based on your logo size */
+    width: auto;
+    height: 500px;
+    margin: 0 auto 20px; /* Centers logo and adds spacing below */
+}
+
+/* Update hero-title to handle logo */
+.hero-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Remove the old line1 class since we're replacing it with image */
+.line1 {
+    display: none;
+}
+
+/* If you want the logo to have effects on hover */
+.hero-logo {
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
+}
+
+.hero-logo:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.4));
+}
 
 /* ----------------------------- */
 /*         HERO SLIDER          */
@@ -243,8 +294,8 @@
 }
 
 .services-container {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
     gap: 30px;
     margin-bottom: 80px;
 }
@@ -255,8 +306,6 @@
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     transition: transform 0.3s ease;
-    flex: 1;
-    max-width: 350px;
 }
 
 .service-card:hover {
@@ -283,24 +332,95 @@
     color: #666;
     margin-bottom: 20px;
     line-height: 1.6;
+    font-size: 1rem; /* Adjusted back to normal size */
 }
 
 .service-btn {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 12px 24px;
     background: #e25036;
     color: white;
     border-radius: 6px;
     text-decoration: none;
     transition: 0.3s;
     font-weight: bold;
-    position: relative;
-    z-index: 2;
-    pointer-events: auto;
+    font-size: 1rem;
 }
 
 .service-btn:hover {
     background: #ff4dfc;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 1200px) {
+    .services-container {
+        grid-template-columns: repeat(3, 1fr); /* Still 3 columns */
+        gap: 25px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .services-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+        gap: 20px;
+    }
+    
+    .services-section {
+        padding: 60px 30px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .services-container {
+        grid-template-columns: 1fr; /* 1 column on mobile */
+        gap: 30px;
+    }
+    
+    .services-section {
+        padding: 50px 20px;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+}
+
+/* Responsive adjustments for 4 cards */
+@media screen and (max-width: 1200px) {
+    .service-card {
+        max-width: calc(33.333% - 20px); /* 3 cards on medium screens */
+        min-width: 200px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .service-card {
+        max-width: calc(50% - 20px); /* 2 cards on tablets */
+        min-width: 180px;
+    }
+    
+    .services-section {
+        padding: 60px 30px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .service-card {
+        max-width: 100%; /* 1 card on mobile */
+        min-width: 100%;
+    }
+    
+    .services-container {
+        gap: 30px;
+    }
+    
+    .services-section {
+        padding: 50px 20px;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
 }
 
 /* KARTHIKA MASAM SECTION */
@@ -490,7 +610,7 @@
     transform: translateX(-50%);
     width: 200%;
     height: 300px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #f82f07 0%, #ffff15 100%);
     border-radius: 0 0 50% 50%;
     z-index: 1;
 }
@@ -584,7 +704,7 @@
     font-size: 1.8rem;
     margin-bottom: 15px;
     font-weight: bold;
-    color: #333;
+    color: #ff0000;
     transition: all 0.3s ease;
 }
 
@@ -608,8 +728,8 @@
 .primary-service-btn {
     padding: 12px 30px;
     background: transparent;
-    color: #667eea;
-    border: 2px solid #667eea;
+    color: #ea0000;
+    border: 2px solid #ffe600;
     border-radius: 25px;
     text-decoration: none;
     font-weight: bold;
@@ -1301,127 +1421,462 @@
     opacity: 0.8;
     font-weight: 300;
 } */
-/* Footer Styles */
+/* Footer Styles - CORRECTED VERSION */
 .footer {
-    background: linear-gradient(135deg, #d32f2f 0%, #f57c00 50%, #ffd54f 100%);
-    color: white;
-    padding: 60px 0 0;
-    margin-top: 80px;
+    background: linear-gradient(135deg, #1a2a6c 0%, #8B0000 50%, #b21f1f 100%) !important;
+    color: #ffffff !important;
+    padding: 80px 0 0 !important;
+    margin-top: 100px !important;
+    display: block !important;
+    position: relative !important;
+    z-index: 100 !important;
+    width: 100% !important;
+}
+
+/* REMOVE THIS PROBLEMATIC RULE:
+.footer * {
+    color: rgb(55, 255, 0) !important;
+}
+*/
+
+.footer h3 {
+    color: #FFD700 !important;
+    font-size: 1.5rem !important;
+    margin-bottom: 25px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+.footer p {
+    color: rgba(255, 255, 255, 0.9) !important;
+    line-height: 1.8 !important;
+    font-size: 1rem !important;
+}
+
+.footer a {
+    color: rgba(255, 255, 255, 0.8) !important;
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+}
+
+.footer a:hover {
+    color: #FFD700 !important;
+    transform: translateX(5px) !important;
 }
 
 .footer-container {
     max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+    margin: 0 auto !important;
+    padding: 0 40px !important;
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 2fr;
-    gap: 40px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 50px;
+}
+
+.footer-section {
+    padding: 20px 0 !important;
 }
 
 .footer-section h3 {
-    font-size: 1.4rem;
-    margin-bottom: 20px;
-    color: #fff;
-    font-weight: 600;
-    position: relative;
+    position: relative !important;
+    padding-bottom: 15px !important;
 }
 
 .footer-section h3::after {
     content: '';
     position: absolute;
     left: 0;
-    bottom: -8px;
-    width: 50px;
+    bottom: 0;
+    width: 60px;
     height: 3px;
-    background: #ffd54f;
+    background: #FFD700;
     border-radius: 2px;
 }
 
 .footer-section p {
-    line-height: 1.6;
-    margin-bottom: 15px;
-    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 20px !important;
+    color: rgba(255, 255, 255, 0.85) !important;
 }
 
 .footer-section ul {
-    list-style: none;
-    padding: 0;
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
 .footer-section ul li {
-    margin-bottom: 12px;
+    margin-bottom: 15px !important;
+    padding-left: 0 !important;
 }
 
 .footer-section ul li a {
-    color: rgba(255, 255, 255, 0.9);
-    text-decoration: none;
-    transition: all 0.3s ease;
-    display: inline-block;
+    display: inline-block !important;
+    padding: 5px 0 !important;
+    font-size: 1rem !important;
+    color: rgba(255, 255, 255, 0.85) !important;
 }
 
 .footer-section ul li a:hover {
-    color: #ffd54f;
-    transform: translateX(5px);
+    color: #FFD700 !important;
+    padding-left: 5px !important;
 }
 
-/* Subscribe Form */
+/* Subscribe Form - Enhanced like priest section */
 .subscribe-form {
-    margin-top: 20px;
+    margin-top: 25px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 15px !important;
 }
 
 .subscribe-form input {
-    width: 100%;
-    padding: 12px 15px;
-    border: none;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    font-size: 1rem;
-    background: rgba(255, 255, 255, 0.95);
-    border: 2px solid transparent;
-    transition: all 0.3s ease;
+    width: 100% !important;
+    padding: 15px 20px !important;
+    border: none !important;
+    border-radius: 8px !important;
+    font-size: 1rem !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    color: #333 !important;
+    transition: all 0.3s ease !important;
+    border: 2px solid transparent !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+}
+
+.subscribe-form input::placeholder {
+    color: #666 !important;
+    opacity: 0.8 !important;
 }
 
 .subscribe-form input:focus {
-    outline: none;
-    border-color: #ffd54f;
-    background: white;
+    outline: none !important;
+    border-color: #FFD700 !important;
+    background: white !important;
+    box-shadow: 0 4px 20px rgba(255, 215, 0, 0.2) !important;
 }
 
 .subscribe-form button {
-    width: 100%;
-    padding: 12px 15px;
-    background: #d32f2f;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: 2px solid #d32f2f;
+    width: 100% !important;
+    padding: 15px 20px !important;
+    background: #FFD700 !important;
+    color: #8B0000 !important;
+    border: none !important;
+    border-radius: 8px !important;
+    font-size: 1.1rem !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    border: 2px solid #FFD700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
 }
 
 .subscribe-form button:hover {
-    background: #b71c1c;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    background: #FFC107 !important;
+    color: #8B0000 !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important;
 }
 
 /* Footer Bottom */
 .footer-bottom {
-    margin-top: 60px;
-    padding: 25px 0;
-    background: rgba(0, 0, 0, 0.2);
-    text-align: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 80px !important;
+    padding: 30px 0 !important;
+    background: rgba(0, 0, 0, 0.4) !important;
+    text-align: center !important;
+    border-top: 2px solid rgba(255, 215, 0, 0.3) !important;
+    width: 100% !important;
 }
 
 .footer-bottom p {
-    margin: 0;
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-size: 1rem !important;
+    margin: 0 !important;
+    font-weight: 500 !important;
+}
+/* ============================================
+   FOOTER STYLES - ADD THIS TO YOUR CSS FILE
+   ============================================ */
+
+/* RESET AND FORCE FOOTER STYLES */
+.footer {
+    background: linear-gradient(135deg, #8B0000, #1a2a6c, #8B0000) !important;
+    background-color: #8B0000 !important;
+    color: white !important;
+    padding: 80px 0 0 !important;
+    margin-top: 100px !important;
+    width: 100% !important;
+    position: relative !important;
+    z-index: 1000 !important;
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.2) !important;
 }
 
+/* Clear any floating elements */
+.footer::before {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Footer container */
+.footer-container {
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 40px !important;
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 50px !important;
+}
+
+/* All text in footer should be white */
+.footer,
+.footer *:not(input):not(button) {
+    color: white !important;
+}
+
+/* Footer sections */
+.footer-section {
+    padding: 20px 0 !important;
+}
+
+/* Headings */
+.footer h3,
+.footer-section h3 {
+    color: #FFD700 !important;
+    font-size: 1.5rem !important;
+    margin-bottom: 25px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    position: relative !important;
+    padding-bottom: 15px !important;
+}
+
+.footer h3::after,
+.footer-section h3::after {
+    content: '' !important;
+    position: absolute !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    width: 60px !important;
+    height: 3px !important;
+    background: #FFD700 !important;
+    border-radius: 2px !important;
+}
+
+/* Paragraphs */
+.footer p {
+    color: rgba(255, 255, 255, 0.9) !important;
+    line-height: 1.8 !important;
+    margin-bottom: 20px !important;
+    font-size: 1rem !important;
+}
+
+/* Lists */
+.footer-section ul {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.footer-section ul li {
+    margin-bottom: 15px !important;
+}
+
+/* Links */
+.footer a {
+    color: rgba(255, 255, 255, 0.9) !important;
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+    display: inline-block !important;
+    padding: 5px 0 !important;
+}
+
+.footer a:hover {
+    color: #FFD700 !important;
+    padding-left: 8px !important;
+}
+
+/* Subscribe Form */
+.subscribe-form {
+    margin-top: 25px !important;
+}
+
+.subscribe-form input {
+    width: 100% !important;
+    padding: 15px 20px !important;
+    border: none !important;
+    border-radius: 8px !important;
+    font-size: 1rem !important;
+    background: white !important;
+    color: #333 !important;
+    margin-bottom: 15px !important;
+    border: 2px solid transparent !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important;
+}
+
+.subscribe-form input:focus {
+    outline: none !important;
+    border-color: #FFD700 !important;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2) !important;
+}
+
+.subscribe-form button {
+    width: 100% !important;
+    padding: 15px 20px !important;
+    background: #FFD700 !important;
+    color: #8B0000 !important;
+    border: none !important;
+    border-radius: 8px !important;
+    font-size: 1.1rem !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    border: 2px solid #FFD700 !important;
+    text-transform: uppercase !important;
+}
+
+.subscribe-form button:hover {
+    background: #FFC107 !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    margin-top: 80px !important;
+    padding: 30px 0 !important;
+    background: rgba(0, 0, 0, 0.4) !important;
+    text-align: center !important;
+    border-top: 1px solid rgba(255, 215, 0, 0.3) !important;
+}
+
+.footer-bottom p {
+    color: white !important;
+    margin: 0 !important;
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+}
+
+/* Responsive Design */
+@media (max-width: 1100px) {
+    .footer-container {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 40px !important;
+        padding: 0 30px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer {
+        padding: 60px 0 0 !important;
+        margin-top: 80px !important;
+    }
+    
+    .footer-container {
+        grid-template-columns: 1fr !important;
+        gap: 40px !important;
+        padding: 0 20px !important;
+    }
+    
+    .footer-section {
+        text-align: center !important;
+    }
+    
+    .footer h3::after,
+    .footer-section h3::after {
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer {
+        padding: 50px 0 0 !important;
+    }
+    
+    .footer-container {
+        padding: 0 15px !important;
+        gap: 30px !important;
+    }
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 1024px) {
+    .footer-container {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 40px !important;
+        padding: 0 30px !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .footer {
+        padding: 60px 0 0 !important;
+    }
+    
+    .footer-container {
+        grid-template-columns: 1fr !important;
+        gap: 40px !important;
+        padding: 0 20px !important;
+    }
+    
+    .footer-section {
+        text-align: center !important;
+    }
+    
+    .footer-section h3::after {
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+    }
+    
+    .subscribe-form {
+        max-width: 400px !important;
+        margin: 25px auto 0 !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .footer {
+        padding: 50px 0 0 !important;
+        margin-top: 80px !important;
+    }
+    
+    .footer-container {
+        padding: 0 15px !important;
+    }
+}
+/* Add shake animation for form validation */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+/* Responsive Design */
+@media screen and (max-width: 992px) {
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .footer {
+        padding: 50px 0 0;
+    }
+    
+    .footer-section h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
 /* Responsive Design for Priest Register Section
 @media screen and (max-width: 968px) {
     .priest-register-section {
