@@ -221,26 +221,28 @@ body {
     direction: ltr;
 }
 
+/* Updated Image Frame Styles */
 .member-image-container {
     position: relative;
     perspective: 1000px;
+    width: 100%; /* Ensure container takes full width */
 }
 
 .image-wrapper {
     position: relative;
     border-radius: 20px;
-    overflow: hidden;
+    overflow: visible; /* Changed from 'hidden' to 'visible' so border shows */
     transform: rotateY(-5deg) rotateX(5deg);
     transition: transform 0.6s ease;
     box-shadow: 20px 20px 40px rgba(255, 87, 34, 0.2);
-    aspect-ratio: 3/4; /* Better aspect ratio for portrait images */
+    aspect-ratio: 3/4;
+    width: 100%; /* Ensure wrapper takes full width */
 }
 
 .team-member:hover .image-wrapper {
     transform: rotateY(0) rotateX(0);
 }
 
-/* FIXED: Responsive image styles */
 .member-image {
     width: 100%;
     height: 100%;
@@ -249,20 +251,41 @@ body {
     transition: transform 0.6s ease;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
+    border-radius: 20px; /* Add border radius to image itself */
 }
 
-.team-member:hover .member-image {
-    transform: scale(1.05);
-}
-
-.image-overlay {
+.image-frame {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    border: 3px solid #ff5722;
+    border-radius: 20px;
+    z-index: 2; /* Increased z-index to be above overlay but below image */
+    transition: all 0.4s ease;
+    box-sizing: border-box; /* Ensure border is included in dimensions */
+    pointer-events: none; /* Allow clicks to pass through */
+}
+
+/* Remove the previous negative positioning */
+.team-member:hover .image-frame {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Adjust image overlay to not cover the border */
+.image-overlay {
+    position: absolute;
+    top: 3px; /* Account for border width */
+    left: 3px; /* Account for border width */
+    width: calc(100% - 6px); /* Subtract border width */
+    height: calc(100% - 6px); /* Subtract border width */
     background: linear-gradient(45deg, rgba(255, 87, 34, 0.1), rgba(255, 152, 0, 0.1));
     z-index: 1;
+    border-radius: 17px; /* Slightly less than main border radius */
 }
 
 .image-frame {
