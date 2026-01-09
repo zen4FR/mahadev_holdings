@@ -8,15 +8,31 @@
 </head>
 <body>
 
+    <!-- FLOATING LANGUAGE SWITCHER (Mobile-Friendly) -->
+    <div class="floating-language-switcher">
+        <button class="floating-lang-btn" id="floatingLangToggle">
+            <span class="lang-icon">🌐</span>
+            <span class="lang-label">Choose Language</span>
+        </button>
+        <div class="floating-lang-options" id="floatingLangOptions">
+            <div class="floating-lang-option" data-lang="nepali" data-page="index.html">
+                <span class="floating-lang-text">नेपाली (Nepali)</span>
+                <span class="floating-lang-check">✓</span>
+            </div>
+            <div class="floating-lang-option" data-lang="english" data-page="index1.html">
+                <span class="floating-lang-text">English</span>
+                <span class="floating-lang-check">✓</span>
+            </div>
+        </div>
+    </div>
+
     <!-- NAVBAR -->
     <nav class="navbar">
         <div class="navbar__container">
-            <!-- Updated Logo with Image -->
             <a href="index.html" id="navbar__logo">
                 <img src="images/pb-logo.png" alt="Purohit Baaje Logo" class="navbar__logo-img">
             </a>
 
-            <!-- Mobile hamburger -->
             <div class="navbar__toggle" id="mobile-menu">
                <span class="bar"></span>
                <span class="bar"></span>
@@ -30,130 +46,526 @@
                 <li class="navbar__item">
                     <a href="team.html" class="navbar__links">Team</a>
                 </li>
-                <!-- <li class="navbar__item">
-                    <a href="products.html" class="navbar__links">Products</a>
-                </li> -->
-               
             </ul>
         </div>
     </nav>
 
+    <style>
+        /* ================= MOBILE-FIRST STYLES ================= */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+            overflow-x: hidden;
+        }
+
+        /* ================= FLOATING LANGUAGE SWITCHER ================= */
+        .floating-language-switcher {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+            width: auto;
+            max-width: 90vw;
+        }
+
+        .floating-lang-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .floating-lang-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .floating-lang-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .lang-icon {
+            font-size: 20px;
+        }
+
+        .lang-label {
+            font-size: 15px;
+        }
+
+        .floating-lang-options {
+            position: absolute;
+            bottom: 100%;
+            right: 0;
+            margin-bottom: 10px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            padding: 12px;
+            display: none;
+            flex-direction: column;
+            gap: 8px;
+            width: 200px;
+            z-index: 10000;
+        }
+
+        .floating-lang-option {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .floating-lang-option:hover {
+            background: #f5f5f5;
+            border-color: #667eea;
+        }
+
+        .floating-lang-text {
+            font-size: 16px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .floating-lang-check {
+            color: #667eea;
+            font-weight: bold;
+            font-size: 18px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .floating-lang-option.active .floating-lang-check {
+            opacity: 1;
+        }
+
+        /* ================= NAVBAR ================= */
+        .navbar {
+            background: #000000;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar__container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .navbar__logo-img {
+            height: 50px;
+            width: auto;
+        }
+
+        .navbar__menu {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .navbar__links {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .navbar__links:hover {
+            color: #ff0844;
+        }
+
+        .navbar__toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .bar {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        /* ================= RESPONSIVE DESIGN ================= */
+        @media (max-width: 768px) {
+            /* Floating Language Button - Mobile */
+            .floating-language-switcher {
+                bottom: 15px;
+                right: 15px;
+            }
+
+            .floating-lang-btn {
+                padding: 12px 18px;
+                font-size: 15px;
+            }
+
+            .lang-label {
+                display: none;
+            }
+
+            .floating-lang-btn .lang-icon {
+                margin: 0;
+                font-size: 22px;
+            }
+
+            .floating-lang-options {
+                width: 180px;
+                right: 0;
+            }
+
+            /* Navbar - Mobile */
+            .navbar__menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background: #000000;
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                padding: 20px 0;
+                gap: 0;
+                z-index: 999;
+            }
+
+            .navbar__menu.active {
+                left: 0;
+            }
+
+            .navbar__item {
+                margin: 10px 0;
+            }
+
+            .navbar__links {
+                padding: 15px;
+                display: block;
+                font-size: 18px;
+            }
+
+            .navbar__toggle {
+                display: flex;
+            }
+
+            .navbar__toggle.active .bar:nth-child(1) {
+                transform: translateY(7px) rotate(45deg);
+            }
+
+            .navbar__toggle.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .navbar__toggle.active .bar:nth-child(3) {
+                transform: translateY(-7px) rotate(-45deg);
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .navbar__container {
+                padding: 0 30px;
+            }
+
+            .navbar__menu {
+                gap: 20px;
+            }
+        }
+
+        /* ================= ANIMATIONS ================= */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .floating-lang-options.show {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        /* ================= TOUCH-FRIENDLY ELEMENTS ================= */
+        @media (hover: none) and (pointer: coarse) {
+            .floating-lang-btn,
+            .floating-lang-option,
+            .navbar__links {
+                min-height: 44px; /* Apple's recommended minimum touch target */
+            }
+
+            .floating-lang-option {
+                padding: 15px;
+            }
+
+            .navbar__links {
+                padding: 15px 20px;
+            }
+        }
+    </style>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navbarMenu = document.querySelector('.navbar__menu');
+
+        if (mobileMenu) {
+            mobileMenu.addEventListener('click', () => {
+                mobileMenu.classList.toggle('active');
+                navbarMenu.classList.toggle('active');
+                
+                // Close language options when opening menu
+                floatingLangOptions.classList.remove('show');
+            });
+        }
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.navbar__links').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                navbarMenu.classList.remove('active');
+            });
+        });
+
+        // Floating Language Switcher
+        const floatingLangToggle = document.getElementById('floatingLangToggle');
+        const floatingLangOptions = document.getElementById('floatingLangOptions');
+        const floatingLangOptionsList = document.querySelectorAll('.floating-lang-option');
+        const currentPage = window.location.pathname.split('/').pop();
+
+        // Set active language on page load
+        floatingLangOptionsList.forEach(option => {
+            const page = option.getAttribute('data-page');
+            if (page === currentPage) {
+                option.classList.add('active');
+            }
+        });
+
+        // Toggle language options
+        if (floatingLangToggle) {
+            floatingLangToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                floatingLangOptions.classList.toggle('show');
+            });
+
+            // Close options when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!floatingLangToggle.contains(e.target) && !floatingLangOptions.contains(e.target)) {
+                    floatingLangOptions.classList.remove('show');
+                }
+            });
+
+            // Handle language selection
+            floatingLangOptionsList.forEach(option => {
+                option.addEventListener('click', function() {
+                    const page = this.getAttribute('data-page');
+                    
+                    // Update active state
+                    floatingLangOptionsList.forEach(opt => opt.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Navigate to selected language page
+                    window.location.href = page;
+                    
+                    // Close options
+                    floatingLangOptions.classList.remove('show');
+                });
+            });
+        }
+
+        // Close menus when clicking on body (except on the toggle buttons)
+        document.body.addEventListener('click', (e) => {
+            if (!e.target.closest('.navbar__toggle') && !e.target.closest('.navbar__menu')) {
+                mobileMenu.classList.remove('active');
+                navbarMenu.classList.remove('active');
+            }
+        });
+
+        // Handle orientation change
+        window.addEventListener('orientationchange', () => {
+            // Close all menus on orientation change
+            mobileMenu.classList.remove('active');
+            navbarMenu.classList.remove('active');
+            floatingLangOptions.classList.remove('show');
+            
+            // Small delay to ensure proper rendering
+            setTimeout(() => {
+                window.scrollTo(0, 0);
+            }, 100);
+        });
+    </script>
 
     <!-- HERO SECTION -->
-  <section class="hero">
-    <div class="hero-container">
-        <h1 class="hero-title">
-            <!-- Replace text with logo image -->
-            <img src="images/pb-logo.png" alt="Purohit Baaje Logo" class="hero-logo">
+    <section class="hero">
+        <div class="hero-container">
+            <h1 class="hero-title">
+                <img src="images/pb-logo.png" alt="Purohit Baaje Logo" class="hero-logo">
+            </h1>
+        </div>
+
+        <!-- IMAGE SLIDER -->
+        <div class="hero-slider">
+            <div class="slider-wrapper">
+                <img src="images/1.png" class="slide active">
+                <img src="images/2.jpg" class="slide">
+                <img src="images/3.jpg" class="slide">
+                <img src="images/4.jpeg" class="slide">
+            </div>
+
+            <button class="slider-btn prev">&#10094;</button>
+            <button class="slider-btn next">&#10095;</button>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION - WITH 9 CARDS -->
+    <section class="services-section">
+        <h2 class="section-title">हाम्रा सेवाहरू</h2>
         
-        </h1>
+        <div class="services-container">
+            <!-- Service Card 1 -->
+            <div class="service-card">
+                <img src="images/online-puja.jpg" alt="Online Puja Booking" class="service-image">
+                <div class="service-content">
+                    <h3 class="service-title">अनलाइन पूजा बुकिङ</h3>
+                    <p class="service-description">अनुभवी पण्डितहरूसँग जहाँबाट पनि पवित्र कर्मकाण्ड सम्पन्न गर्नुहोस्।</p>
+                    <a href="https://wa.me/9764397693?text=Namaste%2C%20I%20would%20like%20to%20book%20an%20online%20puja.%20Please%20provide%20details." 
+                       class="service-btn">अहिले बुक गर्नुहोस्</a>
+                </div>
+            </div>
+            
+            <!-- Service Card 2 -->
+            <div class="service-card">
+                <img src="images/temple-puja.jpg" alt="Temple Puja Booking" class="service-image">
+                <div class="service-content">
+                    <h3 class="service-title">क्रियापुत्री भवन बुकिंग</h3>
+                    <p class="service-description">एक क्लिकमा क्रियापुत्री भवन सजिलै बुक गर्नुहोस्</p>
+                    <a href="https://wa.me/9764397693?text=I%20would%20like%20to%20rent%20Kriya%20Putri%20Bhawan.%20Please%20provide%20details." 
+                       class="service-btn">अहिले बुक गर्नुहोस्</a>
+                </div>
+            </div>
+            
+            <!-- Service Card 3 -->
+            <div class="service-card">
+                <img src="images/priest-service.jpg" alt="Priest Services" class="service-image">
+                <div class="service-content">
+                    <h3 class="service-title">पुजारी सेवाहरू</h3>
+                    <p class="service-description">वैयक्तिकृत संस्कार र समारोहहरूका लागि अनुभवी वैदिक पुजारीहरू भर्ना गर्नुहोस्।</p>
+                    <a href="https://wa.me/9764397693?text=I%20would%20like%20to%20book%20priest%20services.%20Please%20provide%20details." 
+                       class="service-btn">अहिले बुक गर्नुहोस्</a>
+                </div>
+            </div>
+            
+            <!-- Service Card 4 -->
+            <div class="service-card">
+                <img src="images/cooperate-services.jpg" alt="Corporate Services" class="service-image">
+                <div class="service-content">
+                    <h3 class="service-title">कर्पोरेट सेवाहरू</h3>
+                    <p class="service-description">कार्यालय, विद्यालय र संस्थाहरूका लागि पारम्परिक वैदिक समारोहहरूद्वारा आफ्नो कर्पोरेट वातावरण उन्नत बनाउनुहोस्।</p>
+                    <a href="https://wa.me/9764397693?text=I%20would%20like%20to%20book%20corporate%20services%20for%20our%20company.%20Please%20provide%20details." 
+                       class="service-btn">अहिले बुक गर्नुहोस्</a>
+                </div>
+            </div>
+            
+            <!-- Service Card 5 -->
+            <div class="service-card">
+                <img src="images/tirtha-services.jpg" alt="तीर्थ यात्रा सेवाहरू" class="service-image"> 
+                <div class="service-content">
+                    <h3 class="service-title">तीर्थ यात्रा सेवाहरू</h3> 
+                    <p class="service-description">शुद्धिकरण र आशीर्वादका लागि अनुभवी पुजारीहरूसँग पवित्र हवन समारोह सम्पन्न गराउनुहोस्।</p> 
+                    <a href="https://wa.me/9764397693?text=I%20would%20like%20to%20book%20hawan%20services.%20Please%20provide%20details." 
+                       class="service-btn">अहिले बुक गर्नुहोस्</a>
+                </div>
+            </div>
+            
+            <!-- Service Card 6 -->
+            <div class="service-card">
+                <img src="images/astro-services.jpg" alt="ज्योतिष परामर्श" class="service-image">
+                <div class="service-content">
+                    <h3 class="service-title">ज्योतिष परामर्श</h3>
+                    <p class="service-description">जन्म कुण्डली विश्लेषण, ग्रह दोष समाधान, मुहूर्त निर्धारण र भविष्यफलका लागि विशेषज्ञ ज्योतिषीहरूबाट परामर्श लिनुहोस्।</p>
+                    <a href="https://wa.me/9764397693?text=I%20would%20like%20to%20book%20astrology%20consultation.%20Please%20provide%20details." 
+                       class="service-btn">अहिले बुक गर्नुहोस्</a>
+                </div>
+            </div>
+            
+            <!-- NEW SERVICE CARD 7 -->
+            <div class="service-card">
+                <img src="images/vastu-consultation.jpg" alt="वास्तु परामर्श" class="service-image">
+                <div class="service-content">
+                    <h3 class="service-title">वास्तु परामर्श</h3>
+                    <p class="service-description">घर, कार्यालय र व्यवसायिक भवनहरूको लागि वास्तु शास्त्र अनुसारको परामर्श र सुझाव सेवा।</p>
+                    <a href="https://wa.me/9764397693?text=I%20would%20like%20to%20book%20vastu%20consultation.%20Please%20provide%20details." 
+                       class="service-btn">अहिले बुक गर्नुहोस्</a>
+                </div>
+            </div>
+            
+            <!-- NEW SERVICE CARD 8 -->
+            <div class="service-card">
+                <img src="images/marriage-consultation.jpg" alt="विवाह परामर्श" class="service-image">
+                <div class="service-content">
+                    <h3 class="service-title">विवाह परामर्श</h3>
+                    <p class="service-description">कुण्डली मिलान, मुहूर्त निर्धारण, र सम्पूर्ण विवाह समारोह व्यवस्थापन सेवा।</p>
+                    <a href="https://wa.me/9764397693?text=I%20would%20like%20to%20book%20marriage%20consultation.%20Please%20provide%20details." 
+                       class="service-btn">अहिले बुक गर्नुहोस्</a>
+                </div>
+            </div>
+            
+            <!-- NEW SERVICE CARD 9 -->
+            <div class="service-card">
+                <img src="images/home-puja.jpg" alt="घर पूजा" class="service-image">
+                <div class="service-content">
+                    <h3 class="service-title">घर पूजा सेवा</h3>
+                    <p class="service-description">तपाईंको घरमा विशेष पूजा, हवन र धार्मिक समारोहहरू सम्पन्न गराउने सेवा।</p>
+                    <a href="https://wa.me/9764397693?text=I%20would%20like%20to%20book%20home%20puja%20service.%20Please%20provide%20details." 
+                       class="service-btn">अहिले बुक गर्नुहोस्</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KARTHIKA MASAM SECTION -->
+    <div class="karthika-section">
+        <div class="karthika-content">
+            <h2 class="karthika-title">📿 पौष महिना </h2>
+            <h3 class="karthika-subtitle">पौष मह – पवित्र तपस्या, धार्मिक अनुष्ठान र आध्यात्मिक शुद्धिकरणको महिना</h3>
+            <p class="karthika-description">
+                पौष, नेपाली हिन्दू पात्रोमा सबैभन्दा पवित्र महिनाहरू मध्ये एक हो, यो महिना तपस्या, धार्मिक अनुष्ठान, आध्यात्मिक शुद्धिकरण र ईश्वरीय कृपाका लागि गहिरो सम्बन्धित छ।
+                यो महिनाले भगवान सूर्य, देवी लक्ष्मीको आशीर्वाद, र शीतकालीन धार्मिक पर्वहरूको आध्यात्मिक उज्यालोलाई सम्मान गर्दछ। पौष महिनामा गरिने पूजा-अनुष्ठानहरू विशेष फलदायी मानिन्छन्।
+            </p>
+            <a href="https://wa.me/9764397693?text=I%20would%20like%20to%20book%20Paush%20month%20puja.%20Please%20provide%20details." 
+               class="karthika-btn">अहिले आफ्नो विशेष पौष महिनाको पूजा बुक गर्नुहोस्!</a>
+        </div>
+        <div class="karthika-image">
+            <img src="images/karthika-masam.jpg" alt="पौष महिना">
+        </div>
     </div>
 
-    <!-- IMAGE SLIDER -->
-    <div class="hero-slider">
-        <div class="slider-wrapper">
-            <img src="images/1.png" class="slide active">
-            <img src="images/2.jpg" class="slide">
-            <img src="images/3.jpg" class="slide">
-            <img src="images/4.jpeg" class="slide">
-        </div>
-
-        <button class="slider-btn prev">&#10094;</button>
-        <button class="slider-btn next">&#10095;</button>
-    </div>
-</section>
-<!-- SERVICES SECTION -->
-<section class="services-section">
-    <h2 class="section-title">हाम्रा सेवाहरू</h2>
-    
-    
-    <div class="services-container">
-        <!-- Service Card 1 -->
-        <div class="service-card">
-            <img src="images/online-puja.jpg" alt="Online Puja Booking" class="service-image">
-            <div class="service-content">
-                <h3 class="service-title">अनलाइन पूजा बुकिङ</h3>
-                <p class="service-description">अनुभवी पण्डितहरूसँग जहाँबाट पनि पवित्र कर्मकाण्ड सम्पन्न गर्नुहोस्।</p>
-                <a href="https://wa.me/9764397693?text=Namaste%2C%20I%20would%20like%20to%20book%20an%20online%20puja.%20Please%20provide%20details." 
-                   class="service-btn">अहिले बुक गर्नुहोस्</a>
-            </div>
-        </div>
-        
-        <!-- Service Card 2 -->
-        <div class="service-card">
-            <img src="images/temple-puja.jpg" alt="Temple Puja Booking" class="service-image">
-            <div class="service-content">
-                <h3 class="service-title">क्रियापुत्री भवन बुकिंग</h3>
-                <p class="service-description">एक क्लिकमा क्रियापुत्री भवन सजिलै बुक गर्नुहोस्</p>
-                <a href="https://wa.me/9764397693?text=I%20would%20like%20to%20rent%20Kriya%20Putri%20Bhawan.%20Please%20provide%20details." 
-                   class="service-btn">अहिले बुक गर्नुहोस्</a>
-            </div>
-        </div>
-        
-        <!-- Service Card 3 -->
-        <div class="service-card">
-            <img src="images/priest-service.jpg" alt="Priest Services" class="service-image">
-            <div class="service-content">
-                <h3 class="service-title">पुजारी सेवाहरू</h3>
-                <p class="service-description">वैयक्तिकृत संस्कार र समारोहहरूका लागि अनुभवी वैदिक पुजारीहरू भर्ना गर्नुहोस्।</p>
-                <a href="https://wa.me/9764397693?text=I%20would%20like%20to%20book%20priest%20services.%20Please%20provide%20details." 
-                   class="service-btn">अहिले बुक गर्नुहोस्</a>
-            </div>
-        </div>
-        
-        <!-- Service Card 4 -->
-        <div class="service-card">
-            <img src="images/cooperate-services.jpg" alt="Corporate Services" class="service-image">
-            <div class="service-content">
-                <h3 class="service-title">कर्पोरेट सेवाहरू</h3>
-                <p class="service-description">कार्यालय, विद्यालय र संस्थाहरूका लागि पारम्परिक वैदिक समारोहहरूद्वारा आफ्नो कर्पोरेट वातावरण उन्नत बनाउनुहोस्।</p>
-                <a href="https://wa.me/9764397693?text=I%20would%20like%20to%20book%20corporate%20services%20for%20our%20company.%20Please%20provide%20details." 
-                   class="service-btn">अहिले बुक गर्नुहोस्</a>
-            </div>
-        </div>
-        
-       <!-- सेवा कार्ड ५ -->
-<div class="service-card">
-    <img src="images/tirtha-services.jpg" alt="हवन सेवाहरू" class="service-image"> 
-    <div class="service-content">
-        <h3 class="service-title">तीर्थ यात्रा सेवाहरू</h3> 
-        <p class="service-description">शुद्धिकरण र आशीर्वादका लागि अनुभवी पुजारीहरूसँग पवित्र हवन समारोह सम्पन्न गराउनुहोस्।</p> 
-        <a href="https://wa.me/9764397693?text=I%20would%20like%20to%20book%20hawan%20services.%20Please%20provide%20details." 
-           class="service-btn">अहिले बुक गर्नुहोस्</a>
-    </div>
-</div>        
-        <!-- Optional: Add a 6th card if you want exactly 2x3 grid -->
-       
-        <div class="service-card">
-            <img src="images/astro-services.jpg" alt="ज्योतिष परामर्श" class="service-image">
-            <div class="service-content">
-                <h3 class="service-title">ज्योतिष परामर्श</h3>
-                <p class="service-description">जन्म कुण्डली विश्लेषण, ग्रह दोष समाधान, मुहूर्त निर्धारण र भविष्यफलका लागि विशेषज्ञ ज्योतिषीहरूबाट परामर्श लिनुहोस्।</p>
-                <a href="https://wa.me/9764397693?text=I%20would%20like%20to%20book%20another%20service.%20Please%20provide%20details." 
-                   class="service-btn">अहिले बुक गर्नुहोस्</a>
-            </div>
-        </div>
-</section>
-
-
-        
-        <!-- KARTHIKA MASAM SECTION -->
-        <div class="karthika-section">
-            <div class="karthika-content">
-                <h2 class="karthika-title">📿 पौष महिना </h2>
-                <h3 class="karthika-subtitle">पौष मह – पवित्र तपस्या, धार्मिक अनुष्ठान र आध्यात्मिक शुद्धिकरणको महिना</h3>
-                <p class="karthika-description">
-                    पौष, नेपाली हिन्दू पात्रोमा सबैभन्दा पवित्र महिनाहरू मध्ये एक हो, यो महिना तपस्या, धार्मिक अनुष्ठान, आध्यात्मिक शुद्धिकरण र ईश्वरीय कृपाका लागि गहिरो सम्बन्धित छ।
-                    यो महिनाले भगवान सूर्य, देवी लक्ष्मीको आशीर्वाद, र शीतकालीन धार्मिक पर्वहरूको आध्यात्मिक उज्यालोलाई सम्मान गर्दछ। पौष महिनामा गरिने पूजा-अनुष्ठानहरू विशेष फलदायी मानिन्छन्।
-                </p>
-                <a href="https://wa.me/9764397693?text=I%20would%20like%20to%20book%20Paush%20month%20puja.%20Please%20provide%20details." 
-                   class="karthika-btn">अहिले आफ्नो विशेष पौष महिनाको पूजा बुक गर्नुहोस्!</a>
-            </div>
-            <div class="karthika-image">
-                <img src="images/karthika-masam.jpg" alt="पौष महिना">
-            </div>
-        </div>
-               <!-- PUJAS & VRATHAM SECTION -->
+    <!-- PUJAS & VRATHAM SECTION -->
     <section class="pujas-section">
         <h2 class="section-title">PUJAS & RITUALS</h2>
         
@@ -217,126 +629,130 @@
                     </div>
                 </div>
             </div>
+        </div>
     </section>
-        <!-- PRIMARY SERVICES SECTION -->
-        <section class="primary-services-section">
-            <div class="primary-services-header">
-                <h2 class="primary-section-title">हाम्रा प्रमुख सेवाहरू</h2>
-                <p class="primary-section-subtitle">व्यापक पूजा सेवाहरू - अनलाइन बुक गर्नुहोस्, मन्दिरहरूसँग जोडिनुहोस्, र दिव्य आशीर्वाद उपहार दिनुहोस्!</p>
-            </div>
-            
-            <div class="primary-services-container">
-                <!-- Service Card 1 -->
-                <div class="primary-service-card">
-                    <div class="primary-service-content">
-                        <h3 class="primary-service-title">आध्यात्मिक / पवित्र उत्पादनहरूको पसल</h3>
-                        <p class="primary-service-description">
-                            भगवद्गीता, रामायण, विष्णु सहस्रनाम<br>
-                            पूजा सामग्री किटहरू<br>
-                            रुद्राक्ष, माला, यन्त्रहरू<br>
-                            धूप, बत्ती, दिया, र पर्वका आवश्यक सामग्रीहरू
-                        </p>
-                        <a href="https://wa.me/9764397693?text=I%20want%20to%20buy%20spiritual%20books.%20Please%20provide%20details." 
-                           class="primary-service-btn">थप जान्नुहोस्</a>
-                    </div>
-                </div>
-                
-                <!-- Service Card 2 -->
-                <div class="primary-service-card">
-                    <div class="primary-service-content">
-                        <h3 class="primary-service-title">ज्योतिषीय परामर्श र मार्गदर्शन सेवा</h3>
-                        <p class="primary-service-description">
-                            जन्म कुण्डली पढाइ, कुण्डली मिलान, ग्रह दोष विश्लेषण, 
-                            मुहूर्त निर्धारण, वास्तु सल्लाह, र ज्योतिषीय उपायहरू।
-                        </p>
-                        <a href="https://wa.me/9764397693?text=I%20want%20to%20book%20astro%20consultation.%20Please%20provide%20details." 
-                           class="primary-service-btn">थप जान्नुहोस्</a>
-                    </div>
-                </div>
-                
-                <!-- Service Card 3 -->
-                <div class="primary-service-card">
-                    <div class="primary-service-content">
-                        <h3 class="primary-service-title">धार्मिक समारोह व्यवस्थापन सेवा</h3>
-                        <p class="primary-service-description">
-                            पूजा सजावट (मण्डप, फूलहरू, कलश स्थापना)<br>
-                            भजनका लागि ध्वनि प्रणाली<br>
-                            पूजा सामग्री प्याकेजिंग<br>
-                            बस्ने ठाउँ र आसनहरूको व्यवस्था<br>
-                            फोटोग्राफी/भिडियोग्राफी (वैकल्पिक)
-                        </p>
-                        <a href="https://wa.me/9764397693?text=I%20want%20to%20manage%20my%20ritual%20event%20or%20home%20ceremony%20setup.%20Please%20provide%20details." 
-                           class="primary-service-btn">थप जान्नुहोस्</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    
-   
-         <!-- REGISTER AS PRIEST SECTION -->
-         <section class="priest-register-section">
-            <div class="priest-register-container">
-                <div class="priest-content">
-                    <div class="priest-text-content">
-                        <h1 class="priest-main-title">पुजारीको रूपमा दर्ता गर्नुहोस्</h1>
-                        <p class="priest-description">
-                            पूजा सेवाहरूमा सामेल हुनुहोस् र विश्वभरिका भक्तहरूलाई आफ्नो विशेषज्ञता प्रदान गर्नुहोस्।
-                        </p>
-                        <p class="priest-description">
-                            समर्पित प्रोफाइल प्राप्त गर्नुहोस्, अनलाइन बुकिंग प्राप्त गर्नुहोस्, र आध्यात्मिक सेवाद्वारा आम्दानी गर्नुहोस्। आफ्नो पहुँच विस्तार गर्नुहोस् र धेरै मानिसहरूलाई सेवा प्रदान गर्नुहोस्।
-                        </p>
-                        <a href="https://wa.me/9764397693?text=Hello%2C%20I%20want%20to%20register%20myself%20as%20a%20priest%20for%20Purohit%20Baaje%20company." 
-                           class="priest-register-btn">अहिले दर्ता गर्नुहोस्</a>
-                    </div>
-                    
-                    <div class="priest-image-placeholder">
-                        <div class="placeholder-image">
-                            <img src="images/puret.png" alt="पुजारी दर्ता">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <footer class="footer">
-            <div class="footer-container">
-                <!-- About Section -->
-                <div class="footer-section">
-                    <h3>पुरोहित बाजेको बारेमा</h3>
-                    <p>पुरोहित बाजे सम्पूर्ण हिन्दू भक्ति आवश्यकताहरू र आध्यात्मिक सेवाहरूको लागि अग्रणी डिजिटल प्लेटफर्म हो।</p>
-                </div>
-                
-                <!-- Quick Links -->
-                <div class="footer-section">
-                    <h3>द्रुत लिङ्कहरू</h3>
-                    <ul>
-                        <li><a href="#">अनलाइन पूजा बुकिंग</a></li>
-                        <li><a href="#">मन्दिर पूजा बुकिंग</a></li>
-                        <li><a href="#">पुजारी बुकिंग</a></li>
-                        <li><a href="#">वैदिक आशीर्वाद</a></li>
-                        <li><a href="#">हामीलाई सम्पर्क गर्नुहोस्</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Pujas -->
-                <div class="footer-section">
-                    <h3>पूजाहरू</h3>
-                    <ul>
-                        <li><a href="#">जन्म पूजा</a></li>
-                        <li><a href="#">श्राद्ध पूजा</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Managed Section (replacing Subscribe) -->
-                <div class="footer-section">
-                    <h3>पूजा व्यवस्थापन</h3>
-                    <p>हामी आफ्नो ग्राहकहरूलाई सम्पूर्ण पूजा व्यवस्थापन सेवाहरू प्रदान गर्दछौं। तपाईंको धार्मिक आवश्यकताहरूको लागि एकमात्र सम्पर्क बिन्दु।</p>
+
+    <!-- PRIMARY SERVICES SECTION -->
+    <section class="primary-services-section">
+        <div class="primary-services-header">
+            <h2 class="primary-section-title">हाम्रा प्रमुख सेवाहरू</h2>
+            <p class="primary-section-subtitle">व्यापक पूजा सेवाहरू - अनलाइन बुक गर्नुहोस्, मन्दिरहरूसँग जोडिनुहोस्, र दिव्य आशीर्वाद उपहार दिनुहोस्!</p>
+        </div>
+        
+        <div class="primary-services-container">
+            <!-- Service Card 1 -->
+            <div class="primary-service-card">
+                <div class="primary-service-content">
+                    <h3 class="primary-service-title">आध्यात्मिक / पवित्र उत्पादनहरूको पसल</h3>
+                    <p class="primary-service-description">
+                        भगवद्गीता, रामायण, विष्णु सहस्रनाम<br>
+                        पूजा सामग्री किटहरू<br>
+                        रुद्राक्ष, माला, यन्त्रहरू<br>
+                        धूप, बत्ती, दिया, र पर्वका आवश्यक सामग्रीहरू
+                    </p>
+                    <a href="https://wa.me/9764397693?text=I%20want%20to%20buy%20spiritual%20books.%20Please%20provide%20details." 
+                       class="primary-service-btn">थप जान्नुहोस्</a>
                 </div>
             </div>
             
-            <div class="footer-bottom">
-                <p>&copy; २०२३ पुरोहित बाजे। सर्वाधिकार सुरक्षित।</p>
+            <!-- Service Card 2 -->
+            <div class="primary-service-card">
+                <div class="primary-service-content">
+                    <h3 class="primary-service-title">ज्योतिषीय परामर्श र मार्गदर्शन सेवा</h3>
+                    <p class="primary-service-description">
+                        जन्म कुण्डली पढाइ, कुण्डली मिलान, ग्रह दोष विश्लेषण, 
+                        मुहूर्त निर्धारण, वास्तु सल्लाह, र ज्योतिषीय उपायहरू।
+                    </p>
+                    <a href="https://wa.me/9764397693?text=I%20want%20to%20book%20astro%20consultation.%20Please%20provide%20details." 
+                       class="primary-service-btn">थप जान्नुहोस्</a>
+                </div>
             </div>
-        </footer>S
+            
+            <!-- Service Card 3 -->
+            <div class="primary-service-card">
+                <div class="primary-service-content">
+                    <h3 class="primary-service-title">धार्मिक समारोह व्यवस्थापन सेवा</h3>
+                    <p class="primary-service-description">
+                        पूजा सजावट (मण्डप, फूलहरू, कलश स्थापना)<br>
+                        भजनका लागि ध्वनि प्रणाली<br>
+                        पूजा सामग्री प्याकेजिंग<br>
+                        बस्ने ठाउँ र आसनहरूको व्यवस्था<br>
+                        फोटोग्राफी/भिडियोग्राफी (वैकल्पिक)
+                    </p>
+                    <a href="https://wa.me/9764397693?text=I%20want%20to%20manage%20my%20ritual%20event%20or%20home%20ceremony%20setup.%20Please%20provide%20details." 
+                       class="primary-service-btn">थप जान्नुहोस्</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REGISTER AS PRIEST SECTION -->
+    <section class="priest-register-section">
+        <div class="priest-register-container">
+            <div class="priest-content">
+                <div class="priest-text-content">
+                    <h1 class="priest-main-title">पुजारीको रूपमा दर्ता गर्नुहोस्</h1>
+                    <p class="priest-description">
+                        पूजा सेवाहरूमा सामेल हुनुहोस् र विश्वभरिका भक्तहरूलाई आफ्नो विशेषज्ञता प्रदान गर्नुहोस्।
+                    </p>
+                    <p class="priest-description">
+                        समर्पित प्रोफाइल प्राप्त गर्नुहोस्, अनलाइन बुकिंग प्राप्त गर्नुहोस्, र आध्यात्मिक सेवाद्वारा आम्दानी गर्नुहोस्। आफ्नो पहुँच विस्तार गर्नुहोस् र धेरै मानिसहरूलाई सेवा प्रदान गर्नुहोस्।
+                    </p>
+                    <a href="https://wa.me/9764397693?text=Hello%2C%20I%20want%20to%20register%20myself%20as%20a%20priest%20for%20Purohit%20Baaje%20company." 
+                       class="priest-register-btn">अहिले दर्ता गर्नुहोस्</a>
+                </div>
+                
+                <div class="priest-image-placeholder">
+                    <div class="placeholder-image">
+                        <img src="images/puret.png" alt="पुजारी दर्ता">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- About Section -->
+            <div class="footer-section">
+                <h3>पुरोहित बाजेको बारेमा</h3>
+                <p>पुरोहित बाजे सम्पूर्ण हिन्दू भक्ति आवश्यकताहरू र आध्यात्मिक सेवाहरूको लागि अग्रणी डिजिटल प्लेटफर्म हो।</p>
+            </div>
+            
+            <!-- Quick Links -->
+            <div class="footer-section">
+                <h3>द्रुत लिङ्कहरू</h3>
+                <ul>
+                    <li><a href="#">अनलाइन पूजा बुकिंग</a></li>
+                    <li><a href="#">मन्दिर पूजा बुकिंग</a></li>
+                    <li><a href="#">पुजारी बुकिंग</a></li>
+                    <li><a href="#">वैदिक आशीर्वाद</a></li>
+                    <li><a href="#">हामीलाई सम्पर्क गर्नुहोस्</a></li>
+                </ul>
+            </div>
+            
+            <!-- Pujas -->
+            <div class="footer-section">
+                <h3>पूजाहरू</h3>
+                <ul>
+                    <li><a href="#">जन्म पूजा</a></li>
+                    <li><a href="#">श्राद्ध पूजा</a></li>
+                </ul>
+            </div>
+            
+            <!-- Managed Section -->
+            <div class="footer-section">
+                <h3>पूजा व्यवस्थापन</h3>
+                <p>हामी आफ्नो ग्राहकहरूलाई सम्पूर्ण पूजा व्यवस्थापन सेवाहरू प्रदान गर्दछौं। तपाईंको धार्मिक आवश्यकताहरूको लागि एकमात्र सम्पर्क बिन्दु।</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; २०२३ पुरोहित बाजे। सर्वाधिकार सुरक्षित।</p>
+        </div>
+    </footer>
+
     <script src="app.js"></script>
 
 </body>
