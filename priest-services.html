@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="services.priestServices.title">Priest Services - Vedic Rituals & Ceremonies</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="js/i18n.js" defer></script>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f5f0;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Floating Language Switcher */
+        .floating-language-switcher {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+            width: auto;
+            max-width: 90vw;
+        }
+
+        .floating-lang-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .floating-lang-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .lang-icon {
+            font-size: 20px;
+        }
+
+        .lang-label {
+            font-size: 15px;
+        }
+
+        .floating-lang-options {
+            position: absolute;
+            bottom: 100%;
+            right: 0;
+            margin-bottom: 10px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            padding: 12px;
+            display: none;
+            flex-direction: column;
+            gap: 8px;
+            width: 200px;
+            z-index: 10000;
+        }
+
+        .floating-lang-options.show {
+            display: flex;
+        }
+
+        .floating-lang-option {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .floating-lang-option:hover {
+            background: #f5f5f5;
+            border-color: #667eea;
+        }
+
+        .floating-lang-option.active .floating-lang-check {
+            opacity: 1;
+        }
+
+        .floating-lang-check {
+            color: #667eea;
+            font-weight: bold;
+            font-size: 18px;
+            opacity: 0;
+        }
+        
+        /* Header Styles */
+        .service-header {
+            background: linear-gradient(rgba(74, 54, 37, 0.85), rgba(74, 54, 37, 0.9)), url('images/priest-header.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            border-bottom: 5px solid #d4a74e;
+        }
+        
+        .service-header h1 {
+            font-size: 3.2rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .service-header p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+        
+        /* Navigation */
+        .service-nav {
+            background-color: #5a4226;
+            padding: 15px 0;
+        }
+        
+        .service-nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .back-to-services {
+            color: #f8f5f0;
+            text-decoration: none;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s;
+        }
+        
+        .back-to-services:hover {
+            color: #d4a74e;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #d4a74e;
+        }
+        
+        /* Main Content */
+        .service-main {
+            padding: 60px 0;
+        }
+        
+        /* Intro Section */
+        .service-intro {
+            background-color: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 50px;
+            border-left: 5px solid #d4a74e;
+        }
+        
+        .service-intro h2 {
+            color: #5a4226;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .service-intro h2 i {
+            color: #d4a74e;
+        }
+        
+        .service-intro p {
+            font-size: 1.15rem;
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+        /* Features Section */
+        .service-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            background-color: #5a4226;
+            color: white;
+            padding: 25px;
+            text-align: center;
+            font-size: 2.5rem;
+        }
+        
+        .feature-content {
+            padding: 25px;
+        }
+        
+        .feature-content h3 {
+            color: #5a4226;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .feature-content ul {
+            list-style-type: none;
+        }
+        
+        .feature-content li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .feature-content li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #d4a74e;
+            font-weight: bold;
+        }
+        
+        /* Priest Types Section */
+        .priest-types {
+            margin-bottom: 60px;
+        }
+        
+        .section-title {
+            text-align: center;
+            color: #5a4226;
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: #d4a74e;
+        }
+        
+        .priest-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .priest-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            padding-bottom: 25px;
+        }
+        
+        .priest-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .priest-image {
+            height: 200px;
+            background-color: #eee;
+            background-size: cover;
+            background-position: center;
+            margin-bottom: 20px;
+        }
+        
+        .priest-card h3 {
+            color: #5a4226;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            padding: 0 20px;
+        }
+        
+        .priest-card p {
+            color: #666;
+            padding: 0 20px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        /* Process Section */
+        .process-steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .step {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            width: 220px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #d4a74e;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .step h3 {
+            color: #5a4226;
+            margin: 25px 0 15px;
+            font-size: 1.3rem;
+        }
+        
+        .step p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        /* CTA Section */
+        .service-cta {
+            background-color: #5a4226;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 60px;
+        }
+        
+        .service-cta h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .service-cta p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        /* Button Styles - Matching your original */
+        .service-btn {
+            display: inline-block;
+            background-color: #d4a74e;
+            color: white;
+            padding: 15px 35px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-btn:hover {
+            background-color: #c2953e;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .service-btn-large {
+            padding: 18px 45px;
+            font-size: 1.3rem;
+        }
+
+        /* Service title link styles */
+        .service-title-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: color 0.3s ease;
+        }
+
+        .service-title-link:hover {
+            color: #d4a74e;
+        }
+
+        .service-title-link:hover h3 {
+            text-decoration: underline;
+        }
+        
+        /* Footer */
+        .service-footer {
+            background-color: #3a2a18;
+            color: #f8f5f0;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .contact-info {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        
+        .contact-info div {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .service-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .service-nav .container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-links {
+                display: flex;
+                gap: 20px;
+            }
+            
+            .nav-links a {
+                margin-left: 0;
+            }
+            
+            .service-features {
+                grid-template-columns: 1fr;
+            }
+            
+            .priest-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .process-steps {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .step {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .floating-language-switcher {
+                bottom: 15px;
+                right: 15px;
+            }
+
+            .floating-lang-btn {
+                padding: 12px 18px;
+            }
+
+            .lang-label {
+                display: none;
+            }
+
+            .floating-lang-btn .lang-icon {
+                font-size: 22px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .service-header h1 {
+                font-size: 2rem;
+            }
+            
+            .service-intro, .feature-content {
+                padding: 25px;
+            }
+            
+            .service-btn-large {
+                padding: 15px 30px;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Language Switcher -->
+    <div class="floating-language-switcher">
+        <button class="floating-lang-btn" id="floatingLangToggle">
+            <span class="lang-icon">🌐</span>
+            <span class="lang-label" data-i18n="language.select">Choose Language</span>
+        </button>
+        <div class="floating-lang-options" id="floatingLangOptions">
+            <div class="floating-lang-option" data-lang="en">
+                <span class="floating-lang-text" data-i18n="language.english">English</span>
+                <span class="floating-lang-check">✓</span>
+            </div>
+            <div class="floating-lang-option" data-lang="ne">
+                <span class="floating-lang-text" data-i18n="language.nepali">नेपाली</span>
+                <span class="floating-lang-check">✓</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Section -->
+    <header class="service-header">
+        <div class="container">
+            <h1 data-i18n="services.priestServices.title">Priest Services</h1>
+            <p data-i18n="priestServices.subtitle">Hire experienced Vedic priests for personalized rituals, ceremonies, and spiritual guidance at your convenience.</p>
+        </div>
+    </header>
+    
+    <!-- Navigation -->
+    <nav class="service-nav">
+        <div class="container">
+            <a href="index.html#services" class="back-to-services" data-i18n="nav.backToServices">
+                <i class="fas fa-arrow-left"></i> Back to All Services
+            </a>
+            <div class="nav-links">
+                <a href="#features" data-i18n="priestServices.nav.features">Features</a>
+                <a href="#priests" data-i18n="priestServices.nav.priests">Our Priests</a>
+                <a href="#process" data-i18n="priestServices.nav.process">Process</a>
+                <a href="#contact" data-i18n="priestServices.nav.contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <main class="service-main container">
+        <!-- Introduction -->
+        <section class="service-intro">
+            <h2><i class="fas fa-hands-praying"></i> <span data-i18n="priestServices.intro.title">Traditional Vedic Priest Services</span></h2>
+            <p data-i18n="priestServices.intro.desc1">Our priest services connect you with knowledgeable, experienced Vedic priests who can perform a wide range of rituals and ceremonies according to ancient scriptures and traditions. Whether you need a priest for daily worship, special occasions, or specific samskaras (sacraments), we provide authentic, personalized services.</p>
+            <p data-i18n="priestServices.intro.desc2">All our priests are well-versed in Vedic mantras, rituals, and procedures. They guide you through each step, ensuring the ceremony is performed correctly and with full spiritual significance.</p>
+        </section>
+        
+        <!-- Features/Offerings -->
+        <section id="features" class="service-features">
+            <!-- Home Ceremonies -->
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-home-alt"></i>
+                </div>
+                <div class="feature-content">
+                    <a href="#home-ceremonies" class="service-title-link">
+                        <h3 data-i18n="priestServices.features.home.title">Home Ceremonies</h3>
+                    </a>
+                    <ul>
+                        <li data-i18n="priestServices.features.home.items[0]">Griha Pravesh (House Warming)</li>
+                        <li data-i18n="priestServices.features.home.items[1]">Daily/Weekly Puja</li>
+                        <li data-i18n="priestServices.features.home.items[2]">Satyanarayan Katha</li>
+                        <li data-i18n="priestServices.features.home.items[3]">Navagraha Shanti</li>
+                        <li data-i18n="priestServices.features.home.items[4]">Vastu Puja</li>
+                        <li data-i18n="priestServices.features.home.items[5]">Vehicle Puja</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Lifecycle Rituals -->
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-user-friends"></i>
+                </div>
+                <div class="feature-content">
+                    <a href="#lifecycle-rituals" class="service-title-link">
+                        <h3 data-i18n="priestServices.features.lifecycle.title">Lifecycle Rituals</h3>
+                    </a>
+                    <ul>
+                        <li data-i18n="priestServices.features.lifecycle.items[0]">Namkaran (Naming Ceremony)</li>
+                        <li data-i18n="priestServices.features.lifecycle.items[1]">Mundan (First Hair Cutting)</li>
+                        <li data-i18n="priestServices.features.lifecycle.items[2]">Upanayan (Sacred Thread)</li>
+                        <li data-i18n="priestServices.features.lifecycle.items[3]">Vivah (Wedding Ceremonies)</li>
+                        <li data-i18n="priestServices.features.lifecycle.items[4]">Shraddha (Ancestral rites)</li>
+                        <li data-i18n="priestServices.features.lifecycle.items[5]">Last Rites Guidance</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Festival & Special Pujas -->
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <div class="feature-content">
+                    <a href="#festival-pujas" class="service-title-link">
+                        <h3 data-i18n="priestServices.features.festival.title">Festival & Special Pujas</h3>
+                    </a>
+                    <ul>
+                        <li data-i18n="priestServices.features.festival.items[0]">Diwali Lakshmi Puja</li>
+                        <li data-i18n="priestServices.features.festival.items[1]">Durga Puja/Navratri</li>
+                        <li data-i18n="priestServices.features.festival.items[2]">Ganesh Chaturthi</li>
+                        <li data-i18n="priestServices.features.festival.items[3]">Maha Shivratri</li>
+                        <li data-i18n="priestServices.features.festival.items[4]">Janmashtami</li>
+                        <li data-i18n="priestServices.features.festival.items[5]">Rama Navami</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Priest Types -->
+        <section id="priests" class="priest-types">
+            <h2 class="section-title" data-i18n="priestServices.priests.title">Types of Priests Available</h2>
+            <div class="priest-grid">
+                <div class="priest-card">
+                    <div class="priest-image" style="background-image: url('images/senior-priest.jpg');"></div>
+                    <a href="#senior-priests" class="service-title-link">
+                        <h3 data-i18n="priestServices.priests.senior.title">Senior Vedic Priests</h3>
+                    </a>
+                    <p data-i18n="priestServices.priests.senior.desc">Highly experienced priests with 20+ years of practice, specializing in complex rituals and samskaras.</p>
+                </div>
+                
+                <div class="priest-card">
+                    <div class="priest-image" style="background-image: url('images/ritual-priest.jpg');"></div>
+                    <a href="#ritual-specialists" class="service-title-link">
+                        <h3 data-i18n="priestServices.priests.ritual.title">Ritual Specialists</h3>
+                    </a>
+                    <p data-i18n="priestServices.priests.ritual.desc">Priests specialized in specific ceremonies like weddings, havans, or griha pravesh with complete setup.</p>
+                </div>
+                
+                <div class="priest-card">
+                    <div class="priest-image" style="background-image: url('images/pandit.jpg');"></div>
+                    <a href="#daily-puja" class="service-title-link">
+                        <h3 data-i18n="priestServices.priests.daily.title">Pandits for Daily Puja</h3>
+                    </a>
+                    <p data-i18n="priestServices.priests.daily.desc">Available for regular daily or weekly worship at home or office, including mantra chanting and aarti.</p>
+                </div>
+                
+                <div class="priest-card">
+                    <div class="priest-image" style="background-image: url('images/online-priest.jpg');"></div>
+                    <a href="#online-priests" class="service-title-link">
+                        <h3 data-i18n="priestServices.priests.online.title">Online Consultation Priests</h3>
+                    </a>
+                    <p data-i18n="priestServices.priests.online.desc">Available for virtual guidance, mantra teaching, and remote ritual supervision when physical presence isn't possible.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Process -->
+        <section id="process" class="process-section">
+            <h2 class="section-title" data-i18n="priestServices.process.title">How It Works</h2>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3 data-i18n="priestServices.process.step1.title">Book Your Service</h3>
+                    <p data-i18n="priestServices.process.step1.desc">Fill out our booking form with details about the ceremony, date, and requirements.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3 data-i18n="priestServices.process.step2.title">Priest Assignment</h3>
+                    <p data-i18n="priestServices.process.step2.desc">We match you with the most suitable priest based on your specific needs and ceremony type.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3 data-i18n="priestServices.process.step3.title">Pre-Ceremony Consultation</h3>
+                    <p data-i18n="priestServices.process.step3.desc">The priest contacts you to discuss rituals, timing, materials needed, and any specific instructions.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3 data-i18n="priestServices.process.step4.title">Ceremony Performance</h3>
+                    <p data-i18n="priestServices.process.step4.desc">The priest arrives with necessary items and performs the ceremony with full Vedic procedures.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CTA Section -->
+        <section class="service-cta">
+            <h2 data-i18n="priestServices.cta.title">Book an Experienced Priest Today</h2>
+            <p data-i18n="priestServices.cta.desc">Connect with authentic Vedic priests for your spiritual needs. Whether it's a simple daily puja or an elaborate ceremony, we ensure traditional accuracy and heartfelt devotion.</p>
+            <a href="https://forms.gle/3BhwSbXcugDf7WBYA" class="service-btn service-btn-large">
+                <i class="fas fa-calendar-check"></i> <span data-i18n="priestServices.cta.button">Book a Priest Now</span>
+            </a>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer id="contact" class="service-footer">
+        <div class="container">
+            <div class="footer-content">
+                <h3 data-i18n="priestServices.footer.title">Need Help Choosing the Right Priest?</h3>
+                <p data-i18n="priestServices.footer.desc">Contact us for personalized assistance in selecting the perfect priest for your specific ceremony.</p>
+                
+                <div class="contact-info">
+                    <div>
+                        <i class="fas fa-phone-alt"></i>
+                        <span data-i18n="priestServices.footer.phone">+91-XXXXXX-XXXX</span>
+                    </div>
+                    <div>
+                        <i class="fas fa-envelope"></i>
+                        <span data-i18n="priestServices.footer.email">priest@vedicservices.com</span>
+                    </div>
+                    <div>
+                        <i class="fas fa-clock"></i>
+                        <span data-i18n="priestServices.footer.hours">Available 8 AM - 8 PM</span>
+                    </div>
+                </div>
+                
+                <p class="copyright" data-i18n="priestServices.footer.copyright">© 2023 Vedic Services. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Language Switcher Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const floatingLangToggle = document.getElementById('floatingLangToggle');
+            const floatingLangOptions = document.getElementById('floatingLangOptions');
+
+            if (floatingLangToggle) {
+                floatingLangToggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    floatingLangOptions.classList.toggle('show');
+                });
+
+                document.addEventListener('click', function(e) {
+                    if (!floatingLangToggle.contains(e.target) && !floatingLangOptions.contains(e.target)) {
+                        floatingLangOptions.classList.remove('show');
+                    }
+                });
+
+                floatingLangOptions.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="services.karmakanda.title">Karmakanda Classes - Vedic Rituals & Puja Training</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="js/i18n.js" defer></script>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f5f0;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Floating Language Switcher */
+        .floating-language-switcher {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+            width: auto;
+            max-width: 90vw;
+        }
+
+        .floating-lang-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .floating-lang-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .lang-icon {
+            font-size: 20px;
+        }
+
+        .lang-label {
+            font-size: 15px;
+        }
+
+        .floating-lang-options {
+            position: absolute;
+            bottom: 100%;
+            right: 0;
+            margin-bottom: 10px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            padding: 12px;
+            display: none;
+            flex-direction: column;
+            gap: 8px;
+            width: 200px;
+            z-index: 10000;
+        }
+
+        .floating-lang-options.show {
+            display: flex;
+        }
+
+        .floating-lang-option {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .floating-lang-option:hover {
+            background: #f5f5f5;
+            border-color: #667eea;
+        }
+
+        .floating-lang-option.active .floating-lang-check {
+            opacity: 1;
+        }
+
+        .floating-lang-check {
+            color: #667eea;
+            font-weight: bold;
+            font-size: 18px;
+            opacity: 0;
+        }
+        
+        /* Header Styles */
+        .service-header {
+            background: linear-gradient(rgba(74, 54, 37, 0.85), rgba(74, 54, 37, 0.9)), url('images/karmakanda-header.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            border-bottom: 5px solid #d4a74e;
+        }
+        
+        .service-header h1 {
+            font-size: 3.2rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .service-header p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+        
+        /* Navigation */
+        .service-nav {
+            background-color: #5a4226;
+            padding: 15px 0;
+        }
+        
+        .service-nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .back-to-services {
+            color: #f8f5f0;
+            text-decoration: none;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s;
+        }
+        
+        .back-to-services:hover {
+            color: #d4a74e;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #d4a74e;
+        }
+        
+        /* Main Content */
+        .service-main {
+            padding: 60px 0;
+        }
+        
+        /* Intro Section */
+        .service-intro {
+            background-color: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 50px;
+            border-left: 5px solid #d4a74e;
+        }
+        
+        .service-intro h2 {
+            color: #5a4226;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .service-intro h2 i {
+            color: #d4a74e;
+        }
+        
+        .service-intro p {
+            font-size: 1.15rem;
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+        /* Course Types */
+        .course-types {
+            margin-bottom: 60px;
+        }
+        
+        .section-title {
+            text-align: center;
+            color: #5a4226;
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: #d4a74e;
+        }
+        
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .course-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .course-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: #d4a74e;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+        
+        .course-icon {
+            background-color: #5a4226;
+            color: white;
+            padding: 30px;
+            text-align: center;
+            font-size: 2.8rem;
+        }
+        
+        .course-content {
+            padding: 25px;
+        }
+        
+        .course-content h3 {
+            color: #5a4226;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .course-features {
+            list-style-type: none;
+            margin: 20px 0;
+        }
+        
+        .course-features li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        .course-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #d4a74e;
+            font-weight: bold;
+        }
+        
+        .course-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        
+        .course-duration {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #5a4226;
+            font-weight: 600;
+        }
+        
+        /* Curriculum Section */
+        .curriculum-section {
+            margin-bottom: 60px;
+        }
+        
+        .curriculum-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .module-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .module-tab {
+            padding: 12px 25px;
+            background-color: #f0ebe3;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+            color: #5a4226;
+        }
+        
+        .module-tab:hover {
+            background-color: #e6dfd3;
+        }
+        
+        .module-tab.active {
+            background-color: #5a4226;
+            color: white;
+        }
+        
+        .module-content {
+            display: none;
+        }
+        
+        .module-content.active {
+            display: block;
+        }
+        
+        .module-content h3 {
+            color: #5a4226;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .module-content ul {
+            list-style-type: none;
+            margin-left: 20px;
+        }
+        
+        .module-content li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+            color: #555;
+        }
+        
+        .module-content li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #d4a74e;
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+        
+        /* Teaching Methods */
+        .teaching-methods {
+            margin-bottom: 60px;
+        }
+        
+        .methods-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .method-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .method-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .method-icon {
+            background-color: #5a4226;
+            color: white;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.8rem;
+        }
+        
+        .method-card h3 {
+            color: #5a4226;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        
+        .method-card p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        /* Instructor Profiles */
+        .instructor-profiles {
+            margin-bottom: 60px;
+        }
+        
+        .instructor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .instructor-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .instructor-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .instructor-image {
+            height: 180px;
+            background-color: #eee;
+            background-size: cover;
+            background-position: center;
+            margin-bottom: 20px;
+        }
+        
+        .instructor-info {
+            padding: 0 25px 25px;
+        }
+        
+        .instructor-info h3 {
+            color: #5a4226;
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+        }
+        
+        .instructor-title {
+            color: #d4a74e;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+        }
+        
+        .instructor-experience {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            color: #777;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .instructor-expertise {
+            color: #5a4226;
+            font-weight: 500;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+        
+        .instructor-info p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        /* Who Should Join */
+        .audience-section {
+            margin-bottom: 60px;
+        }
+        
+        .audience-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .audience-list {
+            columns: 2;
+            column-gap: 40px;
+        }
+        
+        .audience-list li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+            color: #555;
+            break-inside: avoid;
+        }
+        
+        .audience-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #d4a74e;
+            font-weight: bold;
+        }
+        
+        /* Process Section */
+        .process-steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .step {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            width: 220px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #d4a74e;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .step h3 {
+            color: #5a4226;
+            margin: 25px 0 15px;
+            font-size: 1.3rem;
+        }
+        
+        .step p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        /* Testimonial */
+        .testimonial {
+            background-color: white;
+            border-radius: 10px;
+            padding: 40px;
+            margin-bottom: 60px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid #d4a74e;
+        }
+        
+        .testimonial-content {
+            font-style: italic;
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #eee;
+            background-image: url('images/student-avatar.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .author-info h4 {
+            color: #5a4226;
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            color: #777;
+            font-size: 0.95rem;
+        }
+        
+        /* CTA Section */
+        .service-cta {
+            background-color: #5a4226;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 60px;
+        }
+        
+        .service-cta h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .service-cta p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        /* Button Styles - Matching your original */
+        .service-btn {
+            display: inline-block;
+            background-color: #d4a74e;
+            color: white;
+            padding: 15px 35px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-btn:hover {
+            background-color: #c2953e;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .service-btn-large {
+            padding: 18px 45px;
+            font-size: 1.3rem;
+        }
+        
+        .enroll-btn {
+            padding: 10px 20px;
+            font-size: 0.95rem;
+        }
+        
+        /* Service title link styles */
+        .service-title-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: color 0.3s ease;
+        }
+
+        .service-title-link:hover {
+            color: #d4a74e;
+        }
+
+        .service-title-link:hover h3 {
+            text-decoration: underline;
+        }
+        
+        /* Special Offer */
+        .special-offer {
+            background-color: #fef7e6;
+            border: 2px dashed #d4a74e;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .special-offer h3 {
+            color: #5a4226;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .special-offer p {
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Footer */
+        .service-footer {
+            background-color: #3a2a18;
+            color: #f8f5f0;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .contact-info {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        
+        .contact-info div {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .service-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .service-nav .container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-links {
+                display: flex;
+                gap: 20px;
+            }
+            
+            .nav-links a {
+                margin-left: 0;
+            }
+            
+            .course-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .instructor-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .methods-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .audience-list {
+                columns: 1;
+            }
+            
+            .process-steps {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .step {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .floating-language-switcher {
+                bottom: 15px;
+                right: 15px;
+            }
+
+            .floating-lang-btn {
+                padding: 12px 18px;
+            }
+
+            .lang-label {
+                display: none;
+            }
+
+            .floating-lang-btn .lang-icon {
+                font-size: 22px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .service-header h1 {
+                font-size: 2rem;
+            }
+            
+            .service-intro, .curriculum-container, .audience-container, .testimonial {
+                padding: 25px;
+            }
+            
+            .service-btn-large {
+                padding: 15px 30px;
+                font-size: 1.1rem;
+            }
+            
+            .instructor-grid, .methods-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .module-tab {
+                flex-basis: calc(50% - 5px);
+                text-align: center;
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+            
+            .course-details {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Language Switcher -->
+    <div class="floating-language-switcher">
+        <button class="floating-lang-btn" id="floatingLangToggle">
+            <span class="lang-icon">🌐</span>
+            <span class="lang-label" data-i18n="language.select">Choose Language</span>
+        </button>
+        <div class="floating-lang-options" id="floatingLangOptions">
+            <div class="floating-lang-option" data-lang="en">
+                <span class="floating-lang-text" data-i18n="language.english">English</span>
+                <span class="floating-lang-check">✓</span>
+            </div>
+            <div class="floating-lang-option" data-lang="ne">
+                <span class="floating-lang-text" data-i18n="language.nepali">नेपाली</span>
+                <span class="floating-lang-check">✓</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Section -->
+    <header class="service-header">
+        <div class="container">
+            <h1 data-i18n="services.karmakanda.title">Karmakanda Classes</h1>
+            <p data-i18n="karmakanda.subtitle">Karmakanda–based consultation and classes for Vedic rituals, pujas, and samskaras.</p>
+        </div>
+    </header>
+    
+    <!-- Navigation -->
+    <nav class="service-nav">
+        <div class="container">
+            <a href="index.html#services" class="back-to-services" data-i18n="nav.backToServices">
+                <i class="fas fa-arrow-left"></i> Back to All Services
+            </a>
+            <div class="nav-links">
+                <a href="#courses" data-i18n="karmakanda.nav.courses">Courses</a>
+                <a href="#curriculum" data-i18n="karmakanda.nav.curriculum">Curriculum</a>
+                <a href="#instructors" data-i18n="karmakanda.nav.instructors">Instructors</a>
+                <a href="#process" data-i18n="karmakanda.nav.process">Process</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <main class="service-main container">
+        <!-- Introduction -->
+        <section class="service-intro">
+            <h2><i class="fas fa-book-open"></i> <span data-i18n="karmakanda.intro.title">Learn Authentic Vedic Rituals</span></h2>
+            <p data-i18n="karmakanda.intro.desc1">Karmakanda refers to the section of the Vedas that deals with rituals, ceremonies, and rites of passage. Our Karmakanda classes teach the proper procedures, mantras, and significance of Vedic rituals so you can perform them correctly and meaningfully in your own life.</p>
+            <p data-i18n="karmakanda.intro.desc2">Whether you want to learn daily puja procedures, perform life-cycle samskaras for your family, or simply deepen your understanding of Vedic traditions, our structured courses provide both theoretical knowledge and practical training.</p>
+        </section>
+        
+        <!-- Special Offer -->
+        <section class="special-offer">
+            <h3><i class="fas fa-graduation-cap"></i> <span data-i18n="karmakanda.specialOffer.title">Early Enrollment Discount</span></h3>
+            <p data-i18n="karmakanda.specialOffer.desc">Enroll in any Karmakanda course before the next new moon and receive 20% discount plus a complimentary puja kit with essential ritual items.</p>
+        </section>
+        
+        <!-- Course Types -->
+        <section id="courses" class="course-types">
+            <h2 class="section-title" data-i18n="karmakanda.courses.title">Course Offerings</h2>
+            <div class="course-grid">
+                <!-- Basic Home Puja Course -->
+                <div class="course-card">
+                    <div class="course-badge" data-i18n="karmakanda.courses.beginner">Beginner</div>
+                    <div class="course-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div class="course-content">
+                        <a href="#basic-course" class="service-title-link">
+                            <h3 data-i18n="karmakanda.courses.basic.title">Basic Home Puja Course</h3>
+                        </a>
+                        <p data-i18n="karmakanda.courses.basic.desc">Learn essential daily and weekly worship procedures for home practice. Perfect for beginners and householders.</p>
+                        <ul class="course-features">
+                            <li data-i18n="karmakanda.courses.basic.features[0]">Daily Sandhya Vandana procedures</li>
+                            <li data-i18n="karmakanda.courses.basic.features[1]">Basic mantras for family deities</li>
+                            <li data-i18n="karmakanda.courses.basic.features[2]">Preparation of puja samagri</li>
+                            <li data-i18n="karmakanda.courses.basic.features[3]">Simple havan techniques</li>
+                            <li data-i18n="karmakanda.courses.basic.features[4]">Aarti and prayer methods</li>
+                            <li data-i18n="karmakanda.courses.basic.features[5]">Creating home altar/shrine</li>
+                        </ul>
+                        <div class="course-details">
+                            <div class="course-duration">
+                                <i class="far fa-calendar-alt"></i>
+                                <span data-i18n="karmakanda.courses.basic.duration">4 Weeks</span>
+                            </div>
+                            <a href="https://forms.gle/3BhwSbXcugDf7WBYA" class="service-btn enroll-btn" data-i18n="services.onlinePuja.button">Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Samskaras & Life Rituals -->
+                <div class="course-card">
+                    <div class="course-badge" data-i18n="karmakanda.courses.popular">Most Popular</div>
+                    <div class="course-icon">
+                        <i class="fas fa-user-friends"></i>
+                    </div>
+                    <div class="course-content">
+                        <a href="#samskaras" class="service-title-link">
+                            <h3 data-i18n="karmakanda.courses.samskaras.title">Samskaras & Life Rituals</h3>
+                        </a>
+                        <p data-i18n="karmakanda.courses.samskaras.desc">Comprehensive training in 16 traditional Hindu samskaras (rites of passage) from birth to death.</p>
+                        <ul class="course-features">
+                            <li data-i18n="karmakanda.courses.samskaras.features[0]">Namkaran (naming ceremony)</li>
+                            <li data-i18n="karmakanda.courses.samskaras.features[1]">Annaprashan (first feeding)</li>
+                            <li data-i18n="karmakanda.courses.samskaras.features[2]">Upanayan (sacred thread)</li>
+                            <li data-i18n="karmakanda.courses.samskaras.features[3]">Vivaha (marriage ceremonies)</li>
+                            <li data-i18n="karmakanda.courses.samskaras.features[4]">Antyeshti (last rites)</li>
+                            <li data-i18n="karmakanda.courses.samskaras.features[5]">Monthly/annual shraddha</li>
+                        </ul>
+                        <div class="course-details">
+                            <div class="course-duration">
+                                <i class="far fa-calendar-alt"></i>
+                                <span data-i18n="karmakanda.courses.samskaras.duration">8 Weeks</span>
+                            </div>
+                            <a href="https://forms.gle/3BhwSbXcugDf7WBYA" class="service-btn enroll-btn" data-i18n="services.onlinePuja.button">Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Havan & Yajna Mastery -->
+                <div class="course-card">
+                    <div class="course-badge" data-i18n="karmakanda.courses.advanced">Advanced</div>
+                    <div class="course-icon">
+                        <i class="fas fa-fire-alt"></i>
+                    </div>
+                    <div class="course-content">
+                        <a href="#havan" class="service-title-link">
+                            <h3 data-i18n="karmakanda.courses.havan.title">Havan & Yajna Mastery</h3>
+                        </a>
+                        <p data-i18n="karmakanda.courses.havan.desc">Advanced training in performing various types of fire ceremonies with proper Vedic procedures.</p>
+                        <ul class="course-features">
+                            <li data-i18n="karmakanda.courses.havan.features[0]">Selection of samagri for different havans</li>
+                            <li data-i18n="karmakanda.courses.havan.features[1]">Mantra chanting with correct pronunciation</li>
+                            <li data-i18n="karmakanda.courses.havan.features[2]">Building and consecrating fire altars</li>
+                            <li data-i18n="karmakanda.courses.havan.features[3]">Specialized yajnas: Ganapati, Navagraha</li>
+                            <li data-i18n="karmakanda.courses.havan.features[4]">Rudrabhishek procedures</li>
+                            <li data-i18n="karmakanda.courses.havan.features[5]">Community yajna organization</li>
+                        </ul>
+                        <div class="course-details">
+                            <div class="course-duration">
+                                <i class="far fa-calendar-alt"></i>
+                                <span data-i18n="karmakanda.courses.havan.duration">10 Weeks</span>
+                            </div>
+                            <a href="https://forms.gle/3BhwSbXcugDf7WBYA" class="service-btn enroll-btn" data-i18n="services.onlinePuja.button">Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Temple Puja Procedures -->
+                <div class="course-card">
+                    <div class="course-badge" data-i18n="karmakanda.courses.specialized">Specialized</div>
+                    <div class="course-icon">
+                        <i class="fas fa-temple"></i>
+                    </div>
+                    <div class="course-content">
+                        <a href="#temple" class="service-title-link">
+                            <h3 data-i18n="karmakanda.courses.temple.title">Temple Puja Procedures</h3>
+                        </a>
+                        <p data-i18n="karmakanda.courses.temple.desc">Learn proper temple worship protocols, deity consecration, and temple management principles.</p>
+                        <ul class="course-features">
+                            <li data-i18n="karmakanda.courses.temple.features[0]">Abhishekam procedures for deities</li>
+                            <li data-i18n="karmakanda.courses.temple.features[1]">Alankaram (decorating deities)</li>
+                            <li data-i18n="karmakanda.courses.temple.features[2]">Temple timing and ritual schedules</li>
+                            <li data-i18n="karmakanda.courses.temple.features[3]">Festival celebration procedures</li>
+                            <li data-i18n="karmakanda.courses.temple.features[4]">Priestly duties and responsibilities</li>
+                            <li data-i18n="karmakanda.courses.temple.features[5]">Temple administration basics</li>
+                        </ul>
+                        <div class="course-details">
+                            <div class="course-duration">
+                                <i class="far fa-calendar-alt"></i>
+                                <span data-i18n="karmakanda.courses.temple.duration">6 Weeks</span>
+                            </div>
+                            <a href="https://forms.gle/3BhwSbXcugDf7WBYA" class="service-btn enroll-btn" data-i18n="services.onlinePuja.button">Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mantra & Stotra Chanting -->
+                <div class="course-card">
+                    <div class="course-badge" data-i18n="karmakanda.courses.online">Online</div>
+                    <div class="course-icon">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <div class="course-content">
+                        <a href="#mantra" class="service-title-link">
+                            <h3 data-i18n="karmakanda.courses.mantra.title">Mantra & Stotra Chanting</h3>
+                        </a>
+                        <p data-i18n="karmakanda.courses.mantra.desc">Master correct pronunciation and chanting of essential Vedic mantras, stotras, and prayers.</p>
+                        <ul class="course-features">
+                            <li data-i18n="karmakanda.courses.mantra.features[0]">Sanskrit pronunciation basics</li>
+                            <li data-i18n="karmakanda.courses.mantra.features[1]">Gayatri Mantra and its variations</li>
+                            <li data-i18n="karmakanda.courses.mantra.features[2]">Vishnu Sahasranama chanting</li>
+                            <li data-i18n="karmakanda.courses.mantra.features[3]">Lalita Sahasranama</li>
+                            <li data-i18n="karmakanda.courses.mantra.features[4]">Shiva Panchakshara Stotra</li>
+                            <li data-i18n="karmakanda.courses.mantra.features[5]">Daily prayer routines</li>
+                        </ul>
+                        <div class="course-details">
+                            <div class="course-duration">
+                                <i class="far fa-calendar-alt"></i>
+                                <span data-i18n="karmakanda.courses.mantra.duration">5 Weeks</span>
+                            </div>
+                            <a href="https://forms.gle/3BhwSbXcugDf7WBYA" class="service-btn enroll-btn" data-i18n="services.onlinePuja.button">Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Karmakanda Certification -->
+                <div class="course-card">
+                    <div class="course-badge" data-i18n="karmakanda.courses.comprehensive">Comprehensive</div>
+                    <div class="course-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="course-content">
+                        <a href="#certification" class="service-title-link">
+                            <h3 data-i18n="karmakanda.courses.certification.title">Karmakanda Certification</h3>
+                        </a>
+                        <p data-i18n="karmakanda.courses.certification.desc">One-year comprehensive certification program covering all aspects of Vedic rituals and ceremonies.</p>
+                        <ul class="course-features">
+                            <li data-i18n="karmakanda.courses.certification.features[0]">All beginner to advanced topics</li>
+                            <li data-i18n="karmakanda.courses.certification.features[1]">Practical training with supervision</li>
+                            <li data-i18n="karmakanda.courses.certification.features[2]">Scriptural study of relevant texts</li>
+                            <li data-i18n="karmakanda.courses.certification.features[3]">Apprenticeship with senior priests</li>
+                            <li data-i18n="karmakanda.courses.certification.features[4]">Final examination and certification</li>
+                            <li data-i18n="karmakanda.courses.certification.features[5]">Placement assistance</li>
+                        </ul>
+                        <div class="course-details">
+                            <div class="course-duration">
+                                <i class="far fa-calendar-alt"></i>
+                                <span data-i18n="karmakanda.courses.certification.duration">1 Year</span>
+                            </div>
+                            <a href="https://forms.gle/3BhwSbXcugDf7WBYA" class="service-btn enroll-btn" data-i18n="services.onlinePuja.button">Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Curriculum Section -->
+        <section id="curriculum" class="curriculum-section">
+            <h2 class="section-title" data-i18n="karmakanda.curriculum.title">Detailed Curriculum</h2>
+            <div class="curriculum-container">
+                <div class="module-tabs">
+                    <div class="module-tab active" data-module="theory" data-i18n="karmakanda.curriculum.tabs.theory">Theoretical Foundation</div>
+                    <div class="module-tab" data-module="practical" data-i18n="karmakanda.curriculum.tabs.practical">Practical Training</div>
+                    <div class="module-tab" data-module="scripture" data-i18n="karmakanda.curriculum.tabs.scripture">Scriptural Study</div>
+                    <div class="module-tab" data-module="application" data-i18n="karmakanda.curriculum.tabs.application">Application</div>
+                </div>
+                
+                <div class="module-content active" id="theory-content">
+                    <h3><i class="fas fa-brain"></i> <span data-i18n="karmakanda.curriculum.theory.title">Theoretical Foundation</span></h3>
+                    <ul>
+                        <li data-i18n="karmakanda.curriculum.theory.items[0]"><strong>Introduction to Karmakanda:</strong> Definition, scope, and importance in Vedic tradition</li>
+                        <li data-i18n="karmakanda.curriculum.theory.items[1]"><strong>Philosophy of Rituals:</strong> Understanding the spiritual significance behind procedures</li>
+                        <li data-i18n="karmakanda.curriculum.theory.items[2]"><strong>Elements of Worship:</strong> Panchopachara, Shodashopachara, 64 upacharas</li>
+                        <li data-i18n="karmakanda.curriculum.theory.items[3]"><strong>Samskara Theory:</strong> Purpose and psychology of life-cycle rituals</li>
+                        <li data-i18n="karmakanda.curriculum.theory.items[4]"><strong>Purification Principles:</strong> Shaucha (cleanliness) in ritual context</li>
+                        <li data-i18n="karmakanda.curriculum.theory.items[5]"><strong>Mantra Shakti:</strong> Power of sound and correct pronunciation</li>
+                        <li data-i18n="karmakanda.curriculum.theory.items[6]"><strong>Yajna Principles:</strong> Science of fire ceremonies and offerings</li>
+                        <li data-i18n="karmakanda.curriculum.theory.items[7]"><strong>Deity Worship Concepts:</strong> Understanding murti puja and symbolism</li>
+                    </ul>
+                </div>
+                
+                <div class="module-content" id="practical-content">
+                    <h3><i class="fas fa-hands"></i> <span data-i18n="karmakanda.curriculum.practical.title">Practical Training</span></h3>
+                    <ul>
+                        <li data-i18n="karmakanda.curriculum.practical.items[0]"><strong>Preparation Skills:</strong> Cleaning, arranging, and preparing puja area</li>
+                        <li data-i18n="karmakanda.curriculum.practical.items[1]"><strong>Samagri Identification:</strong> Recognizing and preparing ritual materials</li>
+                        <li data-i18n="karmakanda.curriculum.practical.items[2]"><strong>Mantra Practice:</strong> Correct pronunciation and intonation training</li>
+                        <li data-i18n="karmakanda.curriculum.practical.items[3]"><strong>Mudra Demonstrations:</strong> Hand gestures used in worship</li>
+                        <li data-i18n="karmakanda.curriculum.practical.items[4]"><strong>Asana and Posture:</strong> Correct sitting positions for rituals</li>
+                        <li data-i18n="karmakanda.curriculum.practical.items[5]"><strong>Fire Handling:</strong> Safe procedures for havan and yajna</li>
+                        <li data-i18n="karmakanda.curriculum.practical.items[6]"><strong>Offering Techniques:</strong> Proper methods for naivedya, pushpa, etc.</li>
+                        <li data-i18n="karmakanda.curriculum.practical.items[7]"><strong>Full Ritual Practice:</strong> Complete procedure execution with guidance</li>
+                    </ul>
+                </div>
+                
+                <div class="module-content" id="scripture-content">
+                    <h3><i class="fas fa-scroll"></i> <span data-i18n="karmakanda.curriculum.scripture.title">Scriptural Study</span></h3>
+                    <ul>
+                        <li data-i18n="karmakanda.curriculum.scripture.items[0]"><strong>Vedic References:</strong> Relevant portions from Rig, Yajur, Sama Vedas</li>
+                        <li data-i18n="karmakanda.curriculum.scripture.items[1]"><strong>Grihya Sutras:</strong> Study of household ritual texts</li>
+                        <li data-i18n="karmakanda.curriculum.scripture.items[2]"><strong>Dharma Shastras:</strong> Manusmriti and other law texts on rituals</li>
+                        <li data-i18n="karmakanda.curriculum.scripture.items[3]"><strong>Puranic References:</strong> Ritual procedures from major Puranas</li>
+                        <li data-i18n="karmakanda.curriculum.scripture.items[4]"><strong>Agama Shastras:</strong> Temple worship and deity consecration texts</li>
+                        <li data-i18n="karmakanda.curriculum.scripture.items[5]"><strong>Mantra Collections:</strong> Study of essential mantra compilations</li>
+                        <li data-i18n="karmakanda.curriculum.scripture.items[6]"><strong>Commentaries:</strong> Traditional explanations by acharyas</li>
+                        <li data-i18n="karmakanda.curriculum.scripture.items[7]"><strong>Regional Variations:</strong> Understanding different ritual traditions</li>
+                    </ul>
+                </div>
+                
+                <div class="module-content" id="application-content">
+                    <h3><i class="fas fa-tasks"></i> <span data-i18n="karmakanda.curriculum.application.title">Practical Application</span></h3>
+                    <ul>
+                        <li data-i18n="karmakanda.curriculum.application.items[0]"><strong>Daily Routine Implementation:</strong> Integrating rituals into modern life</li>
+                        <li data-i18n="karmakanda.curriculum.application.items[1]"><strong>Family Ceremonies:</strong> Conducting samskaras for family members</li>
+                        <li data-i18n="karmakanda.curriculum.application.items[2]"><strong>Community Service:</strong> Organizing group pujas and havans</li>
+                        <li data-i18n="karmakanda.curriculum.application.items[3]"><strong>Temple Volunteering:</strong> Applying skills in temple settings</li>
+                        <li data-i18n="karmakanda.curriculum.application.items[4]"><strong>Teaching Others:</strong> Sharing knowledge with family and community</li>
+                        <li data-i18n="karmakanda.curriculum.application.items[5]"><strong>Problem Solving:</strong> Adapting rituals for special circumstances</li>
+                        <li data-i18n="karmakanda.curriculum.application.items[6]"><strong>Record Keeping:</strong> Maintaining family ritual records</li>
+                        <li data-i18n="karmakanda.curriculum.application.items[7]"><strong>Continuous Learning:</strong> Resources for further study</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Teaching Methods -->
+        <section class="teaching-methods">
+            <h2 class="section-title" data-i18n="karmakanda.methods.title">Our Teaching Methodology</h2>
+            <div class="methods-grid">
+                <div class="method-card">
+                    <div class="method-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3 data-i18n="karmakanda.methods.live.title">Live Demonstrations</h3>
+                    <p data-i18n="karmakanda.methods.live.desc">Step-by-step demonstrations of each ritual by experienced instructors.</p>
+                </div>
+                
+                <div class="method-card">
+                    <div class="method-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3 data-i18n="karmakanda.methods.hands.title">Hands-On Practice</h3>
+                    <p data-i18n="karmakanda.methods.hands.desc">Ample opportunity for students to practice with guidance and correction.</p>
+                </div>
+                
+                <div class="method-card">
+                    <div class="method-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3 data-i18n="karmakanda.methods.video.title">Video Resources</h3>
+                    <p data-i18n="karmakanda.methods.video.desc">Recorded sessions for review and for those who miss live classes.</p>
+                </div>
+                
+                <div class="method-card">
+                    <div class="method-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3 data-i18n="karmakanda.methods.manuals.title">Detailed Manuals</h3>
+                    <p data-i18n="karmakanda.methods.manuals.desc">Comprehensive written materials with step-by-step instructions.</p>
+                </div>
+                
+                <div class="method-card">
+                    <div class="method-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3 data-i18n="karmakanda.methods.qa.title">Q&A Sessions</h3>
+                    <p data-i18n="karmakanda.methods.qa.desc">Regular doubt-clearing sessions and personalized guidance.</p>
+                </div>
+                
+                <div class="method-card">
+                    <div class="method-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 data-i18n="karmakanda.methods.group.title">Group Learning</h3>
+                    <p data-i18n="karmakanda.methods.group.desc">Small class sizes for personalized attention and peer learning.</p>
+                </div>
+                
+                <div class="method-card">
+                    <div class="method-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3 data-i18n="karmakanda.methods.kits.title">Home Practice Kits</h3>
+                    <p data-i18n="karmakanda.methods.kits.desc">Essential materials provided for practice between sessions.</p>
+                </div>
+                
+                <div class="method-card">
+                    <div class="method-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3 data-i18n="karmakanda.methods.assessment.title">Assessment & Feedback</h3>
+                    <p data-i18n="karmakanda.methods.assessment.desc">Regular evaluation and constructive feedback for improvement.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Instructor Profiles -->
+        <section id="instructors" class="instructor-profiles">
+            <h2 class="section-title" data-i18n="karmakanda.instructors.title">Meet Your Instructors</h2>
+            <div class="instructor-grid">
+                <div class="instructor-card">
+                    <div class="instructor-image" style="background-image: url('images/acharya1.jpg');"></div>
+                    <div class="instructor-info">
+                        <h3 data-i18n="karmakanda.instructors.vijay.name">Acharya Vijay Sharma</h3>
+                        <div class="instructor-title" data-i18n="karmakanda.instructors.vijay.title">Head Karmakanda Teacher</div>
+                        <div class="instructor-experience">
+                            <i class="far fa-calendar-alt"></i>
+                            <span data-i18n="karmakanda.instructors.vijay.experience">30+ Years Experience</span>
+                        </div>
+                        <div class="instructor-expertise" data-i18n="karmakanda.instructors.vijay.expertise">Expertise: Samskaras, Havan, Temple Rituals</div>
+                        <p data-i18n="karmakanda.instructors.vijay.desc">Former head priest of major temple, trained in traditional gurukula system.</p>
+                    </div>
+                </div>
+                
+                <div class="instructor-card">
+                    <div class="instructor-image" style="background-image: url('images/acharya2.jpg');"></div>
+                    <div class="instructor-info">
+                        <h3 data-i18n="karmakanda.instructors.lakshmi.name">Dr. Lakshmi Iyer</h3>
+                        <div class="instructor-title" data-i18n="karmakanda.instructors.lakshmi.title">Vedic Rituals Specialist</div>
+                        <div class="instructor-experience">
+                            <i class="far fa-calendar-alt"></i>
+                            <span data-i18n="karmakanda.instructors.lakshmi.experience">20+ Years Experience</span>
+                        </div>
+                        <div class="instructor-expertise" data-i18n="karmakanda.instructors.lakshmi.expertise">Expertise: Mantra, Stotra, Women's Rituals</div>
+                        <p data-i18n="karmakanda.instructors.lakshmi.desc">PhD in Vedic Rituals, author of three books on home worship practices.</p>
+                    </div>
+                </div>
+                
+                <div class="instructor-card">
+                    <div class="instructor-image" style="background-image: url('images/acharya3.jpg');"></div>
+                    <div class="instructor-info">
+                        <h3 data-i18n="karmakanda.instructors.ramesh.name">Pandit Ramesh Bhatt</h3>
+                        <div class="instructor-title" data-i18n="karmakanda.instructors.ramesh.title">Havan & Yajna Expert</div>
+                        <div class="instructor-experience">
+                            <i class="far fa-calendar-alt"></i>
+                            <span data-i18n="karmakanda.instructors.ramesh.experience">25+ Years Experience</span>
+                        </div>
+                        <div class="instructor-expertise" data-i18n="karmakanda.instructors.ramesh.expertise">Expertise: Fire Ceremonies, Ritual Materials</div>
+                        <p data-i18n="karmakanda.instructors.ramesh.desc">Has conducted over 500 major yajnas, specialist in Agni-related rituals.</p>
+                    </div>
+                </div>
+                
+                <div class="instructor-card">
+                    <div class="instructor-image" style="background-image: url('images/acharya4.jpg');"></div>
+                    <div class="instructor-info">
+                        <h3 data-i18n="karmakanda.instructors.geeta.name">Shrimati Geeta Patel</h3>
+                        <div class="instructor-title" data-i18n="karmakanda.instructors.geeta.title">Home Puja Specialist</div>
+                        <div class="instructor-experience">
+                            <i class="far fa-calendar-alt"></i>
+                            <span data-i18n="karmakanda.instructors.geeta.experience">15+ Years Experience</span>
+                        </div>
+                        <div class="instructor-expertise" data-i18n="karmakanda.instructors.geeta.expertise">Expertise: Daily Worship, Festival Rituals</div>
+                        <p data-i18n="karmakanda.instructors.geeta.desc">Specializes in making Vedic rituals accessible to modern householders.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Who Should Join -->
+        <section class="audience-section">
+            <h2 class="section-title" data-i18n="karmakanda.audience.title">Who Should Join These Classes?</h2>
+            <div class="audience-container">
+                <ul class="audience-list">
+                    <li data-i18n="karmakanda.audience.items[0]">Householders wanting to perform daily puja correctly</li>
+                    <li data-i18n="karmakanda.audience.items[1]">Parents wanting to conduct samskaras for their children</li>
+                    <li data-i18n="karmakanda.audience.items[2]">Diaspora Hindus wanting to maintain traditions abroad</li>
+                    <li data-i18n="karmakanda.audience.items[3]">Spiritual seekers wanting deeper ritual understanding</li>
+                    <li data-i18n="karmakanda.audience.items[4]">Temple volunteers and committee members</li>
+                    <li data-i18n="karmakanda.audience.items[5]">Yoga teachers wanting to incorporate rituals</li>
+                    <li data-i18n="karmakanda.audience.items[6]">Students of Indian culture and religion</li>
+                    <li data-i18n="karmakanda.audience.items[7]">Those planning to become priests or ritual specialists</li>
+                    <li data-i18n="karmakanda.audience.items[8]">Couples planning traditional weddings</li>
+                    <li data-i18n="karmakanda.audience.items[9]">Individuals seeking to overcome ritual anxiety</li>
+                    <li data-i18n="karmakanda.audience.items[10]">Community leaders organizing religious events</li>
+                    <li data-i18n="karmakanda.audience.items[11]">Anyone interested in authentic Vedic practices</li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- Process Section -->
+        <section id="process" class="process-section">
+            <h2 class="section-title" data-i18n="karmakanda.process.title">Learning Process</h2>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3 data-i18n="karmakanda.process.step1.title">Assessment</h3>
+                    <p data-i18n="karmakanda.process.step1.desc">We evaluate your current knowledge and goals to recommend the right course.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3 data-i18n="karmakanda.process.step2.title">Enrollment</h3>
+                    <p data-i18n="karmakanda.process.step2.desc">You enroll in the appropriate course and receive study materials.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3 data-i18n="karmakanda.process.step3.title">Theoretical Learning</h3>
+                    <p data-i18n="karmakanda.process.step3.desc">Live and recorded sessions on the philosophy and procedures.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3 data-i18n="karmakanda.process.step4.title">Practical Training</h3>
+                    <p data-i18n="karmakanda.process.step4.desc">Hands-on practice with instructor guidance and feedback.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <h3 data-i18n="karmakanda.process.step5.title">Assessment & Certification</h3>
+                    <p data-i18n="karmakanda.process.step5.desc">Evaluation of learning and certification upon successful completion.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Testimonial -->
+        <section class="testimonial">
+            <div class="testimonial-content" data-i18n="karmakanda.testimonial.content">
+                "As an NRI living in the US for 20 years, I had forgotten many rituals. The Basic Home Puja course not only taught me the correct procedures but also explained the meaning behind each step. Acharya Vijay's patience and clarity made complex rituals accessible. I can now confidently perform daily puja and recently conducted my daughter's Namkaran ceremony myself. This has deeply enriched our family's spiritual life."
+            </div>
+            <div class="testimonial-author">
+                <div class="author-avatar"></div>
+                <div class="author-info">
+                    <h4 data-i18n="karmakanda.testimonial.author">Rajesh Mehta</h4>
+                    <p data-i18n="karmakanda.testimonial.authorDesc">Completed Basic Home Puja Course, Now enrolled in Samskaras course</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CTA Section -->
+        <section class="service-cta">
+            <h2 data-i18n="karmakanda.cta.title">Master Vedic Rituals with Authentic Training</h2>
+            <p data-i18n="karmakanda.cta.desc">Join our Karmakanda classes to learn proper ritual procedures, understand their spiritual significance, and gain confidence in performing Vedic ceremonies for yourself and your family.</p>
+            <a href="https://forms.gle/3BhwSbXcugDf7WBYA" class="service-btn service-btn-large">
+                <i class="fas fa-graduation-cap"></i> <span data-i18n="karmakanda.cta.button">Enroll in Karmakanda Classes</span>
+            </a>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="service-footer">
+        <div class="container">
+            <div class="footer-content">
+                <h3 data-i18n="karmakanda.footer.title">Karmakanda Classes Desk</h3>
+                <p data-i18n="karmakanda.footer.desc">Contact us for course details, schedule, fees, and any other inquiries about our ritual training programs.</p>
+                
+                <div class="contact-info">
+                    <div>
+                        <i class="fas fa-phone-alt"></i>
+                        <span data-i18n="karmakanda.footer.phone">Classes Desk: +91-XXXXXX-XXXX</span>
+                    </div>
+                    <div>
+                        <i class="fas fa-envelope"></i>
+                        <span data-i18n="karmakanda.footer.email">karmakanda@vedicservices.com</span>
+                    </div>
+                    <div>
+                        <i class="fas fa-clock"></i>
+                        <span data-i18n="karmakanda.footer.hours">Available 9 AM - 7 PM</span>
+                    </div>
+                </div>
+                
+                <p class="copyright" data-i18n="karmakanda.footer.copyright">© 2023 Vedic Services. Karmakanda Training Division. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab functionality for curriculum modules
+        document.addEventListener('DOMContentLoaded', function() {
+            // Language Switcher Toggle
+            const floatingLangToggle = document.getElementById('floatingLangToggle');
+            const floatingLangOptions = document.getElementById('floatingLangOptions');
+
+            if (floatingLangToggle) {
+                floatingLangToggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    floatingLangOptions.classList.toggle('show');
+                });
+
+                document.addEventListener('click', function(e) {
+                    if (!floatingLangToggle.contains(e.target) && !floatingLangOptions.contains(e.target)) {
+                        floatingLangOptions.classList.remove('show');
+                    }
+                });
+
+                floatingLangOptions.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+            }
+
+            // Module tabs
+            const moduleTabs = document.querySelectorAll('.module-tab');
+            const moduleContents = document.querySelectorAll('.module-content');
+            
+            moduleTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const moduleId = this.getAttribute('data-module');
+                    
+                    moduleTabs.forEach(t => t.classList.remove('active'));
+                    moduleContents.forEach(c => c.classList.remove('active'));
+                    
+                    this.classList.add('active');
+                    document.getElementById(moduleId + '-content').classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

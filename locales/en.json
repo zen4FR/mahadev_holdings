@@ -1,0 +1,805 @@
+{
+  "nav": {
+    "home": "Home",
+    "team": "Team",
+    "services": "Services",
+    "backToServices": "Back to All Services"
+  },
+  "hero": {
+    "title": "Purohit Baaje"
+  },
+  "language": {
+    "select": "Choose Language",
+    "english": "English",
+    "nepali": "नेपाली"
+  },
+  "services": {
+    "title": "Our Services",
+    "onlinePuja": {
+      "title": "Online Puja Booking",
+      "description": "Perform sacred rituals from anywhere with experienced priests.",
+      "button": "Book Now"
+    },
+    "kriyaPutri": {
+      "title": "Kriya Putri Bhawan Booking",
+      "description": "Easily book Kriya Putri Bhawan with one click.",
+      "button": "Book Now"
+    },
+    "priestServices": {
+      "title": "Priest Services",
+      "description": "Hire experienced Vedic priests for personalized rituals and ceremonies.",
+      "button": "Book Now"
+    },
+    "corporateServices": {
+      "title": "Corporate Services",
+      "description": "Enhance your corporate environment with traditional Vedic ceremonies.",
+      "button": "Book Now"
+    },
+    "pilgrimage": {
+      "title": "Pilgrimage Services",
+      "description": "Perform sacred havan ceremonies with experienced priests.",
+      "button": "Book Now"
+    },
+    "astrology": {
+      "title": "Astrology Consultation",
+      "description": "Consult expert astrologers for birth chart analysis and remedies.",
+      "button": "Book Now"
+    },
+    "karmakanda": {
+      "title": "Karmakanda Classes",
+      "description": "Learn Vedic rituals, pujas, and samskaras.",
+      "button": "Book Now"
+    },
+    "bookStore": {
+      "title": "Book Store",
+      "description": "Sacred books, scriptures, and spiritual literature.",
+      "button": "Book Now"
+    },
+    "bhajanKirtan": {
+      "title": "Bhajan Kirtan Group",
+      "description": "Perform special puja, havan at your home or office.",
+      "button": "Book Now"
+    },
+    "pujaItems": {
+      "title": "Puja Items Package",
+      "description": "Complete puja samagri packages for all rituals.",
+      "button": "Book Now"
+    },
+    "donation": {
+      "title": "Donation & Seva",
+      "description": "Support our spiritual mission and community welfare.",
+      "button": "Donate Now"
+    }
+  },
+  "karthika": {
+    "title": "📿 Pousha Month",
+    "subtitle": "The month of holy penance, religious rituals, and spiritual purification",
+    "description": "Pousha is one of the most sacred months in the Nepali Hindu calendar, a month deeply connected to penance, religious rituals, spiritual purification, and divine grace. This month honors the blessings of Lord Surya, Goddess Lakshmi, and the spiritual light of winter religious festivals.",
+    "button": "Book your special Pousha month puja now!"
+  },
+  "primaryServices": {
+    "title": "Our Primary Services",
+    "subtitle": "Comprehensive Puja Services - Book online, connect with temples, and gift divine blessings!",
+    "spiritualShop": {
+      "title": "Spiritual / Holy Products Shop",
+      "description": "Bhagavad Gita, Ramayana, Vishnu Sahasranamam\nPuja material kits\nRudraksha, Mala, Yantras\nIncense, candles, lamps",
+      "button": "Learn More"
+    },
+    "astrology": {
+      "title": "Astrological Consultation",
+      "description": "Birth chart reading, horoscope matching, planetary defect analysis, auspicious timing determination.",
+      "button": "Learn More"
+    },
+    "ceremonyManagement": {
+      "title": "Religious Ceremony Management",
+      "description": "Puja decoration, sound system, material packaging, seating arrangements, photography.",
+      "button": "Learn More"
+    }
+  },
+  "priestRegister": {
+    "title": "Register as a Priest",
+    "description1": "Join our puja services and offer your expertise to devotees worldwide.",
+    "description2": "Get a dedicated profile, receive online bookings, and earn through spiritual services.",
+    "button": "Register Now"
+  },
+  "footer": {
+    "about": {
+      "title": "About Purohit Baaje",
+      "description": "Purohit Baaje is the leading digital platform for all Hindu devotional needs and spiritual services."
+    },
+    "quickLinks": {
+      "title": "Quick Links",
+      "onlinePuja": "Online Puja Booking",
+      "templePuja": "Temple Puja Booking",
+      "priestBooking": "Priest Booking",
+      "vedicBlessings": "Vedic Blessings",
+      "contact": "Contact Us"
+    },
+    "pujas": {
+      "title": "Pujas",
+      "birth": "Birth Puja",
+      "shraddha": "Shraddha Puja"
+    },
+    "management": {
+      "title": "Puja Management",
+      "description": "We provide complete puja management services to our clients. A single point of contact for all your religious needs."
+    },
+    "copyright": "© 2023 Purohit Baaje. All rights reserved."
+  },
+  "astrologyConsultation": {
+    "title": "Astrology Consultation",
+    "subtitle": "Consult expert astrologers for birth chart analysis, planetary defect remedies, auspicious timing, and predictions.",
+    "nav": {
+      "consultations": "Consultations",
+      "systems": "Systems",
+      "astrologers": "Astrologers",
+      "process": "Process"
+    },
+    "intro": {
+      "title": "Vedic Astrology Guidance",
+      "desc1": "Vedic Astrology (Jyotish) is an ancient Indian science that reveals the cosmic influences on our lives based on planetary positions at the time of birth. Our expert astrologers provide accurate predictions, practical remedies, and guidance to help you navigate life's challenges and maximize opportunities.",
+      "desc2": "Whether you're facing career decisions, relationship issues, health concerns, or seeking spiritual growth, our astrology consultations offer clarity and direction based on your unique birth chart."
+    },
+    "freeAnalysis": {
+      "title": "Free Basic Horoscope Analysis",
+      "desc": "First-time clients receive a free basic birth chart analysis including planetary positions, rising sign, and key life themes. Book your consultation today to claim this offer."
+    },
+    "popular": "Most Popular",
+    "consultationTypes": {
+      "title": "Consultation Services",
+      "complete": {
+        "title": "Complete Birth Chart Analysis",
+        "desc": "Comprehensive analysis of your Janam Kundali including all 12 houses, 9 planets, 27 nakshatras, and planetary aspects.",
+        "features": [
+          "Detailed planet positions and influences",
+          "Dasha (planetary period) analysis",
+          "Strength assessment of each house",
+          "Career and finance predictions",
+          "Relationship compatibility insights",
+          "Personalized PDF report included"
+        ]
+      },
+      "defects": {
+        "title": "Planetary Defect Remedies",
+        "desc": "Identification of malefic planetary influences (Grah Dosh) and personalized Vedic remedies to neutralize negative effects.",
+        "features": [
+          "Analysis of Kaal Sarp Dosh, Mangal Dosh, etc.",
+          "Gemstone recommendations (Ratna)",
+          "Mantra and Yantra prescriptions",
+          "Specific puja and havan recommendations",
+          "Charity and fasting guidelines",
+          "Follow-up consultation after 40 days"
+        ]
+      },
+      "muhurta": {
+        "title": "Muhurta (Auspicious Timing)",
+        "desc": "Selecting the most favorable timing for important life events based on planetary transits and nakshatra positions.",
+        "features": [
+          "Wedding date selection (Vivah Muhurta)",
+          "Business inauguration timing",
+          "House warming (Griha Pravesh)",
+          "Vehicle purchase timing",
+          "Starting new education or job",
+          "Medical procedure timing"
+        ]
+      },
+      "relationship": {
+        "title": "Relationship & Compatibility",
+        "desc": "In-depth analysis of relationship compatibility for marriage, business partnerships, and family harmony.",
+        "features": [
+          "Kundali matching for marriage (Ashtakoot)",
+          "Love relationship analysis",
+          "Business partnership compatibility",
+          "Parent-child relationship insights",
+          "Remedies for relationship issues",
+          "Compatibility score with suggestions"
+        ]
+      },
+      "career": {
+        "title": "Career & Finance Guidance",
+        "desc": "Astrological guidance for career advancement, business growth, financial investments, and wealth accumulation.",
+        "features": [
+          "Suitable career path analysis",
+          "Business success timing prediction",
+          "Investment and stock market guidance",
+          "Property purchase decisions",
+          "Debt reduction strategies",
+          "Wealth accumulation remedies"
+        ]
+      },
+      "question": {
+        "title": "Question-Based Consultation",
+        "desc": "Focused consultation addressing 3 specific questions about any area of life - career, health, relationships, or spirituality.",
+        "features": [
+          "Answer 3 specific life questions",
+          "Prashna Kundali (Horary astrology)",
+          "Immediate concerns addressed",
+          "Practical guidance provided",
+          "30-minute focused session",
+          "Email follow-up included"
+        ]
+      }
+    },
+    "systems": {
+      "title": "Astrological Systems We Use",
+      "parashari": "Parashari System",
+      "jyotish": "Vedic Jyotish",
+      "nadi": "Nadi Astrology",
+      "kerala": "Kerala Tradition",
+      "parashariTitle": "Parashari System",
+      "parashariDesc1": "The most widely used system of Vedic astrology, named after Sage Parashara. This system forms the foundation of most Hindu astrology practiced today.",
+      "parashariDesc2": "We analyze planetary positions in 12 houses, 27 nakshatras, and calculate various dashas (planetary periods) including Vimshottari Dasha (120-year cycle). This system provides comprehensive life predictions including career, relationships, health, and spiritual growth.",
+      "parashariDesc3": "Special techniques used: Ashtakavarga, Shadbala, Vargas (Divisional charts), and Transit analysis (Gochara).",
+      "jyotishTitle": "Vedic Jyotish",
+      "jyotishDesc1": "The traditional science of light that encompasses both predictive astrology and spiritual guidance. Jyotish means 'light of the divine.'",
+      "jyotishDesc2": "Beyond mere prediction, this system focuses on understanding karmic patterns and providing remedies to improve one's destiny. It incorporates spiritual practices, mantras, yantras, and gemstone therapy to harmonize planetary influences.",
+      "jyotishDesc3": "Special features: Karmic analysis, past life indications, spiritual evolution guidance, and integration with Vedic rituals and practices.",
+      "nadiTitle": "Nadi Astrology",
+      "nadiDesc1": "An ancient system where predictions are based on palm leaf manuscripts written by sages thousands of years ago. These leaves contain records of individuals' lives.",
+      "nadiDesc2": "We use principles from Nadi astrology to provide remarkably specific predictions about past, present, and future events. This system is especially powerful for identifying past life karmas and their present effects.",
+      "nadiDesc3": "Key applications: Identifying root causes of current problems, precise event timing, relationship karmas, and specific remedial measures from ancient texts.",
+      "keralaTitle": "Kerala Tradition",
+      "keralaDesc1": "The unique astrological tradition from Kerala known for its precision in Muhurta (auspicious timing) and Prashna (horary astrology).",
+      "keralaDesc2": "This system excels in answering specific questions and selecting perfect timing for important events. It incorporates unique techniques like KP System (Krishnamurti Paddhati) for precise predictions.",
+      "keralaDesc3": "Specialties: Accurate answer to specific questions, pinpoint timing for events, marriage matching, and business success timing."
+    },
+    "elements": {
+      "title": "What We Analyze in Your Chart",
+      "lagna": "Lagna & Planets",
+      "lagnaDesc": "Ascendant, Sun, Moon, and all 9 planets with their strengths and influences.",
+      "houses": "12 Houses",
+      "housesDesc": "Analysis of all 12 Bhavas covering every aspect of life from self to liberation.",
+      "nakshatras": "27 Nakshatras",
+      "nakshatrasDesc": "Lunar mansions that provide deeper insights into personality and destiny.",
+      "dasha": "Dasha Periods",
+      "dashaDesc": "Planetary periods and sub-periods that time life events with precision.",
+      "yogas": "Yogas & Combinations",
+      "yogasDesc": "Special planetary combinations that create unique life patterns and opportunities.",
+      "defects": "Planetary Defects",
+      "defectsDesc": "Identification of Grah Dosh and other challenging planetary placements.",
+      "remedies": "Remedial Measures",
+      "remediesDesc": "Personalized solutions including gems, mantras, pujas, and lifestyle changes.",
+      "lifePath": "Life Path Guidance",
+      "lifePathDesc": "Direction for career, relationships, health, and spiritual development."
+    },
+    "astrologers": {
+      "title": "Our Expert Astrologers",
+      "ravi": {
+        "name": "Pandit Ravi Shankar",
+        "specialty": "Vedic & Parashari Expert",
+        "experience": "25+ Years Experience",
+        "desc": "Specializes in birth chart analysis, planetary remedies, and career guidance."
+      },
+      "meera": {
+        "name": "Dr. Meera Desai",
+        "specialty": "Relationship & Muhurta",
+        "experience": "18+ Years Experience",
+        "desc": "Expert in marriage compatibility, relationship issues, and auspicious timing."
+      },
+      "rao": {
+        "name": "Shri K. N. Rao",
+        "specialty": "Nadi & KP System",
+        "experience": "30+ Years Experience",
+        "desc": "Master of Nadi astrology and Krishnamurti Paddhati for precise predictions."
+      },
+      "vikram": {
+        "name": "Jyotishi Vikram",
+        "specialty": "Gemstone & Remedies",
+        "experience": "15+ Years Experience",
+        "desc": "Specializes in gemstone therapy, mantra sadhana, and Vedic remedies."
+      }
+    },
+    "process": {
+      "title": "Consultation Process",
+      "step1": "Birth Details",
+      "step1Desc": "Provide accurate birth date, time, and place for precise chart calculation.",
+      "step2": "Chart Preparation",
+      "step2Desc": "Our astrologers calculate your Kundali using traditional methods and software.",
+      "step3": "Analysis Session",
+      "step3Desc": "Detailed consultation via video call, phone, or in-person as per your preference.",
+      "step4": "Remedies & Guidance",
+      "step4Desc": "Personalized recommendations including rituals, gems, mantras, and lifestyle.",
+      "step5": "Follow-up Support",
+      "step5Desc": "Email support for 30 days to clarify doubts and track progress."
+    },
+    "testimonial": {
+      "content": "\"The birth chart analysis I received was incredibly accurate and insightful. Pandit Ravi not only explained my planetary positions but also provided practical remedies that actually worked. My career confusion cleared within weeks of following his guidance. The detailed PDF report is something I refer to regularly. This consultation was worth every penny and more.\"",
+      "author": "Anjali Patel",
+      "authorDesc": "Software Engineer, Completed Career Guidance Consultation"
+    },
+    "cta": {
+      "title": "Gain Clarity Through Vedic Astrology",
+      "desc": "Understand your life's purpose, overcome challenges, and maximize opportunities with personalized astrological guidance from experienced Vedic astrologers.",
+      "button": "Book Astrology Consultation"
+    },
+    "footer": {
+      "title": "Astrology Consultation Desk",
+      "desc": "Contact us for appointment scheduling, urgent queries, or clarification about our services.",
+      "phone": "Astrology Desk: +91-XXXXXX-XXXX",
+      "email": "astrology@vedicservices.com",
+      "hours": "Available 8 AM - 10 PM",
+      "copyright": "© 2023 Vedic Services. Astrology Division. All Rights Reserved."
+    }
+  },
+  "bhajanKirtan": {
+    "title": "Bhajan & Kirtan Services",
+    "subtitle": "Devotional singing, kirtan, and satsang to create a spiritually uplifting atmosphere.",
+    "nav": {
+      "services": "Services",
+      "events": "Events",
+      "process": "Process"
+    },
+    "intro": {
+      "title": "Experience Divine Sound & Devotion",
+      "desc1": "Bhajan and Kirtan are powerful devotional practices that purify the mind and fill the environment with positive spiritual energy.",
+      "desc2": "Our trained singers and musicians conduct traditional and modern bhajan–kirtan programs for homes, temples, and community gatherings."
+    },
+    "offerings": {
+      "title": "Our Bhajan & Kirtan Offerings",
+      "home": {
+        "title": "Home Bhajan Program",
+        "features": [
+          "Daily & special occasion bhajans",
+          "Ram, Krishna, Shiva, Devi bhajans",
+          "Peaceful spiritual atmosphere"
+        ]
+      },
+      "temple": {
+        "title": "Temple Kirtan",
+        "features": [
+          "Traditional kirtan style",
+          "Harmonium, tabla, mridanga",
+          "Festival & Ekadashi programs"
+        ]
+      },
+      "satsang": {
+        "title": "Satsang & Group Kirtan",
+        "features": [
+          "Community spiritual gatherings",
+          "Interactive chanting",
+          "Short pravachan included"
+        ]
+      },
+      "festival": {
+        "title": "Festival Special Programs",
+        "features": [
+          "Janmashtami, Shivaratri, Navratri",
+          "Customized bhajan lists",
+          "Extended kirtan sessions"
+        ]
+      }
+    },
+    "cta": {
+      "title": "Fill Your Space with Divine Vibration",
+      "desc": "Invite bhajan and kirtan into your home or temple and experience inner peace.",
+      "button": "Enquire / Book Program"
+    },
+    "footer": {
+      "copyright": "© 2023 Vedic Services | Bhajan & Kirtan Division",
+      "contact": "Contact: +91-XXXXXX-XXXX | bhajan@vedicservices.com"
+    }
+  },
+  "bookStore": {
+    "title": "Vedic Book Store",
+    "subtitle": "Authentic Vedic scriptures, ritual manuals, spiritual books & learning resources.",
+    "nav": {
+      "books": "Books",
+      "categories": "Categories",
+      "featured": "Featured"
+    },
+    "intro": {
+      "title": "Sacred Knowledge in Printed Form",
+      "desc1": "Our Vedic Book Store offers carefully selected scriptures, puja manuals, karmakanda texts, astrology references, and spiritual literature.",
+      "desc2": "Ideal for priests, students, householders, and seekers who want authentic and traditional resources."
+    },
+    "search": {
+      "placeholder": "Search for Hindu scriptures, Vedas, Puranas...",
+      "button": "Search"
+    },
+    "loading": "Loading books...",
+    "noResults": "No books found. Try a different search term.",
+    "featured": {
+      "title": "Featured Books"
+    },
+    "categories": {
+      "title": "Browse by Category"
+    },
+    "cta": {
+      "title": "Bring Sacred Wisdom Home",
+      "desc": "Order authentic Vedic books curated by scholars and practitioners.",
+      "button": "Browse All Books"
+    },
+    "footer": {
+      "copyright": "© 2023 Vedic Services | Book Store Division",
+      "contact": "Contact: +91-XXXXXX-XXXX | vedicbooks@vedicservices.com"
+    }
+  },
+  "corporateServices": {
+    "title": "Corporate Services",
+    "subtitle": "Enhance your corporate environment with traditional Vedic ceremonies for offices, schools, and institutions.",
+    "nav": {
+      "benefits": "Benefits",
+      "services": "Services",
+      "clients": "Clients",
+      "process": "Process"
+    },
+    "intro": {
+      "title": "Vedic Traditions for Modern Corporations",
+      "desc1": "In today's competitive business environment, creating a positive, harmonious, and prosperous workplace is essential. Our Corporate Vedic Services blend ancient wisdom with modern corporate needs to enhance productivity, teamwork, and overall success.",
+      "desc2": "We offer customized Vedic ceremonies, pujas, and spiritual consultations specifically designed for corporate settings, educational institutions, government offices, and healthcare facilities."
+    },
+    "benefits": {
+      "title": "Benefits for Your Organization",
+      "productivity": {
+        "title": "Enhanced Productivity",
+        "desc": "Vedic rituals create positive energy fields that improve focus, reduce stress, and increase employee efficiency by up to 40% according to workplace studies."
+      },
+      "team": {
+        "title": "Improved Team Harmony",
+        "desc": "Group ceremonies foster unity, reduce workplace conflicts, and build stronger relationships among team members and departments."
+      },
+      "protection": {
+        "title": "Business Protection",
+        "desc": "Specialized Vastu pujas and protection rituals safeguard your business from negative influences, legal issues, and financial obstacles."
+      },
+      "client": {
+        "title": "Client & Investor Relations",
+        "desc": "Impress clients and investors with unique corporate wellness initiatives that demonstrate cultural awareness and employee care."
+      },
+      "environment": {
+        "title": "Positive Work Environment",
+        "desc": "Regular spiritual activities reduce burnout, improve mental health, and create a more positive, balanced workplace culture."
+      },
+      "advantage": {
+        "title": "Competitive Advantage",
+        "desc": "Differentiate your organization with unique corporate wellness programs that attract and retain top talent in your industry."
+      }
+    },
+    "services": {
+      "title": "Corporate Services Offered",
+      "tabs": {
+        "office": "Office Ceremonies",
+        "educational": "Educational Institutions",
+        "healthcare": "Healthcare Facilities",
+        "regular": "Regular Programs"
+      },
+      "office": {
+        "title": "Office & Workplace Ceremonies",
+        "items": [
+          "<strong>Office Inauguration (Griha Pravesh):</strong> Complete Vastu puja for new office spaces",
+          "<strong>Financial Year Beginning Puja:</strong> Auspicious start to the financial year with Lakshmi puja",
+          "<strong>New Project Launch Ceremonies:</strong> Rituals for successful project initiation",
+          "<strong>Team Building Havan:</strong> Group fire ceremonies for department harmony",
+          "<strong>Vehicle Puja for Company Fleet:</strong> Blessing ceremonies for company vehicles",
+          "<strong>Office Vastu Correction:</strong> Remedies for Vastu defects in workplace layout",
+          "<strong>Annual Corporate Puja:</strong> Yearly ceremonies for continued prosperity"
+        ]
+      },
+      "educational": {
+        "title": "Schools & Educational Institutions",
+        "items": [
+          "<strong>Academic Year Beginning:</strong> Saraswati puja for students and teachers",
+          "<strong>Exam Success Ceremonies:</strong> Special pujas before important examinations",
+          "<strong>School/College Inauguration:</strong> Complete rituals for new educational buildings",
+          "<strong>Teacher's Day Celebrations:</strong> Guru pujan ceremonies",
+          "<strong>Student Orientation Programs:</strong> Spiritual orientation for new students",
+          "<strong>Library Inauguration:</strong> Saraswati puja for new libraries and resource centers",
+          "<strong>Sports Day Blessings:</strong> Ceremonies for school athletic events"
+        ]
+      },
+      "healthcare": {
+        "title": "Healthcare & Hospital Services",
+        "items": [
+          "<strong>Hospital/Clinic Inauguration:</strong> Dhanvantari puja for healing spaces",
+          "<strong>Medical Equipment Blessing:</strong> Ceremonies for new medical equipment",
+          "<strong>Staff Well-being Programs:</strong> Wellness sessions for healthcare workers",
+          "<strong>Patient Healing Ceremonies:</strong> Rituals for patient recovery and comfort",
+          "<strong>Annual Health Check-up Camps:</strong> Combined with spiritual wellness sessions",
+          "<strong>Mental Health Department Puja:</strong> Special ceremonies for psychiatry units",
+          "<strong>Pharmacy/Lab Opening:</strong> Blessings for diagnostic and medicine facilities"
+        ]
+      },
+      "regular": {
+        "title": "Regular Corporate Programs",
+        "items": [
+          "<strong>Monthly Office Havan:</strong> Regular fire ceremonies for continuous positive energy",
+          "<strong>Employee Wellness Workshops:</strong> Meditation, yoga, and spiritual wellness sessions",
+          "<strong>Festival Celebrations at Workplace:</strong> Diwali, Navratri, Ganesh Chaturthi celebrations",
+          "<strong>Leadership Spiritual Guidance:</strong> One-on-one sessions for executives and managers",
+          "<strong>Department-specific Ceremonies:</strong> Tailored rituals for sales, R&D, HR, etc.",
+          "<strong>Retirement & Farewell Ceremonies:</strong> Meaningful send-offs for retiring employees",
+          "<strong>New Employee Orientation:</strong> Welcoming rituals for new hires"
+        ]
+      }
+    },
+    "clients": {
+      "title": "Serving Diverse Organizations",
+      "types": [
+        "IT Companies",
+        "Banks & Financial Institutions",
+        "Schools & Colleges",
+        "Manufacturing Units",
+        "Retail Chains",
+        "Hospitality Industry",
+        "Logistics Companies",
+        "Healthcare Providers"
+      ]
+    },
+    "process": {
+      "title": "Our Corporate Service Process",
+      "step1": {
+        "title": "Needs Assessment",
+        "desc": "We understand your organization's specific requirements, culture, and objectives."
+      },
+      "step2": {
+        "title": "Customized Proposal",
+        "desc": "We design a tailored package of services that aligns with your corporate goals."
+      },
+      "step3": {
+        "title": "Logistics Planning",
+        "desc": "We coordinate dates, times, materials, and space requirements with your team."
+      },
+      "step4": {
+        "title": "Ceremony Execution",
+        "desc": "Our experienced priests conduct the ceremonies with minimal disruption to work."
+      },
+      "step5": {
+        "title": "Follow-up & Feedback",
+        "desc": "We gather feedback and plan ongoing programs for continuous benefit."
+      }
+    },
+    "testimonial": {
+      "content": "\"After implementing regular monthly havans at our corporate office, we've noticed a significant improvement in team collaboration and a 30% reduction in employee attrition. The positive energy is palpable, and our clients often comment on the unique, peaceful atmosphere of our workspace.\"",
+      "author": "Mr. Rajesh Kumar",
+      "authorDesc": "HR Director, TechSolutions Inc."
+    },
+    "cta": {
+      "title": "Transform Your Workplace with Vedic Wisdom",
+      "desc": "Enhance productivity, harmony, and success in your organization with our specialized corporate Vedic services. Suitable for offices, schools, hospitals, and all types of institutions.",
+      "button": "Book Corporate Service"
+    },
+    "footer": {
+      "title": "Corporate Services Inquiry",
+      "desc": "Contact us for a customized proposal tailored to your organization's specific needs.",
+      "phone": "Corporate Desk: +91-XXXXXX-XXXX",
+      "email": "corporate@vedicservices.com",
+      "hours": "Mon-Fri: 9 AM - 6 PM",
+      "copyright": "© 2023 Vedic Services. Corporate Division. All Rights Reserved."
+    }
+  },
+  "donation": {
+    "title": "Donation & Seva",
+    "subtitle": "Support our spiritual mission, temple maintenance, free services for the needy, and community welfare programs.",
+    "nav": {
+      "importance": "Importance",
+      "types": "Donation Types",
+      "usage": "Fund Usage",
+      "process": "Process"
+    },
+    "intro": {
+      "title": "The Power of Generous Giving",
+      "desc1": "In the Vedic tradition, giving (Dāna) is considered one of the most important virtues and spiritual practices. Your donations support the preservation of ancient traditions, provide free services to those in need, and help maintain sacred spaces for spiritual growth.",
+      "desc2": "Every contribution, big or small, makes a difference in sustaining our mission to make Vedic wisdom and rituals accessible to all, regardless of financial capacity."
+    },
+    "impact": {
+      "title": "Your Impact So Far",
+      "freePujas": "Free Pujas Conducted",
+      "students": "Students Supported",
+      "templeDays": "Temple Maintenance Days",
+      "mealsServed": "Meals Served to Needy"
+    },
+    "importance": {
+      "title": "Why Your Donation Matters",
+      "temple": {
+        "title": "Temple Maintenance",
+        "desc": "Support the upkeep, renovation, and daily operations of sacred spaces where thousands find spiritual solace and community."
+      },
+      "freeServices": {
+        "title": "Free Services for Needy",
+        "desc": "Provide free pujas, rituals, and spiritual guidance to elderly, low-income families, and those facing financial hardships."
+      },
+      "education": {
+        "title": "Education & Scholarships",
+        "desc": "Fund Vedic education programs, scripture classes, and scholarships for deserving students of priestly and spiritual studies."
+      }
+    },
+    "types": {
+      "title": "Ways to Support",
+      "general": {
+        "title": "General Donation",
+        "desc": "Support our overall mission and allow us to allocate funds where they're needed most.",
+        "features": [
+          "Supports all areas of our work",
+          "Maximum flexibility for urgent needs",
+          "Helps maintain all services",
+          "Monthly recurring option available",
+          "Any amount makes a difference"
+        ],
+        "amount": "Any Amount"
+      },
+      "annadanam": {
+        "title": "Annadanam (Food Service)",
+        "desc": "Sponsor free meals for devotees, students, and the underprivileged at our temple kitchen.",
+        "features": [
+          "Feed 50 people: ₹2,500",
+          "Feed 100 people: ₹5,000",
+          "Weekly sponsorship available",
+          "Special festival meals",
+          "Receive blessings from recipients"
+        ],
+        "amount": "₹2,500+"
+      },
+      "books": {
+        "title": "Scripture & Book Fund",
+        "desc": "Help publish and distribute sacred texts, spiritual literature, and educational materials.",
+        "features": [
+          "Print scriptures for free distribution",
+          "Support translation projects",
+          "Create educational materials",
+          "Digital library development",
+          "Acknowledge in publications"
+        ],
+        "amount": "₹1,000+"
+      },
+      "deity": {
+        "title": "Deity Adornment",
+        "desc": "Contribute towards ornaments, clothing, and decorations for temple deities.",
+        "features": [
+          "Silk clothing for deities",
+          "Gold/silver ornaments",
+          "Flower decoration funds",
+          "Festival special decorations",
+          "Your name recorded in temple register"
+        ],
+        "amount": "₹5,000+"
+      },
+      "infrastructure": {
+        "title": "Infrastructure Development",
+        "desc": "Support building projects, renovations, and facilities improvement.",
+        "features": [
+          "Temple expansion projects",
+          "Student hostel construction",
+          "Meditation hall development",
+          "Library building fund",
+          "Permanent recognition plaque"
+        ],
+        "amount": "₹10,000+"
+      },
+      "monthly": {
+        "title": "Monthly Sustaining Partner",
+        "desc": "Become a monthly donor for consistent, reliable support of all our spiritual activities.",
+        "features": [
+          "Automatic monthly contribution",
+          "Sustains ongoing programs",
+          "Special partner recognition",
+          "Annual impact report",
+          "Priority for special events"
+        ],
+        "amount": "₹500+/month"
+      }
+    },
+    "usage": {
+      "title": "How Your Donation is Used",
+      "tabs": {
+        "temple": "Temple Operations",
+        "community": "Community Service",
+        "education": "Education",
+        "outreach": "Outreach"
+      },
+      "templeContent": {
+        "title": "Temple Operations",
+        "items": [
+          "<strong>Daily Rituals & Pujas:</strong> Funding priests, puja materials, flowers, lamps, and offerings for daily worship",
+          "<strong>Maintenance & Utilities:</strong> Electricity, water, cleaning, repairs, and upkeep of sacred spaces",
+          "<strong>Festival Celebrations:</strong> Special decorations, events, and community meals during festivals",
+          "<strong>Deity Care:</strong> Clothing, ornaments, and ceremonial items for temple deities",
+          "<strong>Security & Safety:</strong> Ensuring safe and secure environment for all visitors"
+        ]
+      },
+      "communityContent": {
+        "title": "Community Service",
+        "items": [
+          "<strong>Free Pujas for Needy:</strong> Providing rituals and ceremonies free of charge to those who cannot afford them",
+          "<strong>Annadanam (Food Service):</strong> Daily free meals for devotees, students, and underprivileged",
+          "<strong>Elderly Support:</strong> Special services and assistance for senior citizens",
+          "<strong>Medical Assistance:</strong> Supporting healthcare needs of priests and community members",
+          "<strong>Disaster Relief:</strong> Providing spiritual and material support during emergencies"
+        ]
+      },
+      "educationContent": {
+        "title": "Education & Preservation",
+        "items": [
+          "<strong>Vedic Studies:</strong> Scholarships for students studying scriptures, rituals, and Sanskrit",
+          "<strong>Karmakanda Classes:</strong> Free and subsidized ritual training programs",
+          "<strong>Scripture Publication:</strong> Printing and distributing sacred texts at subsidized rates",
+          "<strong>Digital Archives:</strong> Preserving ancient knowledge through digitization projects",
+          "<strong>Workshops & Seminars:</strong> Educational events on Vedic traditions and practices"
+        ]
+      },
+      "outreachContent": {
+        "title": "Outreach & Accessibility",
+        "items": [
+          "<strong>Online Services:</strong> Maintaining technology for virtual pujas and online consultations",
+          "<strong>Regional Language Materials:</strong> Creating resources in local languages for wider access",
+          "<strong>Accessibility Improvements:</strong> Making facilities accessible to differently-abled devotees",
+          "<strong>Youth Engagement:</strong> Programs to engage younger generations with traditions",
+          "<strong>Interfaith Dialogue:</strong> Promoting understanding across different spiritual paths"
+        ]
+      }
+    },
+    "tax": {
+      "title": "Tax Benefits",
+      "desc": "All donations to our organization are eligible for tax exemption under Section 80G of the Income Tax Act, 1961.",
+      "items": [
+        "50% Tax Exemption on Donations",
+        "Receipts Issued Immediately",
+        "PAN & 80G Certificate Available"
+      ]
+    },
+    "process": {
+      "title": "Simple Donation Process",
+      "step1": {
+        "title": "Choose Amount & Purpose",
+        "desc": "Select donation amount and specify how you'd like your contribution to be used."
+      },
+      "step2": {
+        "title": "Fill Donation Form",
+        "desc": "Complete our secure online donation form with your details and preferences."
+      },
+      "step3": {
+        "title": "Make Payment",
+        "desc": "Use UPI, net banking, credit/debit card, or other available payment methods."
+      },
+      "step4": {
+        "title": "Receive Confirmation",
+        "desc": "Get immediate donation receipt and 80G certificate via email for tax benefits."
+      },
+      "step5": {
+        "title": "Track Impact",
+        "desc": "Receive updates on how your donation is making a difference in our community."
+      }
+    },
+    "testimonial": {
+      "content": "\"I've been a monthly donor for three years, and it's one of the most fulfilling decisions I've made. Seeing the regular updates about free pujas conducted for elderly devotees and scholarships given to Vedic students gives me immense satisfaction. The transparency in how funds are used and the personal thank-you notes make me feel truly connected to the mission.\"",
+      "author": "Mrs. Sunita Reddy",
+      "authorDesc": "Monthly Sustaining Partner since 2020"
+    },
+    "cta": {
+      "title": "Your Generosity Fuels Our Spiritual Mission",
+      "desc": "Join hundreds of donors in supporting the preservation of Vedic traditions, helping those in need, and maintaining sacred spaces for spiritual growth.",
+      "button": "Make a Donation Now"
+    },
+    "footer": {
+      "title": "Donation & Seva Desk",
+      "desc": "Contact us for donation-related queries, corporate partnerships, or to discuss specific giving opportunities.",
+      "phone": "Donation Desk: +91-XXXXXX-XXXX",
+      "email": "donation@vedicservices.com",
+      "hours": "Available 9 AM - 6 PM",
+      "copyright": "© 2023 Vedic Services. Registered Trust under Indian Trusts Act. All donations eligible for 80G tax exemption."
+    },
+    "modal": {
+      "title": "Donate via eSewa",
+      "subtitle": "Please scan the QR code below and complete your donation",
+      "esewaId": "eSewa ID: 9841XXXXXX",
+      "instructions": {
+        "title": "Instructions:",
+        "steps": [
+          "Open eSewa app",
+          "Scan the QR code",
+          "Enter donation amount",
+          "Complete payment",
+          "Click 'Done' once payment is confirmed"
+        ]
+      },
+      "buttons": {
+        "done": "Done",
+        "cancel": "Cancel"
+      },
+      "thankYou": {
+        "title": "Thank You!",
+        "message": "Thank you for your generous donation. Your contribution helps us advance our spiritual mission.",
+        "receipt": "Your donation receipt and 80G certificate will be sent to your email."
+      }
+    }
+  }
+} 

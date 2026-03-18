@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="services.pilgrimage.title">Pilgrimage Services - Sacred Journey Planning & Guidance</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="js/i18n.js" defer></script>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f5f0;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Floating Language Switcher */
+        .floating-language-switcher {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+            width: auto;
+            max-width: 90vw;
+        }
+
+        .floating-lang-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .floating-lang-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .lang-icon {
+            font-size: 20px;
+        }
+
+        .lang-label {
+            font-size: 15px;
+        }
+
+        .floating-lang-options {
+            position: absolute;
+            bottom: 100%;
+            right: 0;
+            margin-bottom: 10px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            padding: 12px;
+            display: none;
+            flex-direction: column;
+            gap: 8px;
+            width: 200px;
+            z-index: 10000;
+        }
+
+        .floating-lang-options.show {
+            display: flex;
+        }
+
+        .floating-lang-option {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .floating-lang-option:hover {
+            background: #f5f5f5;
+            border-color: #667eea;
+        }
+
+        .floating-lang-option.active .floating-lang-check {
+            opacity: 1;
+        }
+
+        .floating-lang-check {
+            color: #667eea;
+            font-weight: bold;
+            font-size: 18px;
+            opacity: 0;
+        }
+        
+        /* Header Styles */
+        .service-header {
+            background: linear-gradient(rgba(74, 54, 37, 0.85), rgba(74, 54, 37, 0.9)), url('images/pilgrimage-header.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            border-bottom: 5px solid #d4a74e;
+        }
+        
+        .service-header h1 {
+            font-size: 3.2rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .service-header p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+        
+        /* Navigation */
+        .service-nav {
+            background-color: #5a4226;
+            padding: 15px 0;
+        }
+        
+        .service-nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .back-to-services {
+            color: #f8f5f0;
+            text-decoration: none;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s;
+        }
+        
+        .back-to-services:hover {
+            color: #d4a74e;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #d4a74e;
+        }
+        
+        /* Main Content */
+        .service-main {
+            padding: 60px 0;
+        }
+        
+        /* Intro Section */
+        .service-intro {
+            background-color: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 50px;
+            border-left: 5px solid #d4a74e;
+        }
+        
+        .service-intro h2 {
+            color: #5a4226;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .service-intro h2 i {
+            color: #d4a74e;
+        }
+        
+        .service-intro p {
+            font-size: 1.15rem;
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+        /* Pilgrimage Types */
+        .pilgrimage-types {
+            margin-bottom: 60px;
+        }
+        
+        .section-title {
+            text-align: center;
+            color: #5a4226;
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: #d4a74e;
+        }
+        
+        .pilgrimage-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .pilgrimage-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+        
+        .pilgrimage-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .pilgrimage-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: #d4a74e;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+        
+        .pilgrimage-image {
+            height: 200px;
+            background-color: #eee;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .pilgrimage-content {
+            padding: 25px;
+        }
+        
+        .pilgrimage-content h3 {
+            color: #5a4226;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .pilgrimage-content h3 i {
+            color: #d4a74e;
+        }
+        
+        .pilgrimage-features {
+            list-style-type: none;
+            margin: 20px 0;
+        }
+        
+        .pilgrimage-features li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+            color: #666;
+        }
+        
+        .pilgrimage-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #d4a74e;
+            font-weight: bold;
+        }
+        
+        .pilgrimage-duration {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #5a4226;
+            font-weight: 600;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        
+        /* Services Included */
+        .services-included {
+            margin-bottom: 60px;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .service-item {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .service-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-icon {
+            background-color: #5a4226;
+            color: white;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.8rem;
+        }
+        
+        .service-item h3 {
+            color: #5a4226;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        
+        .service-item p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        /* Service title link styles */
+        .service-title-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: color 0.3s ease;
+        }
+
+        .service-title-link:hover {
+            color: #d4a74e;
+        }
+
+        .service-title-link:hover h3 {
+            text-decoration: underline;
+        }
+        
+        /* Popular Routes */
+        .popular-routes {
+            margin-bottom: 60px;
+        }
+        
+        .routes-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .route-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .route-tab {
+            padding: 12px 25px;
+            background-color: #f0ebe3;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+            color: #5a4226;
+        }
+        
+        .route-tab:hover {
+            background-color: #e6dfd3;
+        }
+        
+        .route-tab.active {
+            background-color: #5a4226;
+            color: white;
+        }
+        
+        .route-content {
+            display: none;
+        }
+        
+        .route-content.active {
+            display: block;
+        }
+        
+        .route-list {
+            columns: 2;
+            column-gap: 40px;
+        }
+        
+        .route-list li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+            color: #555;
+            break-inside: avoid;
+        }
+        
+        .route-list li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #d4a74e;
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+        
+        /* Process Section */
+        .process-steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .step {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            width: 220px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #d4a74e;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .step h3 {
+            color: #5a4226;
+            margin: 25px 0 15px;
+            font-size: 1.3rem;
+        }
+        
+        .step p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        /* Testimonial */
+        .testimonial {
+            background-color: white;
+            border-radius: 10px;
+            padding: 40px;
+            margin-bottom: 60px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid #d4a74e;
+        }
+        
+        .testimonial-content {
+            font-style: italic;
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #eee;
+            background-image: url('images/pilgrim-avatar.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .author-info h4 {
+            color: #5a4226;
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            color: #777;
+            font-size: 0.95rem;
+        }
+        
+        /* CTA Section */
+        .service-cta {
+            background-color: #5a4226;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 60px;
+        }
+        
+        .service-cta h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .service-cta p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        /* Button Styles - Matching your original */
+        .service-btn {
+            display: inline-block;
+            background-color: #d4a74e;
+            color: white;
+            padding: 15px 35px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-btn:hover {
+            background-color: #c2953e;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .service-btn-large {
+            padding: 18px 45px;
+            font-size: 1.3rem;
+        }
+        
+        /* Pilgrimage Special Offer */
+        .special-offer {
+            background-color: #fef7e6;
+            border: 2px dashed #d4a74e;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .special-offer h3 {
+            color: #5a4226;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .special-offer p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+        
+        /* Footer */
+        .service-footer {
+            background-color: #3a2a18;
+            color: #f8f5f0;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .contact-info {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        
+        .contact-info div {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .service-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .service-nav .container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-links {
+                display: flex;
+                gap: 20px;
+            }
+            
+            .nav-links a {
+                margin-left: 0;
+            }
+            
+            .pilgrimage-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .route-list {
+                columns: 1;
+            }
+            
+            .process-steps {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .step {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .floating-language-switcher {
+                bottom: 15px;
+                right: 15px;
+            }
+
+            .floating-lang-btn {
+                padding: 12px 18px;
+            }
+
+            .lang-label {
+                display: none;
+            }
+
+            .floating-lang-btn .lang-icon {
+                font-size: 22px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .service-header h1 {
+                font-size: 2rem;
+            }
+            
+            .service-intro, .routes-container, .testimonial {
+                padding: 25px;
+            }
+            
+            .service-btn-large {
+                padding: 15px 30px;
+                font-size: 1.1rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .route-tab {
+                flex-basis: calc(50% - 5px);
+                text-align: center;
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Language Switcher -->
+    <div class="floating-language-switcher">
+        <button class="floating-lang-btn" id="floatingLangToggle">
+            <span class="lang-icon">🌐</span>
+            <span class="lang-label" data-i18n="language.select">Choose Language</span>
+        </button>
+        <div class="floating-lang-options" id="floatingLangOptions">
+            <div class="floating-lang-option" data-lang="en">
+                <span class="floating-lang-text" data-i18n="language.english">English</span>
+                <span class="floating-lang-check">✓</span>
+            </div>
+            <div class="floating-lang-option" data-lang="ne">
+                <span class="floating-lang-text" data-i18n="language.nepali">नेपाली</span>
+                <span class="floating-lang-check">✓</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Section -->
+    <header class="service-header">
+        <div class="container">
+            <h1 data-i18n="services.pilgrimage.title">Pilgrimage Services</h1>
+            <p data-i18n="pilgrimage.subtitle">Embark on sacred journeys to holy sites with expert guidance, complete arrangements, and spiritual fulfillment.</p>
+        </div>
+    </header>
+    
+    <!-- Navigation -->
+    <nav class="service-nav">
+        <div class="container">
+            <a href="index.html#services" class="back-to-services" data-i18n="nav.backToServices">
+                <i class="fas fa-arrow-left"></i> Back to All Services
+            </a>
+            <div class="nav-links">
+                <a href="#destinations" data-i18n="pilgrimage.nav.destinations">Destinations</a>
+                <a href="#services-included" data-i18n="pilgrimage.nav.services">Services</a>
+                <a href="#routes" data-i18n="pilgrimage.nav.routes">Popular Routes</a>
+                <a href="#process" data-i18n="pilgrimage.nav.process">Process</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <main class="service-main container">
+        <!-- Introduction -->
+        <section class="service-intro">
+            <h2><i class="fas fa-mountain"></i> <span data-i18n="pilgrimage.intro.title">Sacred Journeys to Holy Destinations</span></h2>
+            <p data-i18n="pilgrimage.intro.desc1">A pilgrimage (Tirtha Yatra) is not just a journey to a holy place, but a transformative spiritual experience that purifies the soul, fulfills desires, and brings one closer to the divine. Our pilgrimage services ensure your sacred journey is comfortable, meaningful, and spiritually enriching.</p>
+            <p data-i18n="pilgrimage.intro.desc2">We handle all arrangements - travel, accommodation, rituals, priest services, and guidance - so you can focus entirely on your spiritual experience.</p>
+        </section>
+        
+        <!-- Special Offer -->
+        <section class="special-offer">
+            <h3><i class="fas fa-gift"></i> <span data-i18n="pilgrimage.specialOffer.title">Special Pilgrimage Package</span></h3>
+            <p data-i18n="pilgrimage.specialOffer.desc">Book any pilgrimage package before the next full moon and receive complimentary Rudrabhishek puja at your home before departure for safe travels and spiritual preparation.</p>
+        </section>
+        
+        <!-- Pilgrimage Types -->
+        <section id="destinations" class="pilgrimage-types">
+            <h2 class="section-title" data-i18n="pilgrimage.destinations.title">Sacred Destination Packages</h2>
+            <div class="pilgrimage-grid">
+                <!-- Char Dham Yatra -->
+                <div class="pilgrimage-card">
+                    <div class="pilgrimage-badge" data-i18n="pilgrimage.destinations.charDham.badge">Most Popular</div>
+                    <div class="pilgrimage-image" style="background-image: url('images/char-dham.jpg');"></div>
+                    <div class="pilgrimage-content">
+                        <a href="#char-dham" class="service-title-link">
+                            <h3><i class="fas fa-mountain"></i> <span data-i18n="pilgrimage.destinations.charDham.title">Char Dham Yatra</span></h3>
+                        </a>
+                        <p data-i18n="pilgrimage.destinations.charDham.desc">The ultimate Hindu pilgrimage to four sacred abodes in the Himalayas: Yamunotri, Gangotri, Kedarnath, and Badrinath.</p>
+                        <ul class="pilgrimage-features">
+                            <li data-i18n="pilgrimage.destinations.charDham.features[0]">Complete travel arrangements</li>
+                            <li data-i18n="pilgrimage.destinations.charDham.features[1]">Accommodation near temples</li>
+                            <li data-i18n="pilgrimage.destinations.charDham.features[2]">Priest services at all sites</li>
+                            <li data-i18n="pilgrimage.destinations.charDham.features[3]">Medical support & insurance</li>
+                            <li data-i18n="pilgrimage.destinations.charDham.features[4]">Spiritual guide throughout</li>
+                        </ul>
+                        <div class="pilgrimage-duration">
+                            <i class="far fa-calendar-alt"></i>
+                            <span data-i18n="pilgrimage.destinations.charDham.duration">12-15 Days Package</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 12 Jyotirlinga Darshan -->
+                <div class="pilgrimage-card">
+                    <div class="pilgrimage-badge" data-i18n="pilgrimage.destinations.jyotirlinga.badge">New</div>
+                    <div class="pilgrimage-image" style="background-image: url('images/12-jyotirlinga.jpg');"></div>
+                    <div class="pilgrimage-content">
+                        <a href="#jyotirlinga" class="service-title-link">
+                            <h3><i class="fas fa-fire-alt"></i> <span data-i18n="pilgrimage.destinations.jyotirlinga.title">12 Jyotirlinga Darshan</span></h3>
+                        </a>
+                        <p data-i18n="pilgrimage.destinations.jyotirlinga.desc">Complete pilgrimage to all 12 sacred Jyotirlingas of Lord Shiva spread across India for ultimate blessings.</p>
+                        <ul class="pilgrimage-features">
+                            <li data-i18n="pilgrimage.destinations.jyotirlinga.features[0]">Customizable itinerary</li>
+                            <li data-i18n="pilgrimage.destinations.jyotirlinga.features[1]">All entrance arrangements</li>
+                            <li data-i18n="pilgrimage.destinations.jyotirlinga.features[2]">Special puja at each lingam</li>
+                            <li data-i18n="pilgrimage.destinations.jyotirlinga.features[3]">Comfortable transportation</li>
+                            <li data-i18n="pilgrimage.destinations.jyotirlinga.features[4]">Photography services</li>
+                        </ul>
+                        <div class="pilgrimage-duration">
+                            <i class="far fa-calendar-alt"></i>
+                            <span data-i18n="pilgrimage.destinations.jyotirlinga.duration">20-25 Days Package</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- South Indian Temples Tour -->
+                <div class="pilgrimage-card">
+                    <div class="pilgrimage-image" style="background-image: url('images/south-india.jpg');"></div>
+                    <div class="pilgrimage-content">
+                        <a href="#south-india" class="service-title-link">
+                            <h3><i class="fas fa-temple"></i> <span data-i18n="pilgrimage.destinations.southIndia.title">South Indian Temples Tour</span></h3>
+                        </a>
+                        <p data-i18n="pilgrimage.destinations.southIndia.desc">Journey through magnificent Dravidian temples including Rameswaram, Madurai, Tirupati, and more.</p>
+                        <ul class="pilgrimage-features">
+                            <li data-i18n="pilgrimage.destinations.southIndia.features[0]">Focus on architectural marvels</li>
+                            <li data-i18n="pilgrimage.destinations.southIndia.features[1]">Local cultural experiences</li>
+                            <li data-i18n="pilgrimage.destinations.southIndia.features[2]">Traditional South Indian meals</li>
+                            <li data-i18n="pilgrimage.destinations.southIndia.features[3]">Tamil/Malayalam speaking guide</li>
+                            <li data-i18n="pilgrimage.destinations.southIndia.features[4]">Special darshan arrangements</li>
+                        </ul>
+                        <div class="pilgrimage-duration">
+                            <i class="far fa-calendar-alt"></i>
+                            <span data-i18n="pilgrimage.destinations.southIndia.duration">10-14 Days Package</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mata Vaishno Devi & North -->
+                <div class="pilgrimage-card">
+                    <div class="pilgrimage-image" style="background-image: url('images/vaishno-devi.jpg');"></div>
+                    <div class="pilgrimage-content">
+                        <a href="#vaishno-devi" class="service-title-link">
+                            <h3><i class="fas fa-female"></i> <span data-i18n="pilgrimage.destinations.vaishnoDevi.title">Mata Vaishno Devi & North</span></h3>
+                        </a>
+                        <p data-i18n="pilgrimage.destinations.vaishnoDevi.desc">Special pilgrimage to Vaishno Devi with extensions to other North Indian shrines like Haridwar, Rishikesh, Mathura.</p>
+                        <ul class="pilgrimage-features">
+                            <li data-i18n="pilgrimage.destinations.vaishnoDevi.features[0]">Helicopter booking for Vaishno Devi</li>
+                            <li data-i18n="pilgrimage.destinations.vaishnoDevi.features[1]">Ganga aarti in Haridwar</li>
+                            <li data-i18n="pilgrimage.destinations.vaishnoDevi.features[2]">Yoga sessions in Rishikesh</li>
+                            <li data-i18n="pilgrimage.destinations.vaishnoDevi.features[3]">Senior citizen friendly</li>
+                            <li data-i18n="pilgrimage.destinations.vaishnoDevi.features[4]">Medical assistance on trek</li>
+                        </ul>
+                        <div class="pilgrimage-duration">
+                            <i class="far fa-calendar-alt"></i>
+                            <span data-i18n="pilgrimage.destinations.vaishnoDevi.duration">7-10 Days Package</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Buddhist Circuit Pilgrimage -->
+                <div class="pilgrimage-card">
+                    <div class="pilgrimage-badge" data-i18n="pilgrimage.destinations.buddhist.badge">Spiritual</div>
+                    <div class="pilgrimage-image" style="background-image: url('images/buddhist.jpg');"></div>
+                    <div class="pilgrimage-content">
+                        <a href="#buddhist" class="service-title-link">
+                            <h3><i class="fas fa-peace"></i> <span data-i18n="pilgrimage.destinations.buddhist.title">Buddhist Circuit Pilgrimage</span></h3>
+                        </a>
+                        <p data-i18n="pilgrimage.destinations.buddhist.desc">Follow in the footsteps of Buddha to Lumbini, Bodhgaya, Sarnath, Kushinagar and other sacred Buddhist sites.</p>
+                        <ul class="pilgrimage-features">
+                            <li data-i18n="pilgrimage.destinations.buddhist.features[0]">Meditation sessions</li>
+                            <li data-i18n="pilgrimage.destinations.buddhist.features[1]">Buddhist monk interactions</li>
+                            <li data-i18n="pilgrimage.destinations.buddhist.features[2]">International travel assistance</li>
+                            <li data-i18n="pilgrimage.destinations.buddhist.features[3]">Vegetarian meals included</li>
+                            <li data-i18n="pilgrimage.destinations.buddhist.features[4]">Scripture reading sessions</li>
+                        </ul>
+                        <div class="pilgrimage-duration">
+                            <i class="far fa-calendar-alt"></i>
+                            <span data-i18n="pilgrimage.destinations.buddhist.duration">8-12 Days Package</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Custom Pilgrimage Planning -->
+                <div class="pilgrimage-card">
+                    <div class="pilgrimage-image" style="background-image: url('images/custom-pilgrimage.jpg');"></div>
+                    <div class="pilgrimage-content">
+                        <a href="#custom" class="service-title-link">
+                            <h3><i class="fas fa-map-marked-alt"></i> <span data-i18n="pilgrimage.destinations.custom.title">Custom Pilgrimage Planning</span></h3>
+                        </a>
+                        <p data-i18n="pilgrimage.destinations.custom.desc">Design your own spiritual journey to any combination of holy sites across India and neighboring countries.</p>
+                        <ul class="pilgrimage-features">
+                            <li data-i18n="pilgrimage.destinations.custom.features[0]">Completely personalized itinerary</li>
+                            <li data-i18n="pilgrimage.destinations.custom.features[1]">Family/group discounts</li>
+                            <li data-i18n="pilgrimage.destinations.custom.features[2]">Ritual planning as per needs</li>
+                            <li data-i18n="pilgrimage.destinations.custom.features[3]">Flexible duration & budget</li>
+                            <li data-i18n="pilgrimage.destinations.custom.features[4]">24/7 support during travel</li>
+                        </ul>
+                        <div class="pilgrimage-duration">
+                            <i class="far fa-calendar-alt"></i>
+                            <span data-i18n="pilgrimage.destinations.custom.duration">Custom Duration</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Services Included -->
+        <section id="services-included" class="services-included">
+            <h2 class="section-title" data-i18n="pilgrimage.services.title">Services Included in All Packages</h2>
+            <div class="services-grid">
+                <div class="service-item">
+                    <div class="service-icon">
+                        <i class="fas fa-hotel"></i>
+                    </div>
+                    <a href="#accommodation" class="service-title-link">
+                        <h3 data-i18n="pilgrimage.services.accommodation.title">Accommodation</h3>
+                    </a>
+                    <p data-i18n="pilgrimage.services.accommodation.desc">Clean, comfortable stays near pilgrimage sites, with options from budget to premium.</p>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-icon">
+                        <i class="fas fa-bus"></i>
+                    </div>
+                    <a href="#transportation" class="service-title-link">
+                        <h3 data-i18n="pilgrimage.services.transportation.title">Transportation</h3>
+                    </a>
+                    <p data-i18n="pilgrimage.services.transportation.desc">Air, train, and road travel with reliable vehicles and experienced drivers.</p>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <a href="#guide" class="service-title-link">
+                        <h3 data-i18n="pilgrimage.services.guide.title">Spiritual Guide</h3>
+                    </a>
+                    <p data-i18n="pilgrimage.services.guide.desc">Knowledgeable guide well-versed in rituals, history, and traditions of each site.</p>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <a href="#meals" class="service-title-link">
+                        <h3 data-i18n="pilgrimage.services.meals.title">Satvik Meals</h3>
+                    </a>
+                    <p data-i18n="pilgrimage.services.meals.desc">Fresh, hygienic, satvik vegetarian meals as per pilgrimage requirements.</p>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-icon">
+                        <i class="fas fa-pray"></i>
+                    </div>
+                    <a href="#rituals" class="service-title-link">
+                        <h3 data-i18n="pilgrimage.services.rituals.title">Ritual Arrangements</h3>
+                    </a>
+                    <p data-i18n="pilgrimage.services.rituals.desc">All puja materials, priest services, and ritual arrangements pre-organized.</p>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <a href="#insurance" class="service-title-link">
+                        <h3 data-i18n="pilgrimage.services.insurance.title">Travel Insurance</h3>
+                    </a>
+                    <p data-i18n="pilgrimage.services.insurance.desc">Comprehensive travel insurance covering medical emergencies and trip cancellations.</p>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-icon">
+                        <i class="fas fa-first-aid"></i>
+                    </div>
+                    <a href="#medical" class="service-title-link">
+                        <h3 data-i18n="pilgrimage.services.medical.title">Medical Support</h3>
+                    </a>
+                    <p data-i18n="pilgrimage.services.medical.desc">First-aid kits, oxygen cylinders for high-altitude trips, and doctor-on-call service.</p>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <a href="#support" class="service-title-link">
+                        <h3 data-i18n="pilgrimage.services.support.title">24/7 Support</h3>
+                    </a>
+                    <p data-i18n="pilgrimage.services.support.desc">Round-the-clock customer support during your entire pilgrimage journey.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Popular Routes -->
+        <section id="routes" class="popular-routes">
+            <h2 class="section-title" data-i18n="pilgrimage.routes.title">Popular Pilgrimage Routes</h2>
+            <div class="routes-container">
+                <div class="route-tabs">
+                    <div class="route-tab active" data-route="north" data-i18n="pilgrimage.routes.tabs.north">North India</div>
+                    <div class="route-tab" data-route="south" data-i18n="pilgrimage.routes.tabs.south">South India</div>
+                    <div class="route-tab" data-route="east" data-i18n="pilgrimage.routes.tabs.east">East India</div>
+                    <div class="route-tab" data-route="west" data-i18n="pilgrimage.routes.tabs.west">West India</div>
+                    <div class="route-tab" data-route="special" data-i18n="pilgrimage.routes.tabs.special">Special Yatras</div>
+                </div>
+                
+                <div class="route-content active" id="north-route">
+                    <ul class="route-list">
+                        <li data-i18n="pilgrimage.routes.north[0]">Char Dham: Yamunotri, Gangotri, Kedarnath, Badrinath</li>
+                        <li data-i18n="pilgrimage.routes.north[1]">Haridwar - Rishikesh - Devprayag</li>
+                        <li data-i18n="pilgrimage.routes.north[2]">Vaishno Devi - Katra - Jammu</li>
+                        <li data-i18n="pilgrimage.routes.north[3]">Amarnath Yatra (Seasonal)</li>
+                        <li data-i18n="pilgrimage.routes.north[4]">Mathura - Vrindavan - Govardhan</li>
+                        <li data-i18n="pilgrimage.routes.north[5]">Ayodhya - Prayagraj - Varanasi</li>
+                        <li data-i18n="pilgrimage.routes.north[6]">Hemkund Sahib - Valley of Flowers</li>
+                        <li data-i18n="pilgrimage.routes.north[7]">Shakti Peethas of North India</li>
+                    </ul>
+                </div>
+                
+                <div class="route-content" id="south-route">
+                    <ul class="route-list">
+                        <li data-i18n="pilgrimage.routes.south[0]">Tirupati - Tirumala Venkateswara</li>
+                        <li data-i18n="pilgrimage.routes.south[1]">Rameswaram - Kanyakumari</li>
+                        <li data-i18n="pilgrimage.routes.south[2]">Madurai Meenakshi - Palani</li>
+                        <li data-i18n="pilgrimage.routes.south[3]">Sabarimala (Seasonal)</li>
+                        <li data-i18n="pilgrimage.routes.south[4]">Guruvayur - Padmanabhaswamy</li>
+                        <li data-i18n="pilgrimage.routes.south[5]">Mahabalipuram - Kanchipuram</li>
+                        <li data-i18n="pilgrimage.routes.south[6]">Shravanabelagola - Sringeri</li>
+                        <li data-i18n="pilgrimage.routes.south[7]">Udupi Krishna Temple - Dharmasthala</li>
+                    </ul>
+                </div>
+                
+                <div class="route-content" id="east-route">
+                    <ul class="route-list">
+                        <li data-i18n="pilgrimage.routes.east[0]">Puri Jagannath - Konark Sun Temple</li>
+                        <li data-i18n="pilgrimage.routes.east[1]">Bodhgaya - Rajgir - Nalanda</li>
+                        <li data-i18n="pilgrimage.routes.east[2]">Kamakhya Temple - Guwahati</li>
+                        <li data-i18n="pilgrimage.routes.east[3]">Gangasagar - Kolkata Kalighat</li>
+                        <li data-i18n="pilgrimage.routes.east[4]">Imphal - Loktak Lake (Manipur)</li>
+                        <li data-i18n="pilgrimage.routes.east[5]">Tawang Monastery (Arunachal)</li>
+                        <li data-i18n="pilgrimage.routes.east[6]">Bhubaneswar Temple Circuit</li>
+                        <li data-i18n="pilgrimage.routes.east[7]">Mayapur - Nabadwip (ISKCON)</li>
+                    </ul>
+                </div>
+                
+                <div class="route-content" id="west-route">
+                    <ul class="route-list">
+                        <li data-i18n="pilgrimage.routes.west[0]">Dwarka - Somnath - Gir</li>
+                        <li data-i18n="pilgrimage.routes.west[1]">Shirdi Sai Baba - Shani Shingnapur</li>
+                        <li data-i18n="pilgrimage.routes.west[2]">Maharashtra Ashtavinayak</li>
+                        <li data-i18n="pilgrimage.routes.west[3]">Ajmer Sharif - Pushkar</li>
+                        <li data-i18n="pilgrimage.routes.west[4]">Ujjain Mahakaleshwar - Omkareshwar</li>
+                        <li data-i18n="pilgrimage.routes.west[5]">Mount Abu - Dilwara Temples</li>
+                        <li data-i18n="pilgrimage.routes.west[6]">Siddhivinayak - Mumbai</li>
+                        <li data-i18n="pilgrimage.routes.west[7]">Pandharpur Vitthal - Kolhapur Mahalaxmi</li>
+                    </ul>
+                </div>
+                
+                <div class="route-content" id="special-route">
+                    <ul class="route-list">
+                        <li data-i18n="pilgrimage.routes.special[0]">Kailash Mansarovar Yatra (Tibet)</li>
+                        <li data-i18n="pilgrimage.routes.special[1]">Muktinath - Nepal Circuit</li>
+                        <li data-i18n="pilgrimage.routes.special[2]">Kashi Yatra (Varanasi Complete)</li>
+                        <li data-i18n="pilgrimage.routes.special[3]">Narmada Parikrama</li>
+                        <li data-i18n="pilgrimage.routes.special[4]">108 Divya Desam (Vaishnava)</li>
+                        <li data-i18n="pilgrimage.routes.special[5]">51 Shakti Peeth Pilgrimage</li>
+                        <li data-i18n="pilgrimage.routes.special[6]">Panch Prayag - Five Confluences</li>
+                        <li data-i18n="pilgrimage.routes.special[7]">Sapta Puri - Seven Holy Cities</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Process Section -->
+        <section id="process" class="process-section">
+            <h2 class="section-title" data-i18n="pilgrimage.process.title">Our Pilgrimage Planning Process</h2>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3 data-i18n="pilgrimage.process.step1.title">Consultation</h3>
+                    <p data-i18n="pilgrimage.process.step1.desc">We understand your spiritual goals, physical capabilities, budget, and time constraints.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3 data-i18n="pilgrimage.process.step2.title">Custom Itinerary</h3>
+                    <p data-i18n="pilgrimage.process.step2.desc">We design a detailed day-by-day plan including travel, rituals, and accommodations.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3 data-i18n="pilgrimage.process.step3.title">Pre-Pilgrimage Preparation</h3>
+                    <p data-i18n="pilgrimage.process.step3.desc">Guidance on physical preparation, necessary documents, and spiritual practices before travel.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3 data-i18n="pilgrimage.process.step4.title">Journey Execution</h3>
+                    <p data-i18n="pilgrimage.process.step4.desc">Our team handles all logistics while you focus on the spiritual experience.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <h3 data-i18n="pilgrimage.process.step5.title">Post-Pilgrimage Support</h3>
+                    <p data-i18n="pilgrimage.process.step5.desc">Guidance on maintaining spiritual benefits and integrating experiences into daily life.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Testimonial -->
+        <section class="testimonial">
+            <div class="testimonial-content" data-i18n="pilgrimage.testimonial.content">
+                "Our Char Dham yatra with Vedic Services was truly life-changing. Every detail was taken care of - from comfortable accommodations to meaningful rituals at each site. Our spiritual guide made each temple visit deeply meaningful with his explanations of history and significance. The medical support during the high-altitude segments gave us peace of mind. We returned not just with blessings but with unforgettable memories."
+            </div>
+            <div class="testimonial-author">
+                <div class="author-avatar"></div>
+                <div class="author-info">
+                    <h4 data-i18n="pilgrimage.testimonial.author">Mr. & Mrs. Sharma</h4>
+                    <p data-i18n="pilgrimage.testimonial.authorDesc">Completed Char Dham Yatra, October 2023</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CTA Section -->
+        <section class="service-cta">
+            <h2 data-i18n="pilgrimage.cta.title">Begin Your Sacred Journey Today</h2>
+            <p data-i18n="pilgrimage.cta.desc">Experience the transformative power of pilgrimage with expert guidance, complete arrangements, and spiritual fulfillment. Let us handle the logistics while you focus on your spiritual journey.</p>
+            <a href="https://forms.gle/3BhwSbXcugDf7WBYA" class="service-btn service-btn-large">
+                <i class="fas fa-hiking"></i> <span data-i18n="pilgrimage.cta.button">Plan Your Pilgrimage</span>
+            </a>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="service-footer">
+        <div class="container">
+            <div class="footer-content">
+                <h3 data-i18n="pilgrimage.footer.title">Pilgrimage Services Desk</h3>
+                <p data-i18n="pilgrimage.footer.desc">Contact us for customized pilgrimage planning, group discounts, and special requirements.</p>
+                
+                <div class="contact-info">
+                    <div>
+                        <i class="fas fa-phone-alt"></i>
+                        <span data-i18n="pilgrimage.footer.phone">Pilgrimage Desk: +91-XXXXXX-XXXX</span>
+                    </div>
+                    <div>
+                        <i class="fas fa-envelope"></i>
+                        <span data-i18n="pilgrimage.footer.email">pilgrimage@vedicservices.com</span>
+                    </div>
+                    <div>
+                        <i class="fas fa-clock"></i>
+                        <span data-i18n="pilgrimage.footer.hours">Available 7 AM - 9 PM</span>
+                    </div>
+                </div>
+                
+                <p class="copyright" data-i18n="pilgrimage.footer.copyright">© 2023 Vedic Services. Pilgrimage Division. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Combined Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Language Switcher Toggle
+            const floatingLangToggle = document.getElementById('floatingLangToggle');
+            const floatingLangOptions = document.getElementById('floatingLangOptions');
+
+            if (floatingLangToggle) {
+                floatingLangToggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    floatingLangOptions.classList.toggle('show');
+                });
+
+                document.addEventListener('click', function(e) {
+                    if (!floatingLangToggle.contains(e.target) && !floatingLangOptions.contains(e.target)) {
+                        floatingLangOptions.classList.remove('show');
+                    }
+                });
+
+                floatingLangOptions.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+            }
+
+            // Tab functionality for pilgrimage routes
+            const routeTabs = document.querySelectorAll('.route-tab');
+            const routeContents = document.querySelectorAll('.route-content');
+            
+            routeTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const routeId = this.getAttribute('data-route');
+                    
+                    routeTabs.forEach(t => t.classList.remove('active'));
+                    routeContents.forEach(c => c.classList.remove('active'));
+                    
+                    this.classList.add('active');
+                    document.getElementById(routeId + '-route').classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -2,6 +2,99 @@
 // MOBILE MENU TOGGLE
 // -----------------------
 
+// COMPLETE SLIDER SOLUTION
+document.addEventListener('DOMContentLoaded', function() {
+    console.log("DOM loaded, initializing slider...");
+    
+    // Get elements
+    const slides = document.querySelectorAll('.hero-slider .slide');
+    const prevBtn = document.querySelector('.hero-slider .prev');
+    const nextBtn = document.querySelector('.hero-slider .next');
+    
+    // Debug log
+    console.log(`Found ${slides.length} slides`);
+    console.log(`Prev button: ${prevBtn ? 'Found' : 'Missing'}`);
+    console.log(`Next button: ${nextBtn ? 'Found' : 'Missing'}`);
+    
+    // Exit if no slides
+    if (slides.length === 0) {
+        console.error("No slides found!");
+        return;
+    }
+    
+    let currentIndex = 0;
+    
+    // Function to show specific slide
+    function goToSlide(index) {
+        console.log(`Changing to slide ${index}`);
+        
+        // Remove active class from all slides
+        slides.forEach(slide => {
+            slide.classList.remove('active');
+        });
+        
+        // Add active class to target slide
+        currentIndex = index;
+        slides[currentIndex].classList.add('active');
+        
+        // Log for debugging
+        console.log(`Slide ${currentIndex} is now active`);
+    }
+    
+    // Next slide function
+    function nextSlide() {
+        console.log("Next slide called");
+        let nextIndex = currentIndex + 1;
+        if (nextIndex >= slides.length) {
+            nextIndex = 0;
+        }
+        goToSlide(nextIndex);
+    }
+    
+    // Previous slide function
+    function prevSlide() {
+        console.log("Prev slide called");
+        let prevIndex = currentIndex - 1;
+        if (prevIndex < 0) {
+            prevIndex = slides.length - 1;
+        }
+        goToSlide(prevIndex);
+    }
+    
+    // Add event listeners to buttons
+    if (prevBtn) {
+        prevBtn.addEventListener('click', prevSlide);
+        console.log("Added click listener to prev button");
+    }
+    
+    if (nextBtn) {
+        nextBtn.addEventListener('click', nextSlide);
+        console.log("Added click listener to next button");
+    }
+    
+    // Auto slide every 3 seconds
+    let slideInterval = setInterval(nextSlide, 3000);
+    console.log("Auto-slide started (3 seconds interval)");
+    
+    // Pause auto-slide on hover
+    const slider = document.querySelector('.hero-slider');
+    if (slider) {
+        slider.addEventListener('mouseenter', () => {
+            console.log("Slider hovered - pausing auto-slide");
+            clearInterval(slideInterval);
+        });
+        
+        slider.addEventListener('mouseleave', () => {
+            console.log("Slider left - resuming auto-slide");
+            slideInterval = setInterval(nextSlide, 3000);
+        });
+    }
+    
+    // Initialize - show first slide
+    goToSlide(0);
+    console.log("Slider initialized successfully!");
+});
+
 const menu = document.querySelector('#mobile-menu');
 const menuLinks = document.querySelector('.navbar__menu');
 const navLogo = document.querySelector('#navbar__logo');
@@ -716,4 +809,23 @@ document.querySelectorAll('.footer-section').forEach(section => {
     section.addEventListener('mouseleave', function() {
         this.style.transform = 'translateY(0)';
     });
+});
+
+// Wait for i18n to initialize before running other scripts
+document.addEventListener('i18n-ready', function() {
+    // Your existing DOMContentLoaded code here
+    console.log("i18n ready, initializing other scripts...");
+});
+
+// If i18n isn't ready, wrap your existing code
+const originalDOMContentLoaded = document.addEventListener('DOMContentLoaded', function(e) {
+    // Check if i18n exists
+    if (window.i18n) {
+        // Your existing code
+    } else {
+        // Wait for i18n
+        document.addEventListener('i18n-ready', function() {
+            // Your existing code
+        });
+    }
 });

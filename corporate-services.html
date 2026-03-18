@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="corporateServices.title">Corporate Services - Vedic Ceremonies for Business</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Load i18n.js first -->
+    <script src="js/i18n.js" defer></script>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f5f0;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Floating Language Switcher */
+        .floating-language-switcher {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+            width: auto;
+            max-width: 90vw;
+        }
+
+        .floating-lang-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .floating-lang-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .lang-icon {
+            font-size: 20px;
+        }
+
+        .lang-label {
+            font-size: 15px;
+        }
+
+        .floating-lang-options {
+            position: absolute;
+            bottom: 100%;
+            right: 0;
+            margin-bottom: 10px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            padding: 12px;
+            display: none;
+            flex-direction: column;
+            gap: 8px;
+            width: 200px;
+            z-index: 10000;
+        }
+
+        .floating-lang-options.show {
+            display: flex;
+        }
+
+        .floating-lang-option {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .floating-lang-option:hover {
+            background: #f5f5f5;
+            border-color: #667eea;
+        }
+
+        .floating-lang-option.active .floating-lang-check {
+            opacity: 1;
+        }
+
+        .floating-lang-check {
+            color: #667eea;
+            font-weight: bold;
+            font-size: 18px;
+            opacity: 0;
+        }
+        
+        /* Header Styles */
+        .service-header {
+            background: linear-gradient(rgba(74, 54, 37, 0.85), rgba(74, 54, 37, 0.9)), url('images/corporate-header.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            border-bottom: 5px solid #d4a74e;
+        }
+        
+        .service-header h1 {
+            font-size: 3.2rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .service-header p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+        
+        /* Navigation */
+        .service-nav {
+            background-color: #5a4226;
+            padding: 15px 0;
+        }
+        
+        .service-nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .back-to-services {
+            color: #f8f5f0;
+            text-decoration: none;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s;
+        }
+        
+        .back-to-services:hover {
+            color: #d4a74e;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #d4a74e;
+        }
+        
+        /* Main Content */
+        .service-main {
+            padding: 60px 0;
+        }
+        
+        /* Intro Section */
+        .service-intro {
+            background-color: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 50px;
+            border-left: 5px solid #d4a74e;
+        }
+        
+        .service-intro h2 {
+            color: #5a4226;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .service-intro h2 i {
+            color: #d4a74e;
+        }
+        
+        .service-intro p {
+            font-size: 1.15rem;
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+        /* Benefits Section */
+        .benefits-section {
+            margin-bottom: 60px;
+        }
+        
+        .section-title {
+            text-align: center;
+            color: #5a4226;
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: #d4a74e;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .benefit-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .benefit-icon {
+            background-color: #5a4226;
+            color: white;
+            padding: 25px;
+            text-align: center;
+            font-size: 2.5rem;
+        }
+        
+        .benefit-content {
+            padding: 25px;
+        }
+        
+        .benefit-content h3 {
+            color: #5a4226;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .benefit-content p {
+            color: #666;
+        }
+        
+        /* Services Offered */
+        .services-offered {
+            margin-bottom: 60px;
+        }
+        
+        .services-tabs {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .tab-headers {
+            display: flex;
+            background-color: #5a4226;
+            flex-wrap: wrap;
+        }
+        
+        .tab-header {
+            padding: 18px 30px;
+            color: white;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            text-align: center;
+            flex-grow: 1;
+        }
+        
+        .tab-header:hover {
+            background-color: #6a5236;
+        }
+        
+        .tab-header.active {
+            background-color: #d4a74e;
+        }
+        
+        .tab-content {
+            padding: 40px;
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .tab-content h3 {
+            color: #5a4226;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .tab-content ul {
+            list-style-type: none;
+            margin-left: 20px;
+        }
+        
+        .tab-content li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+            color: #555;
+        }
+        
+        .tab-content li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #d4a74e;
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+        
+        /* Corporate Clients */
+        .corporate-clients {
+            margin-bottom: 60px;
+        }
+        
+        .clients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 25px;
+        }
+        
+        .client-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .client-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .client-icon {
+            font-size: 2.5rem;
+            color: #5a4226;
+            margin-bottom: 15px;
+        }
+        
+        .client-card h4 {
+            color: #5a4226;
+            font-size: 1.2rem;
+        }
+        
+        /* Process Section */
+        .process-steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .step {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            width: 220px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #d4a74e;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .step h3 {
+            color: #5a4226;
+            margin: 25px 0 15px;
+            font-size: 1.3rem;
+        }
+        
+        .step p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        /* Testimonial */
+        .testimonial {
+            background-color: white;
+            border-radius: 10px;
+            padding: 40px;
+            margin-bottom: 60px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid #d4a74e;
+        }
+        
+        .testimonial-content {
+            font-style: italic;
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #eee;
+            background-image: url('images/client-avatar.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .author-info h4 {
+            color: #5a4226;
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            color: #777;
+            font-size: 0.95rem;
+        }
+        
+        /* CTA Section */
+        .service-cta {
+            background-color: #5a4226;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 60px;
+        }
+        
+        .service-cta h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .service-cta p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        /* Button Styles - Matching your original */
+        .service-btn {
+            display: inline-block;
+            background-color: #d4a74e;
+            color: white;
+            padding: 15px 35px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-btn:hover {
+            background-color: #c2953e;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .service-btn-large {
+            padding: 18px 45px;
+            font-size: 1.3rem;
+        }
+        
+        /* Service title link styles */
+        .service-title-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: color 0.3s ease;
+        }
+
+        .service-title-link:hover {
+            color: #d4a74e;
+        }
+
+        .service-title-link:hover h3 {
+            text-decoration: underline;
+        }
+        
+        /* Footer */
+        .service-footer {
+            background-color: #3a2a18;
+            color: #f8f5f0;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .contact-info {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        
+        .contact-info div {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .service-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .service-nav .container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-links {
+                display: flex;
+                gap: 20px;
+            }
+            
+            .nav-links a {
+                margin-left: 0;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tab-header {
+                flex-basis: 50%;
+                padding: 15px 20px;
+                font-size: 0.95rem;
+            }
+            
+            .clients-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .process-steps {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .step {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .floating-language-switcher {
+                bottom: 15px;
+                right: 15px;
+            }
+
+            .floating-lang-btn {
+                padding: 12px 18px;
+            }
+
+            .lang-label {
+                display: none;
+            }
+
+            .floating-lang-btn .lang-icon {
+                font-size: 22px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .service-header h1 {
+                font-size: 2rem;
+            }
+            
+            .service-intro, .tab-content, .testimonial {
+                padding: 25px;
+            }
+            
+            .service-btn-large {
+                padding: 15px 30px;
+                font-size: 1.1rem;
+            }
+            
+            .tab-header {
+                flex-basis: 100%;
+            }
+            
+            .clients-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Language Switcher -->
+    <div class="floating-language-switcher">
+        <button class="floating-lang-btn" id="floatingLangToggle">
+            <span class="lang-icon">🌐</span>
+            <span class="lang-label" data-i18n="language.select">Choose Language</span>
+        </button>
+        <div class="floating-lang-options" id="floatingLangOptions">
+            <div class="floating-lang-option" data-lang="en">
+                <span class="floating-lang-text" data-i18n="language.english">English</span>
+                <span class="floating-lang-check">✓</span>
+            </div>
+            <div class="floating-lang-option" data-lang="ne">
+                <span class="floating-lang-text" data-i18n="language.nepali">नेपाली</span>
+                <span class="floating-lang-check">✓</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Section -->
+    <header class="service-header">
+        <div class="container">
+            <h1 data-i18n="corporateServices.title">Corporate Services</h1>
+            <p data-i18n="corporateServices.subtitle">Enhance your corporate environment with traditional Vedic ceremonies for offices, schools, and institutions.</p>
+        </div>
+    </header>
+    
+    <!-- Navigation -->
+    <nav class="service-nav">
+        <div class="container">
+            <a href="index.html#services" class="back-to-services" data-i18n="nav.backToServices">
+                <i class="fas fa-arrow-left"></i> Back to All Services
+            </a>
+            <div class="nav-links">
+                <a href="#benefits" data-i18n="corporateServices.nav.benefits">Benefits</a>
+                <a href="#services" data-i18n="corporateServices.nav.services">Services</a>
+                <a href="#clients" data-i18n="corporateServices.nav.clients">Clients</a>
+                <a href="#process" data-i18n="corporateServices.nav.process">Process</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <main class="service-main container">
+        <!-- Introduction -->
+        <section class="service-intro">
+            <h2><i class="fas fa-building"></i> <span data-i18n="corporateServices.intro.title">Vedic Traditions for Modern Corporations</span></h2>
+            <p data-i18n="corporateServices.intro.desc1">In today's competitive business environment, creating a positive, harmonious, and prosperous workplace is essential. Our Corporate Vedic Services blend ancient wisdom with modern corporate needs to enhance productivity, teamwork, and overall success.</p>
+            <p data-i18n="corporateServices.intro.desc2">We offer customized Vedic ceremonies, pujas, and spiritual consultations specifically designed for corporate settings, educational institutions, government offices, and healthcare facilities.</p>
+        </section>
+        
+        <!-- Benefits Section -->
+        <section id="benefits" class="benefits-section">
+            <h2 class="section-title" data-i18n="corporateServices.benefits.title">Benefits for Your Organization</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <a href="#enhanced-productivity" class="service-title-link">
+                            <h3 data-i18n="corporateServices.benefits.productivity.title">Enhanced Productivity</h3>
+                        </a>
+                        <p data-i18n="corporateServices.benefits.productivity.desc">Vedic rituals create positive energy fields that improve focus, reduce stress, and increase employee efficiency by up to 40% according to workplace studies.</p>
+                    </div>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <a href="#team-harmony" class="service-title-link">
+                            <h3 data-i18n="corporateServices.benefits.team.title">Improved Team Harmony</h3>
+                        </a>
+                        <p data-i18n="corporateServices.benefits.team.desc">Group ceremonies foster unity, reduce workplace conflicts, and build stronger relationships among team members and departments.</p>
+                    </div>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <a href="#business-protection" class="service-title-link">
+                            <h3 data-i18n="corporateServices.benefits.protection.title">Business Protection</h3>
+                        </a>
+                        <p data-i18n="corporateServices.benefits.protection.desc">Specialized Vastu pujas and protection rituals safeguard your business from negative influences, legal issues, and financial obstacles.</p>
+                    </div>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <a href="#client-relations" class="service-title-link">
+                            <h3 data-i18n="corporateServices.benefits.client.title">Client & Investor Relations</h3>
+                        </a>
+                        <p data-i18n="corporateServices.benefits.client.desc">Impress clients and investors with unique corporate wellness initiatives that demonstrate cultural awareness and employee care.</p>
+                    </div>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <a href="#work-environment" class="service-title-link">
+                            <h3 data-i18n="corporateServices.benefits.environment.title">Positive Work Environment</h3>
+                        </a>
+                        <p data-i18n="corporateServices.benefits.environment.desc">Regular spiritual activities reduce burnout, improve mental health, and create a more positive, balanced workplace culture.</p>
+                    </div>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <a href="#competitive-advantage" class="service-title-link">
+                            <h3 data-i18n="corporateServices.benefits.advantage.title">Competitive Advantage</h3>
+                        </a>
+                        <p data-i18n="corporateServices.benefits.advantage.desc">Differentiate your organization with unique corporate wellness programs that attract and retain top talent in your industry.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Services Offered -->
+        <section id="services" class="services-offered">
+            <h2 class="section-title" data-i18n="corporateServices.services.title">Corporate Services Offered</h2>
+            <div class="services-tabs">
+                <div class="tab-headers">
+                    <div class="tab-header active" data-tab="office" data-i18n="corporateServices.services.tabs.office">Office Ceremonies</div>
+                    <div class="tab-header" data-tab="educational" data-i18n="corporateServices.services.tabs.educational">Educational Institutions</div>
+                    <div class="tab-header" data-tab="healthcare" data-i18n="corporateServices.services.tabs.healthcare">Healthcare Facilities</div>
+                    <div class="tab-header" data-tab="regular" data-i18n="corporateServices.services.tabs.regular">Regular Programs</div>
+                </div>
+                
+                <div class="tab-content active" id="office-tab">
+                    <h3><i class="fas fa-building"></i> <span data-i18n="corporateServices.services.office.title">Office & Workplace Ceremonies</span></h3>
+                    <ul>
+                        <li data-i18n="corporateServices.services.office.items[0]"><strong>Office Inauguration (Griha Pravesh):</strong> Complete Vastu puja for new office spaces</li>
+                        <li data-i18n="corporateServices.services.office.items[1]"><strong>Financial Year Beginning Puja:</strong> Auspicious start to the financial year with Lakshmi puja</li>
+                        <li data-i18n="corporateServices.services.office.items[2]"><strong>New Project Launch Ceremonies:</strong> Rituals for successful project initiation</li>
+                        <li data-i18n="corporateServices.services.office.items[3]"><strong>Team Building Havan:</strong> Group fire ceremonies for department harmony</li>
+                        <li data-i18n="corporateServices.services.office.items[4]"><strong>Vehicle Puja for Company Fleet:</strong> Blessing ceremonies for company vehicles</li>
+                        <li data-i18n="corporateServices.services.office.items[5]"><strong>Office Vastu Correction:</strong> Remedies for Vastu defects in workplace layout</li>
+                        <li data-i18n="corporateServices.services.office.items[6]"><strong>Annual Corporate Puja:</strong> Yearly ceremonies for continued prosperity</li>
+                    </ul>
+                </div>
+                
+                <div class="tab-content" id="educational-tab">
+                    <h3><i class="fas fa-graduation-cap"></i> <span data-i18n="corporateServices.services.educational.title">Schools & Educational Institutions</span></h3>
+                    <ul>
+                        <li data-i18n="corporateServices.services.educational.items[0]"><strong>Academic Year Beginning:</strong> Saraswati puja for students and teachers</li>
+                        <li data-i18n="corporateServices.services.educational.items[1]"><strong>Exam Success Ceremonies:</strong> Special pujas before important examinations</li>
+                        <li data-i18n="corporateServices.services.educational.items[2]"><strong>School/College Inauguration:</strong> Complete rituals for new educational buildings</li>
+                        <li data-i18n="corporateServices.services.educational.items[3]"><strong>Teacher's Day Celebrations:</strong> Guru pujan ceremonies</li>
+                        <li data-i18n="corporateServices.services.educational.items[4]"><strong>Student Orientation Programs:</strong> Spiritual orientation for new students</li>
+                        <li data-i18n="corporateServices.services.educational.items[5]"><strong>Library Inauguration:</strong> Saraswati puja for new libraries and resource centers</li>
+                        <li data-i18n="corporateServices.services.educational.items[6]"><strong>Sports Day Blessings:</strong> Ceremonies for school athletic events</li>
+                    </ul>
+                </div>
+                
+                <div class="tab-content" id="healthcare-tab">
+                    <h3><i class="fas fa-hospital"></i> <span data-i18n="corporateServices.services.healthcare.title">Healthcare & Hospital Services</span></h3>
+                    <ul>
+                        <li data-i18n="corporateServices.services.healthcare.items[0]"><strong>Hospital/Clinic Inauguration:</strong> Dhanvantari puja for healing spaces</li>
+                        <li data-i18n="corporateServices.services.healthcare.items[1]"><strong>Medical Equipment Blessing:</strong> Ceremonies for new medical equipment</li>
+                        <li data-i18n="corporateServices.services.healthcare.items[2]"><strong>Staff Well-being Programs:</strong> Wellness sessions for healthcare workers</li>
+                        <li data-i18n="corporateServices.services.healthcare.items[3]"><strong>Patient Healing Ceremonies:</strong> Rituals for patient recovery and comfort</li>
+                        <li data-i18n="corporateServices.services.healthcare.items[4]"><strong>Annual Health Check-up Camps:</strong> Combined with spiritual wellness sessions</li>
+                        <li data-i18n="corporateServices.services.healthcare.items[5]"><strong>Mental Health Department Puja:</strong> Special ceremonies for psychiatry units</li>
+                        <li data-i18n="corporateServices.services.healthcare.items[6]"><strong>Pharmacy/Lab Opening:</strong> Blessings for diagnostic and medicine facilities</li>
+                    </ul>
+                </div>
+                
+                <div class="tab-content" id="regular-tab">
+                    <h3><i class="fas fa-calendar-check"></i> <span data-i18n="corporateServices.services.regular.title">Regular Corporate Programs</span></h3>
+                    <ul>
+                        <li data-i18n="corporateServices.services.regular.items[0]"><strong>Monthly Office Havan:</strong> Regular fire ceremonies for continuous positive energy</li>
+                        <li data-i18n="corporateServices.services.regular.items[1]"><strong>Employee Wellness Workshops:</strong> Meditation, yoga, and spiritual wellness sessions</li>
+                        <li data-i18n="corporateServices.services.regular.items[2]"><strong>Festival Celebrations at Workplace:</strong> Diwali, Navratri, Ganesh Chaturthi celebrations</li>
+                        <li data-i18n="corporateServices.services.regular.items[3]"><strong>Leadership Spiritual Guidance:</strong> One-on-one sessions for executives and managers</li>
+                        <li data-i18n="corporateServices.services.regular.items[4]"><strong>Department-specific Ceremonies:</strong> Tailored rituals for sales, R&D, HR, etc.</li>
+                        <li data-i18n="corporateServices.services.regular.items[5]"><strong>Retirement & Farewell Ceremonies:</strong> Meaningful send-offs for retiring employees</li>
+                        <li data-i18n="corporateServices.services.regular.items[6]"><strong>New Employee Orientation:</strong> Welcoming rituals for new hires</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Corporate Clients -->
+        <section id="clients" class="corporate-clients">
+            <h2 class="section-title" data-i18n="corporateServices.clients.title">Serving Diverse Organizations</h2>
+            <div class="clients-grid">
+                <div class="client-card">
+                    <div class="client-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h4 data-i18n="corporateServices.clients.types[0]">IT Companies</h4>
+                </div>
+                
+                <div class="client-card">
+                    <div class="client-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h4 data-i18n="corporateServices.clients.types[1]">Banks & Financial Institutions</h4>
+                </div>
+                
+                <div class="client-card">
+                    <div class="client-icon">
+                        <i class="fas fa-school"></i>
+                    </div>
+                    <h4 data-i18n="corporateServices.clients.types[2]">Schools & Colleges</h4>
+                </div>
+                
+                <div class="client-card">
+                    <div class="client-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h4 data-i18n="corporateServices.clients.types[3]">Manufacturing Units</h4>
+                </div>
+                
+                <div class="client-card">
+                    <div class="client-icon">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <h4 data-i18n="corporateServices.clients.types[4]">Retail Chains</h4>
+                </div>
+                
+                <div class="client-card">
+                    <div class="client-icon">
+                        <i class="fas fa-hotel"></i>
+                    </div>
+                    <h4 data-i18n="corporateServices.clients.types[5]">Hospitality Industry</h4>
+                </div>
+                
+                <div class="client-card">
+                    <div class="client-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h4 data-i18n="corporateServices.clients.types[6]">Logistics Companies</h4>
+                </div>
+                
+                <div class="client-card">
+                    <div class="client-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h4 data-i18n="corporateServices.clients.types[7]">Healthcare Providers</h4>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Process Section -->
+        <section id="process" class="process-section">
+            <h2 class="section-title" data-i18n="corporateServices.process.title">Our Corporate Service Process</h2>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3 data-i18n="corporateServices.process.step1.title">Needs Assessment</h3>
+                    <p data-i18n="corporateServices.process.step1.desc">We understand your organization's specific requirements, culture, and objectives.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3 data-i18n="corporateServices.process.step2.title">Customized Proposal</h3>
+                    <p data-i18n="corporateServices.process.step2.desc">We design a tailored package of services that aligns with your corporate goals.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3 data-i18n="corporateServices.process.step3.title">Logistics Planning</h3>
+                    <p data-i18n="corporateServices.process.step3.desc">We coordinate dates, times, materials, and space requirements with your team.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3 data-i18n="corporateServices.process.step4.title">Ceremony Execution</h3>
+                    <p data-i18n="corporateServices.process.step4.desc">Our experienced priests conduct the ceremonies with minimal disruption to work.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <h3 data-i18n="corporateServices.process.step5.title">Follow-up & Feedback</h3>
+                    <p data-i18n="corporateServices.process.step5.desc">We gather feedback and plan ongoing programs for continuous benefit.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Testimonial -->
+        <section class="testimonial">
+            <div class="testimonial-content" data-i18n="corporateServices.testimonial.content">
+                "After implementing regular monthly havans at our corporate office, we've noticed a significant improvement in team collaboration and a 30% reduction in employee attrition. The positive energy is palpable, and our clients often comment on the unique, peaceful atmosphere of our workspace."
+            </div>
+            <div class="testimonial-author">
+                <div class="author-avatar"></div>
+                <div class="author-info">
+                    <h4 data-i18n="corporateServices.testimonial.author">Mr. Rajesh Kumar</h4>
+                    <p data-i18n="corporateServices.testimonial.authorDesc">HR Director, TechSolutions Inc.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CTA Section -->
+        <section class="service-cta">
+            <h2 data-i18n="corporateServices.cta.title">Transform Your Workplace with Vedic Wisdom</h2>
+            <p data-i18n="corporateServices.cta.desc">Enhance productivity, harmony, and success in your organization with our specialized corporate Vedic services. Suitable for offices, schools, hospitals, and all types of institutions.</p>
+            <a href="https://forms.gle/3BhwSbXcugDf7WBYA" class="service-btn service-btn-large">
+                <i class="fas fa-building"></i> <span data-i18n="corporateServices.cta.button">Book Corporate Service</span>
+            </a>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="service-footer">
+        <div class="container">
+            <div class="footer-content">
+                <h3 data-i18n="corporateServices.footer.title">Corporate Services Inquiry</h3>
+                <p data-i18n="corporateServices.footer.desc">Contact us for a customized proposal tailored to your organization's specific needs.</p>
+                
+                <div class="contact-info">
+                    <div>
+                        <i class="fas fa-phone-alt"></i>
+                        <span data-i18n="corporateServices.footer.phone">Corporate Desk: +91-XXXXXX-XXXX</span>
+                    </div>
+                    <div>
+                        <i class="fas fa-envelope"></i>
+                        <span data-i18n="corporateServices.footer.email">corporate@vedicservices.com</span>
+                    </div>
+                    <div>
+                        <i class="fas fa-clock"></i>
+                        <span data-i18n="corporateServices.footer.hours">Mon-Fri: 9 AM - 6 PM</span>
+                    </div>
+                </div>
+                
+                <p class="copyright" data-i18n="corporateServices.footer.copyright">© 2023 Vedic Services. Corporate Division. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Language Switcher Script -->
+    <script>
+        // Language Switcher Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const floatingLangToggle = document.getElementById('floatingLangToggle');
+            const floatingLangOptions = document.getElementById('floatingLangOptions');
+
+            if (floatingLangToggle) {
+                floatingLangToggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    floatingLangOptions.classList.toggle('show');
+                });
+
+                document.addEventListener('click', function(e) {
+                    if (!floatingLangToggle.contains(e.target) && !floatingLangOptions.contains(e.target)) {
+                        floatingLangOptions.classList.remove('show');
+                    }
+                });
+
+                floatingLangOptions.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+            }
+        });
+    </script>
+
+    <script>
+        // Tab functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabHeaders = document.querySelectorAll('.tab-header');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    // Get the tab ID
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Remove active class from all headers and contents
+                    tabHeaders.forEach(h => h.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+                    
+                    // Add active class to clicked header
+                    this.classList.add('active');
+                    
+                    // Show corresponding content
+                    const activeTab = document.getElementById(tabId + '-tab');
+                    if (activeTab) {
+                        activeTab.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

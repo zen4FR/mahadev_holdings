@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="services.onlinePuja.title">Online Puja Booking - Sacred Vedic Rituals from Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="js/i18n.js" defer></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f5f0;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Floating Language Switcher */
+        .floating-language-switcher {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+            width: auto;
+            max-width: 90vw;
+        }
+
+        .floating-lang-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .floating-lang-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .lang-icon {
+            font-size: 20px;
+        }
+
+        .lang-label {
+            font-size: 15px;
+        }
+
+        .floating-lang-options {
+            position: absolute;
+            bottom: 100%;
+            right: 0;
+            margin-bottom: 10px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            padding: 12px;
+            display: none;
+            flex-direction: column;
+            gap: 8px;
+            width: 200px;
+            z-index: 10000;
+        }
+
+        .floating-lang-options.show {
+            display: flex;
+        }
+
+        .floating-lang-option {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .floating-lang-option:hover {
+            background: #f5f5f5;
+            border-color: #667eea;
+        }
+
+        .floating-lang-option.active .floating-lang-check {
+            opacity: 1;
+        }
+
+        .floating-lang-check {
+            color: #667eea;
+            font-weight: bold;
+            font-size: 18px;
+            opacity: 0;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: #000000;
+            position: sticky;
+            top: 0;
+            z-index: 1001;
+            padding: 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            height: 80px;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar__container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 100%;
+        }
+
+        #navbar__logo {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            z-index: 1002;
+        }
+
+        .navbar__logo-img {
+            height: 60px;
+            width: auto;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .navbar__menu {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 25px;
+        }
+
+        .navbar__item {
+            height: 80px;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar__links {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            height: 100%;
+            padding: 0 1rem;
+        }
+
+        .navbar__links:hover {
+            color: #ff0844;
+        }
+
+        .navbar__toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+            background: none;
+            border: none;
+            padding: 10px;
+            z-index: 1002;
+        }
+
+        .bar {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        /* Service Detail Section */
+        .service-detail {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: #666;
+            text-decoration: none;
+            margin-bottom: 20px;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: #ff6b35;
+        }
+
+        .service-detail h1 {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .detail-image {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .detail-content {
+            background: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .detail-content h2 {
+            font-size: 28px;
+            color: #444;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-left: 4px solid #ff6b35;
+            padding-left: 15px;
+        }
+
+        .detail-content h2:first-of-type {
+            margin-top: 0;
+        }
+
+        .detail-content p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .detail-content ul,
+        .detail-content ol {
+            margin-left: 30px;
+            margin-bottom: 25px;
+        }
+
+        .detail-content li {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .detail-content ul li {
+            list-style-type: disc;
+        }
+
+        .detail-content ol li {
+            list-style-type: decimal;
+        }
+
+        /* Service title link styles */
+        .service-title-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: color 0.3s ease;
+        }
+
+        .service-title-link:hover {
+            color: #ff6b35;
+        }
+
+        .service-title-link:hover h2 {
+            text-decoration: underline;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            margin-top: 50px;
+            padding: 40px 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #ff6b35;
+            color: white;
+            padding: 15px 40px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .cta-button:hover {
+            background-color: #e55a28;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #8B0000, #1a2a6c, #8B0000);
+            color: #fff;
+            padding-top: 70px;
+            margin-top: 80px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+        }
+
+        .footer-section h3 {
+            color: #FFD700;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h3::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background: #FFD700;
+        }
+
+        .footer-section p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: #FFD700;
+            padding-left: 6px;
+        }
+
+        .footer-bottom {
+            margin-top: 50px;
+            padding: 20px 0;
+            background: rgba(0,0,0,0.4);
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.9);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar__container {
+                padding: 0 15px;
+            }
+
+            .navbar__logo-img {
+                height: 50px;
+            }
+
+            .navbar__menu {
+                position: fixed;
+                left: -100%;
+                top: 80px;
+                flex-direction: column;
+                background: #000000;
+                width: 100%;
+                height: calc(100vh - 80px);
+                text-align: center;
+                transition: 0.3s;
+                padding: 20px 0;
+                gap: 0;
+                z-index: 1000;
+                overflow-y: auto;
+                display: flex;
+                visibility: hidden;
+                opacity: 0;
+                transition: all 0.4s ease;
+            }
+
+            .navbar__menu.active {
+                left: 0;
+                visibility: visible;
+                opacity: 1;
+            }
+
+            .navbar__item {
+                height: auto;
+                width: 100%;
+            }
+
+            .navbar__links {
+                padding: 20px;
+                display: block;
+                font-size: 18px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .navbar__toggle {
+                display: flex;
+            }
+
+            .navbar__toggle.active .bar:nth-child(1) {
+                transform: translateY(7px) rotate(45deg);
+            }
+
+            .navbar__toggle.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .navbar__toggle.active .bar:nth-child(3) {
+                transform: translateY(-7px) rotate(-45deg);
+            }
+
+            .service-detail h1 {
+                font-size: 28px;
+            }
+
+            .detail-content {
+                padding: 25px;
+            }
+
+            .detail-content h2 {
+                font-size: 24px;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-section h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .floating-language-switcher {
+                bottom: 15px;
+                right: 15px;
+            }
+
+            .floating-lang-btn {
+                padding: 12px 18px;
+            }
+
+            .lang-label {
+                display: none;
+            }
+
+            .floating-lang-btn .lang-icon {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Language Switcher -->
+    <div class="floating-language-switcher">
+        <button class="floating-lang-btn" id="floatingLangToggle">
+            <span class="lang-icon">🌐</span>
+            <span class="lang-label" data-i18n="language.select">Choose Language</span>
+        </button>
+        <div class="floating-lang-options" id="floatingLangOptions">
+            <div class="floating-lang-option" data-lang="en">
+                <span class="floating-lang-text" data-i18n="language.english">English</span>
+                <span class="floating-lang-check">✓</span>
+            </div>
+            <div class="floating-lang-option" data-lang="ne">
+                <span class="floating-lang-text" data-i18n="language.nepali">नेपाली</span>
+                <span class="floating-lang-check">✓</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar__container">
+            <a href="index.html" id="navbar__logo">
+                <img src="images/pb-logo.png" alt="Purohit Baaje Logo" class="navbar__logo-img">
+            </a>
+
+            <div class="navbar__toggle" id="mobile-menu">
+               <span class="bar"></span>
+               <span class="bar"></span>
+               <span class="bar"></span>
+            </div>
+
+            <ul class="navbar__menu">
+                <li class="navbar__item">
+                    <a href="index.html" class="navbar__links" data-i18n="nav.home">Home</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="team.html" class="navbar__links" data-i18n="nav.team">Team</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Service Detail Section -->
+    <section class="service-detail">
+        <div class="container">
+            <a href="index.html#services" class="back-link" data-i18n="nav.backToServices">← Back to Services</a>
+            
+            <h1 data-i18n="services.onlinePuja.title">Online Puja Booking</h1>
+            
+            <img src="images/online-puja.jpg" alt="Online Puja Booking" class="detail-image">
+            
+            <div class="detail-content">
+                <h2 data-i18n="onlinePuja.about.title">About This Service</h2>
+                <p data-i18n="onlinePuja.about.desc">Our Online Puja Booking service allows you to perform sacred Vedic rituals from the comfort of your home, no matter where you are in the world. Our experienced and qualified priests conduct authentic ceremonies with proper Vedic mantras and rituals.</p>
+                
+                <a href="#included" class="service-title-link">
+                    <h2 data-i18n="onlinePuja.included.title">What's Included</h2>
+                </a>
+                <ul>
+                    <li data-i18n="onlinePuja.included.items[0]">Personalized puja conducted by experienced Vedic priests</li>
+                    <li data-i18n="onlinePuja.included.items[1]">Live streaming of the entire ceremony</li>
+                    <li data-i18n="onlinePuja.included.items[2]">Prasad delivered to your doorstep</li>
+                    <li data-i18n="onlinePuja.included.items[3]">Digital certificate of puja completion</li>
+                    <li data-i18n="onlinePuja.included.items[4]">Recording of the ceremony for your records</li>
+                </ul>
+                
+                <a href="#popular" class="service-title-link">
+                    <h2 data-i18n="onlinePuja.popular.title">Popular Pujas Available</h2>
+                </a>
+                <ul>
+                    <li data-i18n="onlinePuja.popular.items[0]">Satyanarayan Puja</li>
+                    <li data-i18n="onlinePuja.popular.items[1]">Lakshmi Puja</li>
+                    <li data-i18n="onlinePuja.popular.items[2]">Ganesh Puja</li>
+                    <li data-i18n="onlinePuja.popular.items[3]">Navgraha Shanti Puja</li>
+                    <li data-i18n="onlinePuja.popular.items[4]">Special occasion pujas</li>
+                </ul>
+                
+                <a href="#how-it-works" class="service-title-link">
+                    <h2 data-i18n="onlinePuja.howItWorks.title">How It Works</h2>
+                </a>
+                <ol>
+                    <li data-i18n="onlinePuja.howItWorks.steps[0]">Fill out the booking form with your details and puja requirements</li>
+                    <li data-i18n="onlinePuja.howItWorks.steps[1]">Choose your preferred date and time</li>
+                    <li data-i18n="onlinePuja.howItWorks.steps[2]">Receive confirmation and priest assignment</li>
+                    <li data-i18n="onlinePuja.howItWorks.steps[3]">Join the live ceremony via video link</li>
+                    <li data-i18n="onlinePuja.howItWorks.steps[4]">Receive prasad and blessings</li>
+                </ol>
+                
+                <a href="#why-choose" class="service-title-link">
+                    <h2 data-i18n="onlinePuja.whyChoose.title">Why Choose Our Online Puja Service?</h2>
+                </a>
+                <ul>
+                    <li data-i18n="onlinePuja.whyChoose.items[0]">Authentic Vedic rituals performed by qualified priests</li>
+                    <li data-i18n="onlinePuja.whyChoose.items[1]">Convenient and accessible from anywhere</li>
+                    <li data-i18n="onlinePuja.whyChoose.items[2]">Traditional ceremonies with modern technology</li>
+                    <li data-i18n="onlinePuja.whyChoose.items[3]">Affordable pricing with transparent costs</li>
+                    <li data-i18n="onlinePuja.whyChoose.items[4]">Personal attention and customization</li>
+                </ul>
+                
+                <div class="cta-section">
+                    <a href="https://forms.gle/3BhwSbXcugDf7WBYA" class="cta-button" data-i18n="services.onlinePuja.button">Book Your Puja Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- About Section -->
+            <div class="footer-section">
+                <h3 data-i18n="footer.about.title">About Purohit Baaje</h3>
+                <p data-i18n="footer.about.description">Purohit Baaje is the leading digital platform for all Hindu devotional needs and spiritual services.</p>
+            </div>
+            
+            <!-- Quick Links -->
+            <div class="footer-section">
+                <h3 data-i18n="footer.quickLinks.title">Quick Links</h3>
+                <ul>
+                    <li><a href="online-puja.html" data-i18n="footer.quickLinks.onlinePuja">Online Puja Booking</a></li>
+                    <li><a href="kriya-putri-bhawan.html" data-i18n="footer.quickLinks.templePuja">Temple Puja Booking</a></li>
+                    <li><a href="priest-services.html" data-i18n="footer.quickLinks.priestBooking">Priest Booking</a></li>
+                    <li><a href="astrology-consultation.html" data-i18n="footer.quickLinks.vedicBlessings">Vedic Blessings</a></li>
+                    <li><a href="contact.html" data-i18n="footer.quickLinks.contact">Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <!-- Pujas -->
+            <div class="footer-section">
+                <h3 data-i18n="footer.pujas.title">Pujas</h3>
+                <ul>
+                    <li><a href="online-puja.html" data-i18n="footer.pujas.birth">Birth Puja</a></li>
+                    <li><a href="online-puja.html" data-i18n="footer.pujas.shraddha">Shraddha Puja</a></li>
+                </ul>
+            </div>
+            
+            <!-- Management -->
+            <div class="footer-section">
+                <h3 data-i18n="footer.management.title">Puja Management</h3>
+                <p data-i18n="footer.management.description">We provide complete puja management services to our clients. A single point of contact for all your religious needs.</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p data-i18n="footer.copyright">© 2023 Purohit Baaje. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Combined Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu Toggle
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navbarMenu = document.querySelector('.navbar__menu');
+            
+            if (mobileMenu && navbarMenu) {
+                mobileMenu.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    this.classList.toggle('active');
+                    navbarMenu.classList.toggle('active');
+                    
+                    if (navbarMenu.classList.contains('active')) {
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        document.body.style.overflow = '';
+                    }
+                });
+
+                document.querySelectorAll('.navbar__links').forEach(link => {
+                    link.addEventListener('click', function() {
+                        mobileMenu.classList.remove('active');
+                        navbarMenu.classList.remove('active');
+                        document.body.style.overflow = '';
+                    });
+                });
+            }
+
+            // Language Switcher Toggle
+            const floatingLangToggle = document.getElementById('floatingLangToggle');
+            const floatingLangOptions = document.getElementById('floatingLangOptions');
+
+            if (floatingLangToggle) {
+                floatingLangToggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    floatingLangOptions.classList.toggle('show');
+                });
+
+                document.addEventListener('click', function(e) {
+                    if (!floatingLangToggle.contains(e.target) && !floatingLangOptions.contains(e.target)) {
+                        floatingLangOptions.classList.remove('show');
+                    }
+                });
+
+                floatingLangOptions.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+            }
+
+            // Close menus on escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    if (navbarMenu && navbarMenu.classList.contains('active')) {
+                        navbarMenu.classList.remove('active');
+                        mobileMenu.classList.remove('active');
+                        document.body.style.overflow = '';
+                    }
+                    if (floatingLangOptions && floatingLangOptions.classList.contains('show')) {
+                        floatingLangOptions.classList.remove('show');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

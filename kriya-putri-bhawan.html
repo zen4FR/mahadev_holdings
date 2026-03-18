@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="services.kriyaPutri.title">Kriya Putri Bhawan Booking - Sacred Space for Rituals</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="js/i18n.js" defer></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        /* Floating Language Switcher */
+        .floating-language-switcher {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+            width: auto;
+            max-width: 90vw;
+        }
+
+        .floating-lang-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .floating-lang-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .lang-icon {
+            font-size: 20px;
+        }
+
+        .lang-label {
+            font-size: 15px;
+        }
+
+        .floating-lang-options {
+            position: absolute;
+            bottom: 100%;
+            right: 0;
+            margin-bottom: 10px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            padding: 12px;
+            display: none;
+            flex-direction: column;
+            gap: 8px;
+            width: 200px;
+            z-index: 10000;
+        }
+
+        .floating-lang-options.show {
+            display: flex;
+        }
+
+        .floating-lang-option {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .floating-lang-option:hover {
+            background: #f5f5f5;
+            border-color: #667eea;
+        }
+
+        .floating-lang-option.active .floating-lang-check {
+            opacity: 1;
+        }
+
+        .floating-lang-check {
+            color: #667eea;
+            font-weight: bold;
+            font-size: 18px;
+            opacity: 0;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #8B4513;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .hero-section h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .hero-section p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Service Detail Section */
+        .service-detail {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            margin-top: -30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .back-link {
+            display: inline-block;
+            color: #666;
+            text-decoration: none;
+            margin-bottom: 30px;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: #8B4513;
+        }
+
+        .detail-image {
+            width: 100%;
+            max-width: 900px;
+            height: auto;
+            border-radius: 10px;
+            margin: 30px auto;
+            display: block;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+
+        .detail-content {
+            padding: 20px;
+        }
+
+        .detail-content h2 {
+            font-size: 32px;
+            color: #8B4513;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #D2691E;
+            padding-bottom: 10px;
+        }
+
+        .detail-content p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .detail-content ul,
+        .detail-content ol {
+            margin-left: 30px;
+            margin-bottom: 25px;
+        }
+
+        .detail-content li {
+            font-size: 17px;
+            line-height: 1.9;
+            color: #555;
+            margin-bottom: 12px;
+        }
+
+        .detail-content ol li {
+            font-weight: 500;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .feature-card {
+            background-color: #fff8f0;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid #8B4513;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card h3 {
+            color: #8B4513;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            font-size: 16px;
+            margin: 0;
+        }
+
+        /* Service title link styles */
+        .service-title-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: color 0.3s ease;
+        }
+
+        .service-title-link:hover {
+            color: #8B4513;
+        }
+
+        .service-title-link:hover h2,
+        .service-title-link:hover h3 {
+            text-decoration: underline;
+        }
+
+        /* Info Box */
+        .info-box {
+            background-color: #e8f5e9;
+            border-left: 5px solid #4caf50;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 5px;
+        }
+
+        .info-box h3 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+        }
+
+        .warning-box {
+            background-color: #fff3e0;
+            border-left: 5px solid #ff9800;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 5px;
+        }
+
+        .warning-box h3 {
+            color: #e65100;
+            margin-bottom: 10px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            margin-top: 60px;
+            padding: 50px 20px;
+            background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);
+            border-radius: 10px;
+        }
+
+        .cta-section h2 {
+            color: white;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #ffd700;
+            color: #8B4513;
+            padding: 18px 50px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            background-color: #ffed4e;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        footer a {
+            color: #ffd700;
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-section h1 {
+                font-size: 32px;
+            }
+
+            .hero-section p {
+                font-size: 18px;
+            }
+
+            .detail-content h2 {
+                font-size: 26px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .floating-language-switcher {
+                bottom: 15px;
+                right: 15px;
+            }
+
+            .floating-lang-btn {
+                padding: 12px 18px;
+            }
+
+            .lang-label {
+                display: none;
+            }
+
+            .floating-lang-btn .lang-icon {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Language Switcher -->
+    <div class="floating-language-switcher">
+        <button class="floating-lang-btn" id="floatingLangToggle">
+            <span class="lang-icon">🌐</span>
+            <span class="lang-label" data-i18n="language.select">Choose Language</span>
+        </button>
+        <div class="floating-lang-options" id="floatingLangOptions">
+            <div class="floating-lang-option" data-lang="en">
+                <span class="floating-lang-text" data-i18n="language.english">English</span>
+                <span class="floating-lang-check">✓</span>
+            </div>
+            <div class="floating-lang-option" data-lang="ne">
+                <span class="floating-lang-text" data-i18n="language.nepali">नेपाली</span>
+                <span class="floating-lang-check">✓</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo" data-i18n="kriyaPutri.logo">🕉️ Temple Services</a>
+            <ul class="nav-links">
+                <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+                <li><a href="index.html#services" data-i18n="nav.services">Services</a></li>
+                <li><a href="index.html#about" data-i18n="kriyaPutri.about">About</a></li>
+                <li><a href="index.html#contact" data-i18n="kriyaPutri.contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <h1 data-i18n="services.kriyaPutri.title">Kriya Putri Bhawan Booking</h1>
+        <p data-i18n="kriyaPutri.subtitle">Sacred Space for Traditional Vedic Ceremonies and Rituals</p>
+    </section>
+
+    <!-- Service Detail Section -->
+    <section class="service-detail">
+        <a href="index.html#services" class="back-link" data-i18n="nav.backToServices">← Back to All Services</a>
+        
+        <img src="images/temple-puja.jpg" alt="Kriya Putri Bhawan" class="detail-image">
+        
+        <div class="detail-content">
+            <h2 data-i18n="kriyaPutri.about.title">About Kriya Putri Bhawan</h2>
+            <p data-i18n="kriyaPutri.about.desc1">Kriya Putri Bhawan is a sacred and specially designed space dedicated to performing traditional Vedic ceremonies, pujas, havan, and various samskaras. Our bhawan provides a serene, purified environment that enhances the spiritual efficacy of all rituals performed within its walls.</p>
+            
+            <p data-i18n="kriyaPutri.about.desc2">Built according to Vastu Shastra principles and consecrated with proper Vedic rituals, Kriya Putri Bhawan offers devotees an authentic setting for conducting important life ceremonies, religious observances, and spiritual practices. The space is maintained with utmost sanctity and is available for booking by families and communities for their auspicious occasions.</p>
+
+            <h2 data-i18n="kriyaPutri.features.title">Features & Amenities</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <a href="#sacred-architecture" class="service-title-link">
+                        <h3 data-i18n="kriyaPutri.features.architecture.title">🏛️ Sacred Architecture</h3>
+                    </a>
+                    <p data-i18n="kriyaPutri.features.architecture.desc">Built as per Vastu Shastra principles with proper directional alignment for maximum spiritual benefit</p>
+                </div>
+                <div class="feature-card">
+                    <a href="#havan-kund" class="service-title-link">
+                        <h3 data-i18n="kriyaPutri.features.havan.title">🔥 Havan Kund</h3>
+                    </a>
+                    <p data-i18n="kriyaPutri.features.havan.desc">Traditional fire altar with proper ventilation system for conducting havan ceremonies</p>
+                </div>
+                <div class="feature-card">
+                    <a href="#puja-essentials" class="service-title-link">
+                        <h3 data-i18n="kriyaPutri.features.essentials.title">🪔 Puja Essentials</h3>
+                    </a>
+                    <p data-i18n="kriyaPutri.features.essentials.desc">Equipped with all necessary ritual items, deity idols, and ceremonial equipment</p>
+                </div>
+                <div class="feature-card">
+                    <a href="#seating" class="service-title-link">
+                        <h3 data-i18n="kriyaPutri.features.seating.title">👨‍👩‍👧‍👦 Seating Capacity</h3>
+                    </a>
+                    <p data-i18n="kriyaPutri.features.seating.desc">Comfortable seating for up to 50-100 guests depending on the ceremony</p>
+                </div>
+                <div class="feature-card">
+                    <a href="#audio" class="service-title-link">
+                        <h3 data-i18n="kriyaPutri.features.audio.title">🔊 Audio System</h3>
+                    </a>
+                    <p data-i18n="kriyaPutri.features.audio.desc">Quality sound system for bhajans, mantras, and ceremonial announcements</p>
+                </div>
+                <div class="feature-card">
+                    <a href="#facilities" class="service-title-link">
+                        <h3 data-i18n="kriyaPutri.features.facilities.title">🚿 Facilities</h3>
+                    </a>
+                    <p data-i18n="kriyaPutri.features.facilities.desc">Clean washrooms, preparation area, and waiting space for devotees</p>
+                </div>
+            </div>
+
+            <h2 data-i18n="kriyaPutri.included.title">What's Included in the Booking</h2>
+            <ul>
+                <li data-i18n="kriyaPutri.included.items[0]"><strong>Full access to Kriya Putri Bhawan</strong> for the booked time duration</li>
+                <li data-i18n="kriyaPutri.included.items[1]"><strong>Basic puja items and materials</strong> including incense, flowers, and lamps</li>
+                <li data-i18n="kriyaPutri.included.items[2]"><strong>Havan kund and fire altar</strong> prepared and ready for ceremonies</li>
+                <li data-i18n="kriyaPutri.included.items[3]"><strong>Clean and purified space</strong> maintained according to traditional standards</li>
+                <li data-i18n="kriyaPutri.included.items[4]"><strong>Seating arrangements</strong> for guests and participants</li>
+                <li data-i18n="kriyaPutri.included.items[5]"><strong>Audio system</strong> for chanting and devotional music</li>
+                <li data-i18n="kriyaPutri.included.items[6]"><strong>Support staff</strong> to assist with setup and basic arrangements</li>
+                <li data-i18n="kriyaPutri.included.items[7]"><strong>Parking facility</strong> for vehicles (subject to availability)</li>
+            </ul>
+
+            <h2 data-i18n="kriyaPutri.ceremonies.title">Ceremonies Suitable for Kriya Putri Bhawan</h2>
+            <ul>
+                <li data-i18n="kriyaPutri.ceremonies.items[0]"><strong>Samskaras:</strong> Thread ceremony (Upanayana), Naming ceremony, First feeding, etc.</li>
+                <li data-i18n="kriyaPutri.ceremonies.items[1]"><strong>Puja & Havan:</strong> Satyanarayan Puja, Navgraha Shanti, Rudrabhishek, etc.</li>
+                <li data-i18n="kriyaPutri.ceremonies.items[2]"><strong>Special Occasions:</strong> Birthday celebrations, Anniversary pujas, House warming</li>
+                <li data-i18n="kriyaPutri.ceremonies.items[3]"><strong>Shraadh Karma:</strong> Ancestral rites and remembrance ceremonies</li>
+                <li data-i18n="kriyaPutri.ceremonies.items[4]"><strong>Vratam:</strong> Observance of religious vows and fasting rituals</li>
+                <li data-i18n="kriyaPutri.ceremonies.items[5]"><strong>Community Events:</strong> Bhajan sessions, Satsang, Katha recitation</li>
+                <li data-i18n="kriyaPutri.ceremonies.items[6]"><strong>Seasonal Festivals:</strong> Durga Puja, Lakshmi Puja, Saraswati Puja, etc.</li>
+            </ul>
+
+            <h2 data-i18n="kriyaPutri.howToBook.title">How to Book Kriya Putri Bhawan</h2>
+            <ol>
+                <li data-i18n="kriyaPutri.howToBook.steps[0]"><strong>Check Availability:</strong> Click the booking button and fill out the form with your preferred date and time</li>
+                <li data-i18n="kriyaPutri.howToBook.steps[1]"><strong>Provide Details:</strong> Specify the type of ceremony, number of expected guests, and any special requirements</li>
+                <li data-i18n="kriyaPutri.howToBook.steps[2]"><strong>Confirmation:</strong> Our team will verify availability and send you a confirmation within 24 hours</li>
+                <li data-i18n="kriyaPutri.howToBook.steps[3]"><strong>Advance Payment:</strong> A booking deposit is required to secure your reservation</li>
+                <li data-i18n="kriyaPutri.howToBook.steps[4]"><strong>Preparation:</strong> Discuss your specific needs with our coordinator before the event</li>
+                <li data-i18n="kriyaPutri.howToBook.steps[5]"><strong>Day of Event:</strong> Arrive 30 minutes early for final setup and preparation</li>
+            </ol>
+
+            <div class="info-box">
+                <h3 data-i18n="kriyaPutri.priestServices.title">💡 Priest Services Available</h3>
+                <p data-i18n="kriyaPutri.priestServices.desc">Need an experienced priest for your ceremony? We can arrange qualified Vedic priests well-versed in all traditional rituals. Priest services can be booked separately or as part of a package with the bhawan booking.</p>
+            </div>
+
+            <div class="warning-box">
+                <h3 data-i18n="kriyaPutri.guidelines.title">⚠️ Booking Guidelines</h3>
+                <p data-i18n="kriyaPutri.guidelines.advance"><strong>Advance Notice:</strong> Please book at least 7-10 days in advance for regular ceremonies, and 15-20 days for major events.</p>
+                <p data-i18n="kriyaPutri.guidelines.cancellation"><strong>Cancellation Policy:</strong> Cancellations made 48 hours before the booking are eligible for refund (minus processing fee).</p>
+                <p data-i18n="kriyaPutri.guidelines.slots"><strong>Time Slots:</strong> Standard slots are 3-4 hours. Extended bookings available on request.</p>
+            </div>
+
+            <h2 data-i18n="kriyaPutri.whyChoose.title">Why Choose Our Kriya Putri Bhawan?</h2>
+            <ul>
+                <li data-i18n="kriyaPutri.whyChoose.items[0]"><strong>Authentic Vedic Environment:</strong> Space designed and consecrated specifically for religious ceremonies</li>
+                <li data-i18n="kriyaPutri.whyChoose.items[1]"><strong>Complete Privacy:</strong> Exclusive use of the bhawan during your booked time</li>
+                <li data-i18n="kriyaPutri.whyChoose.items[2]"><strong>Central Location:</strong> Easy to access with ample parking facilities</li>
+                <li data-i18n="kriyaPutri.whyChoose.items[3]"><strong>Maintained Sanctity:</strong> Regular purification rituals ensure the space remains spiritually charged</li>
+                <li data-i18n="kriyaPutri.whyChoose.items[4]"><strong>Affordable Rates:</strong> Reasonable pricing with transparent costs and no hidden charges</li>
+                <li data-i18n="kriyaPutri.whyChoose.items[5]"><strong>Experienced Support:</strong> Our team has decades of experience in facilitating religious ceremonies</li>
+                <li data-i18n="kriyaPutri.whyChoose.items[6]"><strong>Flexible Timing:</strong> Morning and evening slots available to suit your requirements</li>
+                <li data-i18n="kriyaPutri.whyChoose.items[7]"><strong>All-Inclusive Options:</strong> Package deals available with priest services and puja materials</li>
+            </ul>
+
+            <h2 data-i18n="kriyaPutri.testimonials.title">Testimonials</h2>
+            <div class="info-box">
+                <p><em data-i18n="kriyaPutri.testimonials.first.content">"We booked Kriya Putri Bhawan for our son's thread ceremony. The space was perfect - clean, well-maintained, and truly spiritual. The arrangements were excellent and our guests were very impressed."</em></p>
+                <p><strong data-i18n="kriyaPutri.testimonials.first.author">- Ramesh & Sita Sharma</strong></p>
+            </div>
+
+            <div class="info-box">
+                <p><em data-i18n="kriyaPutri.testimonials.second.content">"Conducting our family's annual puja at this bhawan has been a blessing. The peaceful atmosphere and proper facilities make it ideal for any religious ceremony. Highly recommended!"</em></p>
+                <p><strong data-i18n="kriyaPutri.testimonials.second.author">- Pradeep Kumar</strong></p>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="cta-section">
+                <h2 data-i18n="kriyaPutri.cta.title">Ready to Book Kriya Putri Bhawan?</h2>
+                <p style="color: white; font-size: 18px; margin-bottom: 30px;" data-i18n="kriyaPutri.cta.subtitle">Reserve your preferred date and time for your sacred ceremony</p>
+                <a href="https://forms.gle/3BhwSbXcugDf7WBYA" class="cta-button" data-i18n="services.onlinePuja.button">Book Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p data-i18n="kriyaPutri.footer.copyright">© 2024 Temple Services. All Rights Reserved.</p>
+        <p data-i18n="kriyaPutri.footer.contact">Contact us: <a href="mailto:info@templeservices.com">info@templeservices.com</a> | Phone: +977-XXX-XXXX</p>
+    </footer>
+
+    <!-- Language Switcher Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const floatingLangToggle = document.getElementById('floatingLangToggle');
+            const floatingLangOptions = document.getElementById('floatingLangOptions');
+
+            if (floatingLangToggle) {
+                floatingLangToggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    floatingLangOptions.classList.toggle('show');
+                });
+
+                document.addEventListener('click', function(e) {
+                    if (!floatingLangToggle.contains(e.target) && !floatingLangOptions.contains(e.target)) {
+                        floatingLangOptions.classList.remove('show');
+                    }
+                });
+
+                floatingLangOptions.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+            }
+        });
+    </script>
+</body>
+</html>

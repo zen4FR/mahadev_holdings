@@ -432,6 +432,7 @@
     display: flex;
     align-items: center;
     gap: 40px;
+    margin-bottom: 200px;
 }
 
 .karthika-content {
@@ -451,7 +452,7 @@
 
 .karthika-description {
     line-height: 1.7;
-    margin-bottom: 25px;
+    margin-bottom: 3rem; /* Adjust value as needed */
     font-size: 1.1rem;
 }
 
@@ -483,114 +484,7 @@
     height: auto;
     display: block;
 }
-/* ----------------------------- */
-/*       PUJAS SECTION          */
-/* ----------------------------- */
 
-.pujas-section {
-    padding: 80px 50px;
-    background: white;
-}
-
-.pujas-container {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.puja-card {
-    background: #f8f9fa;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    border-left: 5px solid #ff0844;
-}
-
-.puja-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-}
-
-.puja-image {
-    flex: 0 0 300px;
-    overflow: hidden;
-}
-
-.puja-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.puja-card:hover .puja-image img {
-    transform: scale(1.05);
-}
-
-.puja-content {
-    flex: 1;
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.puja-title {
-    font-size: 1.8rem;
-    color: #131313;
-    margin-bottom: 15px;
-    font-weight: bold;
-}
-
-.puja-description {
-    color: #666;
-    line-height: 1.7;
-    margin-bottom: 25px;
-    font-size: 1.1rem;
-    flex-grow: 1;
-}
-
-.puja-buttons {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
-}
-
-.puja-details-btn {
-    padding: 12px 25px;
-    background: transparent;
-    color: #ff0844;
-    border: 2px solid #ff0844;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: all 0.3s ease;
-}
-
-.puja-details-btn:hover {
-    background: #ff0844;
-    color: white;
-}
-
-.puja-book-btn {
-    padding: 12px 25px;
-    background: #e25036;
-    color: white;
-    border: 2px solid #e25036;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: all 0.3s ease;
-}
-
-.puja-book-btn:hover {
-    background: #ff4dfc;
-    border-color: #ff4dfc;
-}
 /* ----------------------------- */
 /*    PRIMARY SERVICES SECTION  */
 /* ----------------------------- */
@@ -1804,901 +1698,123 @@ html, body {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important;
 }
 
-/* Footer Bottom */
-.footer-bottom {
-    margin-top: 80px !important;
-    padding: 30px 0 !important;
-    background: rgba(0, 0, 0, 0.4) !important;
-    text-align: center !important;
-    border-top: 2px solid rgba(255, 215, 0, 0.3) !important;
-    width: 100% !important;
+/* =========================
+   CLEAN FOOTER (FINAL)
+   ========================= */
+
+   .footer {
+    background: linear-gradient(135deg, #8B0000, #1a2a6c, #8B0000);
+    color: #fff;
+    padding-top: 70px;
+    margin-top: 80px;
 }
 
-.footer-bottom p {
-    color: rgba(255, 255, 255, 0.9) !important;
-    font-size: 1rem !important;
-    margin: 0 !important;
-    font-weight: 500 !important;
-}
-/* ============================================
-   FOOTER STYLES - ADD THIS TO YOUR CSS FILE
-   ============================================ */
-
-/* RESET AND FORCE FOOTER STYLES */
-.footer {
-    background: linear-gradient(135deg, #8B0000, #1a2a6c, #8B0000) !important;
-    background-color: #8B0000 !important;
-    color: white !important;
-    padding: 80px 0 0 !important;
-    margin-top: 100px !important;
-    width: 100% !important;
-    position: relative !important;
-    z-index: 1000 !important;
-    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.2) !important;
-}
-
-/* Clear any floating elements */
-.footer::before {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-/* Footer container */
 .footer-container {
-    max-width: 1200px !important;
-    margin: 0 auto !important;
-    padding: 0 40px !important;
-    display: grid !important;
-    grid-template-columns: repeat(4, 1fr) !important;
-    gap: 50px !important;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 30px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
 }
 
-/* All text in footer should be white */
-.footer,
-.footer *:not(input):not(button) {
-    color: white !important;
-}
-
-/* Footer sections */
-.footer-section {
-    padding: 20px 0 !important;
-}
-
-/* Headings */
-.footer h3,
 .footer-section h3 {
-    color: #FFD700 !important;
-    font-size: 1.5rem !important;
-    margin-bottom: 25px !important;
-    font-weight: 700 !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.5px !important;
-    position: relative !important;
-    padding-bottom: 15px !important;
+    color: #FFD700;
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
 }
 
-.footer h3::after,
 .footer-section h3::after {
-    content: '' !important;
-    position: absolute !important;
-    left: 0 !important;
-    bottom: 0 !important;
-    width: 60px !important;
-    height: 3px !important;
-    background: #FFD700 !important;
-    border-radius: 2px !important;
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 3px;
+    background: #FFD700;
 }
 
-/* Paragraphs */
-.footer p {
-    color: rgba(255, 255, 255, 0.9) !important;
-    line-height: 1.8 !important;
-    margin-bottom: 20px !important;
-    font-size: 1rem !important;
+.footer-section p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.9);
 }
 
-/* Lists */
 .footer-section ul {
-    list-style: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
+    list-style: none;
+    padding: 0;
 }
 
 .footer-section ul li {
-    margin-bottom: 15px !important;
+    margin-bottom: 10px;
 }
 
-/* Links */
-.footer a {
-    color: rgba(255, 255, 255, 0.9) !important;
-    text-decoration: none !important;
-    transition: all 0.3s ease !important;
-    display: inline-block !important;
-    padding: 5px 0 !important;
+.footer-section ul li a {
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    transition: 0.3s;
 }
 
-.footer a:hover {
-    color: #FFD700 !important;
-    padding-left: 8px !important;
+.footer-section ul li a:hover {
+    color: #FFD700;
+    padding-left: 6px;
 }
 
-/* Subscribe Form */
-.subscribe-form {
-    margin-top: 25px !important;
-}
-
-.subscribe-form input {
-    width: 100% !important;
-    padding: 15px 20px !important;
-    border: none !important;
-    border-radius: 8px !important;
-    font-size: 1rem !important;
-    background: white !important;
-    color: #333 !important;
-    margin-bottom: 15px !important;
-    border: 2px solid transparent !important;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important;
-}
-
-.subscribe-form input:focus {
-    outline: none !important;
-    border-color: #FFD700 !important;
-    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2) !important;
-}
-
-.subscribe-form button {
-    width: 100% !important;
-    padding: 15px 20px !important;
-    background: #FFD700 !important;
-    color: #8B0000 !important;
-    border: none !important;
-    border-radius: 8px !important;
-    font-size: 1.1rem !important;
-    font-weight: 700 !important;
-    cursor: pointer !important;
-    transition: all 0.3s ease !important;
-    border: 2px solid #FFD700 !important;
-    text-transform: uppercase !important;
-}
-
-.subscribe-form button:hover {
-    background: #FFC107 !important;
-    transform: translateY(-3px) !important;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2) !important;
-}
-
-/* Footer Bottom */
+/* Footer bottom */
 .footer-bottom {
-    margin-top: 80px !important;
-    padding: 30px 0 !important;
-    background: rgba(0, 0, 0, 0.4) !important;
-    text-align: center !important;
-    border-top: 1px solid rgba(255, 215, 0, 0.3) !important;
+    margin-top: 50px;
+    padding: 20px 0;
+    background: rgba(0,0,0,0.4);
+    text-align: center;
 }
 
 .footer-bottom p {
-    color: white !important;
-    margin: 0 !important;
-    font-size: 1rem !important;
-    font-weight: 500 !important;
+    margin: 0;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.9);
 }
 
-/* Responsive Design */
-@media (max-width: 1100px) {
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 1024px) {
     .footer-container {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 40px !important;
-        padding: 0 30px !important;
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 768px) {
-    .footer {
-        padding: 60px 0 0 !important;
-        margin-top: 80px !important;
-    }
-    
-    .footer-container {
-        grid-template-columns: 1fr !important;
-        gap: 40px !important;
-        padding: 0 20px !important;
-    }
-    
-    .footer-section {
-        text-align: center !important;
-    }
-    
-    .footer h3::after,
-    .footer-section h3::after {
-        left: 50% !important;
-        transform: translateX(-50%) !important;
-    }
-}
-
-@media (max-width: 480px) {
-    .footer {
-        padding: 50px 0 0 !important;
-    }
-    
-    .footer-container {
-        padding: 0 15px !important;
-        gap: 30px !important;
-    }
-}
-
-/* Responsive adjustments */
-@media screen and (max-width: 1024px) {
-    .footer-container {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 40px !important;
-        padding: 0 30px !important;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .footer {
-        padding: 60px 0 0 !important;
-    }
-    
-    .footer-container {
-        grid-template-columns: 1fr !important;
-        gap: 40px !important;
-        padding: 0 20px !important;
-    }
-    
-    .footer-section {
-        text-align: center !important;
-    }
-    
-    .footer-section h3::after {
-        left: 50% !important;
-        transform: translateX(-50%) !important;
-    }
-    
-    .subscribe-form {
-        max-width: 400px !important;
-        margin: 25px auto 0 !important;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .footer {
-        padding: 50px 0 0 !important;
-        margin-top: 80px !important;
-    }
-    
-    .footer-container {
-        padding: 0 15px !important;
-    }
-}
-/* Add shake animation for form validation */
-@keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    75% { transform: translateX(5px); }
-}
-
-/* Responsive Design */
-@media screen and (max-width: 992px) {
-    .footer-container {
-        grid-template-columns: 1fr 1fr;
-        gap: 30px;
-    }
-}
-
-@media screen and (max-width: 576px) {
     .footer-container {
         grid-template-columns: 1fr;
-        gap: 30px;
+        text-align: center;
     }
-    
-    .footer {
-        padding: 50px 0 0;
-    }
-    
+
     .footer-section h3::after {
         left: 50%;
         transform: translateX(-50%);
     }
 }
-/* Responsive Design for Priest Register Section
-@media screen and (max-width: 968px) {
-    .priest-register-section {
-        padding: 80px 30px;
-    }
-    
-    .priest-content {
-        flex-direction: column;
-        text-align: center;
-        gap: 40px;
-    }
-    
-    .priest-main-title {
-        font-size: 3rem;
-    }
-    
-    .priest-image-placeholder {
-        flex: 0 0 300px;
-        height: 300px;
-        width: 100%;
-        max-width: 400px;
-    }
-    
-    .priest-description {
-        font-size: 1.2rem;
-    }
+.service-title-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: color 0.3s ease;
 }
 
-@media screen and (max-width: 768px) {
-    .priest-register-section {
-        padding: 60px 20px;
-    }
-    
-    .priest-main-title {
-        font-size: 2.5rem;
-    }
-    
-    .priest-description {
-        font-size: 1.1rem;
-    }
-    
-    .priest-register-btn {
-        padding: 15px 35px;
-        font-size: 1.1rem;
-    }
-    
-    .priest-image-placeholder {
-        height: 250px;
-    }
+.service-title-link:hover {
+    color: #ff6b35; /* Change to your brand color */
 }
 
-@media screen and (max-width: 480px) {
-    .priest-main-title {
-        font-size: 2rem;
-    }
-    
-    .priest-register-btn {
-        padding: 12px 30px;
-        font-size: 1rem;
-        width: 100%;
-        max-width: 280px;
-    }
-    
-    .priest-image-placeholder {
-        height: 200px;
-    }
-} */
-/* Responsive Design for Footer */
-@media screen and (max-width: 968px) {
-    .footer-container {
-        grid-template-columns: 1fr 1fr;
-        gap: 40px 30px;
-    }
-    
-    .footer {
-        padding: 50px 0 0;
-    }
-    
-    .footer-section h3 {
-        font-size: 1.3rem;
-    }
+.service-title-link:hover .service-title {
+    text-decoration: underline;
+}
+.donate-btn {
+    background-color: #e74c3c;
 }
 
-@media screen and (max-width: 768px) {
-    .footer-container {
-        grid-template-columns: 1fr;
-        gap: 35px;
-        padding: 0 30px;
-    }
-    
-    .footer {
-        padding: 40px 0 0;
-        margin-top: 60px;
-    }
-    
-    .footer-section h3 {
-        font-size: 1.25rem;
-    }
-    
-    .footer-section h3::after {
-        width: 40px;
-    }
-    
-    .subscribe-form input,
-    .subscribe-form button {
-        padding: 14px 15px;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .footer-container {
-        padding: 0 20px;
-        gap: 30px;
-    }
-    
-    .footer {
-        padding: 30px 0 0;
-        margin-top: 40px;
-    }
-    
-    .footer-section h3 {
-        font-size: 1.2rem;
-        margin-bottom: 15px;
-    }
-    
-    .footer-section p {
-        font-size: 0.95rem;
-    }
-    
-    .footer-section ul li {
-        margin-bottom: 10px;
-    }
-    
-    .footer-section ul li a {
-        font-size: 0.95rem;
-    }
-    
-    .subscribe-form {
-        margin-top: 15px;
-    }
-    
-    .footer-bottom {
-        margin-top: 40px;
-        padding: 20px 0;
-    }
-    
-    .footer-bottom p {
-        font-size: 0.85rem;
-    }
-}
-
-/* Animation Classes */
-.footer-section {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.6s ease;
-}
-
-.footer-section.animate {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.footer-section:nth-child(1) { transition-delay: 0.1s; }
-.footer-section:nth-child(2) { transition-delay: 0.2s; }
-.footer-section:nth-child(3) { transition-delay: 0.3s; }
-.footer-section:nth-child(4) { transition-delay: 0.4s; }
-/* ----------------------------- */
-/*       RESPONSIVE STYLES      */
-/* ----------------------------- */
-
-@media screen and (max-width: 1200px) {
-    .hero-title .line1 {
-        font-size: 5rem;
-    }
-    
-    .hero-title .line2 {
-        font-size: 2.5rem;
-    }
-    
-    .hero-slider {
-        width: 500px;
-        height: 350px;
-    }
-}
-
-@media screen and (max-width: 960px) {
-    .navbar__container {
-        padding: 0 30px;
-    }
-    
-    .navbar__menu {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(4, 80px);
-        position: absolute;
-        width: 100%;
-        top: -1000px;
-        left: 0;
-        opacity: 0;
-        transition: all 0.5s ease;
-        height: 50vh;
-        z-index: -1;
-        background: #131313;
-    }
-    
-    .navbar__menu.active {
-        background: #131313;
-        top: 100%;
-        opacity: 1;
-        transition: all 0.5s ease;
-        z-index: 99;
-        height: 50vh;
-        font-size: 1.6rem;
-    }
-    
-    #navbar__logo {
-        padding-left: 25px;
-    }
-    
-    .navbar__toggle {
-        display: block;
-        position: absolute;
-        top: 50%;
-        right: 30px;
-        transform: translateY(-50%);
-    }
-    
-    .navbar__toggle.active .bar:nth-child(2) {
-        opacity: 0;
-    }
-    
-    .navbar__toggle.active .bar:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
-    }
-    
-    .navbar__toggle.active .bar:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
-    }
-    
-    .navbar__item {
-        width: 100%;
-    }
-    
-    .navbar__links {
-        text-align: center;
-        padding: 2rem;
-        width: 100%;
-        display: table;
-    }
-    
-    .navbar__btn {
-        padding-bottom: 2rem;
-    }
-    
-    .button {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 80%;
-        height: 80px;
-        margin: 0 auto;
-    }
-    
-    .hero {
-        flex-direction: column;
-        text-align: center;
-        gap: 40px;
-        padding: 80px 30px;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .hero-container {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .hero-title {
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-    }
-
-    .hero-title .line1 {
-        font-size: 4rem;
-        text-align: center;
-        margin: 0 auto;
-    }
-
-    .hero-title .line2 {
-        font-size: 2rem;
-        margin-left: 0;
-        text-align: center;
-        margin: 10px auto 0 auto;
-    }
-
-    .hero-slider {
-        width: 100%;
-        max-width: 500px;
-        height: 300px;
-        margin: 0 auto;
-    }
-    
-    /* FIX FOR SLIDER IMAGES ON MOBILE */
-    .slide {
-        object-position: center center !important;
-        left: 0 !important;
-        top: 0 !important;
-    }
-    
-    .services-section {
-        padding: 600px 30px;
-    }
-    
-    .services-container {
-        flex-direction: column;
-        align-items: center;
-        gap: 40px;
-    }
-    
-    .service-card {
-        max-width: 100%;
-        width: 100%;
-    }
-    
-    .karthika-section {
-        flex-direction: column;
-        text-align: center;
-        padding: 40px 30px;
-        gap: 30px;
-    }
-    
-    .karthika-title {
-        font-size: 1.8rem;
-    }
-    
-    .karthika-subtitle {
-        font-size: 1.3rem;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .hero {
-        padding: 60px 20px;
-        min-height: 70vh;
-    }
-    
-    .hero-title .line1 {
-        font-size: 3rem;
-    }
-    
-    .hero-title .line2 {
-        font-size: 1.5rem;
-    }
-    
-    .hero-slider {
-        height: 250px;
-    }
-    
-    /* ADDITIONAL FIX FOR SMALLER SCREENS */
-    .slide {
-        object-position: center center !important;
-    }
-    
-    .services-section {
-        padding: 40px 20px;
-    }
-    
-    .section-title {
-        font-size: 2rem;
-    }
-    
-    .service-content {
-        padding: 20px;
-    }
-    
-    .service-title {
-        font-size: 1.3rem;
-    }
-    
-    .karthika-section {
-        padding: 30px 20px;
-    }
-    
-    .karthika-title {
-        font-size: 1.5rem;
-    }
-    
-    .karthika-subtitle {
-        font-size: 1.1rem;
-    }
-    
-    .karthika-description {
-        font-size: 1rem;
-    }
-    
-    .slider-btn {
-        padding: 8px 14px;
-        font-size: 1.5rem;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .navbar__container {
-        padding: 0 20px;
-    }
-    
-    #navbar__logo {
-        font-size: 1.5rem;
-    }
-    
-    .hero-title .line1 {
-        font-size: 2.5rem;
-    }
-    
-    .hero-title .line2 {
-        font-size: 1.2rem;
-    }
-    
-    .hero-slider {
-        height: 200px;
-    }
-    
-    .section-title {
-        font-size: 1.8rem;
-    }
-    
-    .service-image {
-        height: 150px;
-    }
-    
-    .karthika-btn, .service-btn {
-        padding: 10px 20px;
-        font-size: 0.9rem;
-    }
-    @media screen and (max-width: 960px) {
-        .pujas-section {
-            padding: 60px 30px;
-        }
-        
-        .puja-card {
-            flex-direction: column;
-        }
-        
-        .puja-image {
-            flex: 0 0 250px;
-        }
-        
-        .puja-content {
-            padding: 30px;
-        }
-        
-        .puja-title {
-            font-size: 1.6rem;
-        }
-    }
-    
-    @media screen and (max-width: 768px) {
-        .pujas-section {
-            padding: 40px 20px;
-        }
-        
-        .puja-image {
-            flex: 0 0 200px;
-        }
-        
-        .puja-content {
-            padding: 25px;
-        }
-        
-        .puja-title {
-            font-size: 1.4rem;
-        }
-        
-        .puja-buttons {
-            flex-direction: column;
-            gap: 10px;
-        }
-        
-        .puja-details-btn,
-        .puja-book-btn {
-            text-align: center;
-            width: 100%;
-        }
-    }
-    
-    @media screen and (max-width: 480px) {
-        .pujas-section {
-            padding: 30px 15px;
-        }
-        
-        .puja-image {
-            flex: 0 0 180px;
-        }
-        
-        .puja-content {
-            padding: 20px;
-        }
-        
-        .puja-title {
-            font-size: 1.3rem;
-        }
-        
-        .puja-description {
-            font-size: 1rem;
-        }
-    }
-    @media screen and (max-width: 960px) {
-        .primary-services-section {
-            padding: 120px 30px 60px 30px;
-        }
-        
-        .primary-services-section::before {
-            height: 250px;
-        }
-        
-        .primary-services-container {
-            flex-direction: column;
-            align-items: center;
-            gap: 30px;
-        }
-        
-        .primary-service-card {
-            max-width: 100%;
-            width: 100%;
-        }
-        
-        .primary-section-title {
-            font-size: 2.2rem;
-        }
-        
-        .primary-section-subtitle {
-            font-size: 1.2rem;
-        }
-    }
-    @media screen and (max-width: 768px) {
-        .primary-services-section {
-            padding: 100px 20px 40px 20px;
-        }
-        
-        .primary-services-section::before {
-            height: 200px;
-        }
-        
-        .primary-service-card {
-            padding: 30px 20px;
-        }
-        
-        .primary-section-title {
-            font-size: 2rem;
-        }
-        
-        .primary-section-subtitle {
-            font-size: 1.1rem;
-        }
-        
-        .primary-service-title {
-            font-size: 1.6rem;
-        }
-    }
-    @media screen and (max-width: 480px) {
-        .primary-services-section {
-            padding: 80px 15px 30px 15px;
-        }
-        
-        .primary-services-section::before {
-            height: 180px;
-        }
-        
-        .primary-service-card {
-            padding: 25px 15px;
-        }
-        
-        .primary-section-title {
-            font-size: 1.8rem;
-        }
-        
-        .primary-section-subtitle {
-            font-size: 1rem;
-        }
-        
-        .primary-service-title {
-            font-size: 1.4rem;
-        }
-        
-        .primary-service-icon {
-            width: 70px;
-            height: 70px;
-        }
-        
-        .service-icon-img {
-            width: 35px;
-            height: 35px;
-        }
-    }
+.donate-btn:hover {
+    background-color: #c0392b;
 }

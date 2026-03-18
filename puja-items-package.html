@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="products.title">Our Products | Puja Samagri & Spiritual Items</title>
+    <title data-i18n="services.pujaItems.title">Puja Items Package | Complete Puja Samagri</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <script src="js/i18n.js" defer></script>
@@ -117,7 +117,7 @@
         /* Header */
         .service-header {
             background: linear-gradient(rgba(74,54,37,0.85), rgba(74,54,37,0.9)),
-                        url('images/products-header.jpg');
+                        url('images/puja-items-header.jpg');
             background-size: cover;
             background-position: center;
             color: white;
@@ -195,15 +195,15 @@
             margin: 15px auto 0;
         }
 
-        /* Product Grid */
-        .product-grid {
+        /* Cards */
+        .course-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 30px;
             margin-bottom: 60px;
         }
 
-        .product-card {
+        .course-card {
             background: white;
             border-radius: 10px;
             overflow: hidden;
@@ -211,45 +211,48 @@
             transition: transform 0.3s;
         }
 
-        .product-card:hover {
+        .course-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
 
-        .product-icon {
+        .course-icon {
             background: #5a4226;
             color: white;
             padding: 30px;
             text-align: center;
-            font-size: 2.4rem;
+            font-size: 2.5rem;
         }
 
-        .product-content {
-            padding: 22px;
+        .course-content {
+            padding: 25px;
         }
 
-        .product-content h3 {
+        .course-content h3 {
             color: #5a4226;
-            margin-bottom: 10px;
-        }
-
-        .product-content p {
-            color: #666;
-            font-size: 0.95rem;
             margin-bottom: 12px;
-            line-height: 1.5;
         }
 
-        .product-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .course-features {
+            list-style: none;
+            margin: 20px 0;
+            padding: 0;
         }
 
-        .product-price {
+        .course-features li {
+            list-style: none;
+            padding-left: 25px;
+            margin-bottom: 8px;
+            position: relative;
+            color: #666;
+        }
+
+        .course-features li::before {
+            content: "✔";
+            position: absolute;
+            left: 0;
+            color: #d4a74e;
             font-weight: bold;
-            color: #5a4226;
-            font-size: 1.1rem;
         }
 
         /* Service title link styles */
@@ -273,11 +276,11 @@
             display: inline-block;
             background: #d4a74e;
             color: white;
-            padding: 8px 15px;
+            padding: 12px 25px;
             text-decoration: none;
-            border-radius: 4px;
+            border-radius: 5px;
             font-weight: 600;
-            font-size: 0.9rem;
+            margin-top: 15px;
             transition: all 0.3s ease;
         }
 
@@ -334,8 +337,8 @@
                 margin: 0 10px;
             }
 
-            .product-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .course-grid {
+                grid-template-columns: 1fr;
                 gap: 20px;
             }
 
@@ -374,16 +377,16 @@
                 font-size: 1.8rem;
             }
 
-            .product-grid {
-                grid-template-columns: 1fr;
-            }
-
             .service-cta h2 {
                 font-size: 1.8rem;
             }
 
             .service-cta p {
                 font-size: 1rem;
+            }
+
+            .course-content {
+                padding: 20px;
             }
         }
     </style>
@@ -410,8 +413,8 @@
     <!-- Header -->
     <header class="service-header">
         <div class="container">
-            <h1 data-i18n="products.title">Our Products</h1>
-            <p data-i18n="products.subtitle">Authentic puja samagri, spiritual items, and ritual essentials prepared with purity and care.</p>
+            <h1 data-i18n="services.pujaItems.title">Puja Items Package</h1>
+            <p data-i18n="pujaItems.subtitle">Complete puja samagri packages prepared according to shastra for all rituals and ceremonies.</p>
         </div>
     </header>
 
@@ -419,12 +422,12 @@
     <nav class="service-nav">
         <div class="container">
             <a href="index.html#services" class="back-to-services" data-i18n="nav.backToServices">
-                <i class="fas fa-arrow-left"></i> Back to Home
+                <i class="fas fa-arrow-left"></i> Back to Services
             </a>
             <div>
-                <a href="#products" data-i18n="products.nav.products">Products</a>
-                <a href="#categories" data-i18n="products.nav.categories">Categories</a>
-                <a href="#order" data-i18n="products.nav.order">Order</a>
+                <a href="#packages" data-i18n="pujaItems.nav.packages">Packages</a>
+                <a href="#includes" data-i18n="pujaItems.nav.includes">Includes</a>
+                <a href="#booking" data-i18n="pujaItems.nav.booking">Booking</a>
             </div>
         </div>
     </nav>
@@ -432,119 +435,94 @@
     <main class="container">
         <!-- Intro -->
         <section class="service-intro">
-            <h2><i class="fas fa-store"></i> <span data-i18n="products.intro.title">Pure & Traditional Products</span></h2>
-            <p data-i18n="products.intro.desc1">
-                Our products are selected and prepared according to traditional standards,
-                ensuring purity, authenticity, and spiritual significance.
+            <h2><i class="fas fa-box-open"></i> <span data-i18n="pujaItems.intro.title">One Package, No Tension</span></h2>
+            <p data-i18n="pujaItems.intro.desc1">
+                We provide complete puja items packages so you don't have to worry about
+                collecting samagri from multiple places.
             </p>
-            <p data-i18n="products.intro.desc2">
-                Ideal for daily puja, special rituals, temples, and festivals.
+            <p data-i18n="pujaItems.intro.desc2">
+                All items are arranged according to the type of puja,
+                guided by experienced Brahmins and traditional texts.
             </p>
         </section>
 
-        <!-- Products -->
-        <section id="products">
-            <h2 class="section-title" data-i18n="products.featured.title">Featured Products</h2>
+        <!-- Packages -->
+        <section id="packages">
+            <h2 class="section-title" data-i18n="pujaItems.packages.title">Our Puja Items Packages</h2>
 
-            <div class="product-grid">
-                <!-- Havan Samagri -->
-                <div class="product-card">
-                    <div class="product-icon"><i class="fas fa-fire"></i></div>
-                    <div class="product-content">
-                        <a href="#havan-samagri" class="service-title-link">
-                            <h3 data-i18n="products.items.havan.title">Havan Samagri</h3>
+            <div class="course-grid">
+                <!-- Laghu Puja Package -->
+                <div class="course-card">
+                    <div class="course-icon"><i class="fas fa-om"></i></div>
+                    <div class="course-content">
+                        <a href="#laghu-puja" class="service-title-link">
+                            <h3 data-i18n="pujaItems.packages.laghu.title">Laghu Puja Package</h3>
                         </a>
-                        <p data-i18n="products.items.havan.desc">Herbal mixture prepared as per shastra for havan & hom.</p>
-                        <div class="product-meta">
-                            <span class="product-price" data-i18n="products.items.havan.price">Rs. 499</span>
-                            <a href="#" class="service-btn" data-i18n="products.button.order">Order</a>
-                        </div>
+                        <ul class="course-features">
+                            <li data-i18n="pujaItems.packages.laghu.features[0]">Daily & small household pujas</li>
+                            <li data-i18n="pujaItems.packages.laghu.features[1]">Basic samagri included</li>
+                            <li data-i18n="pujaItems.packages.laghu.features[2]">Ideal for griha puja</li>
+                        </ul>
+                        <a href="#" class="service-btn" data-i18n="pujaItems.button.enquire">Enquire Now</a>
                     </div>
                 </div>
 
-                <!-- Pure Cow Ghee -->
-                <div class="product-card">
-                    <div class="product-icon"><i class="fas fa-oil-can"></i></div>
-                    <div class="product-content">
-                        <a href="#cow-ghee" class="service-title-link">
-                            <h3 data-i18n="products.items.ghee.title">Pure Cow Ghee</h3>
+                <!-- Havan / Hom Package -->
+                <div class="course-card">
+                    <div class="course-icon"><i class="fas fa-fire"></i></div>
+                    <div class="course-content">
+                        <a href="#havan-package" class="service-title-link">
+                            <h3 data-i18n="pujaItems.packages.havan.title">Havan / Hom Package</h3>
                         </a>
-                        <p data-i18n="products.items.ghee.desc">Shuddha gau ghee suitable for diya, havan, and abhishek.</p>
-                        <div class="product-meta">
-                            <span class="product-price" data-i18n="products.items.ghee.price">Rs. 899</span>
-                            <a href="#" class="service-btn" data-i18n="products.button.order">Order</a>
-                        </div>
+                        <ul class="course-features">
+                            <li data-i18n="pujaItems.packages.havan.features[0]">Havan samagri & ghee</li>
+                            <li data-i18n="pujaItems.packages.havan.features[1]">Wood, samidha, herbs</li>
+                            <li data-i18n="pujaItems.packages.havan.features[2]">Proper quantity ensured</li>
+                        </ul>
+                        <a href="#" class="service-btn" data-i18n="pujaItems.button.enquire">Enquire Now</a>
                     </div>
                 </div>
 
-                <!-- Puja Flowers -->
-                <div class="product-card">
-                    <div class="product-icon"><i class="fas fa-seedling"></i></div>
-                    <div class="product-content">
-                        <a href="#puja-flowers" class="service-title-link">
-                            <h3 data-i18n="products.items.flowers.title">Puja Flowers</h3>
+                <!-- Special Puja Package -->
+                <div class="course-card">
+                    <div class="course-icon"><i class="fas fa-temple"></i></div>
+                    <div class="course-content">
+                        <a href="#special-puja" class="service-title-link">
+                            <h3 data-i18n="pujaItems.packages.special.title">Special Puja Package</h3>
                         </a>
-                        <p data-i18n="products.items.flowers.desc">Fresh and sacred flowers for all kinds of worship.</p>
-                        <div class="product-meta">
-                            <span class="product-price" data-i18n="products.items.flowers.price">Rs. 299</span>
-                            <a href="#" class="service-btn" data-i18n="products.button.order">Order</a>
-                        </div>
+                        <ul class="course-features">
+                            <li data-i18n="pujaItems.packages.special.features[0]">Rudri, Satyanarayan, Graha Shanti</li>
+                            <li data-i18n="pujaItems.packages.special.features[1]">All puja samagri & prasad items</li>
+                            <li data-i18n="pujaItems.packages.special.features[2]">As per shastra vidhi</li>
+                        </ul>
+                        <a href="#" class="service-btn" data-i18n="pujaItems.button.enquire">Enquire Now</a>
                     </div>
                 </div>
 
-                <!-- Agarbatti & Dhoop -->
-                <div class="product-card">
-                    <div class="product-icon"><i class="fas fa-burn"></i></div>
-                    <div class="product-content">
-                        <a href="#agarbatti" class="service-title-link">
-                            <h3 data-i18n="products.items.agarbatti.title">Agarbatti & Dhoop</h3>
+                <!-- Festival Puja Package -->
+                <div class="course-card">
+                    <div class="course-icon"><i class="fas fa-star"></i></div>
+                    <div class="course-content">
+                        <a href="#festival-puja" class="service-title-link">
+                            <h3 data-i18n="pujaItems.packages.festival.title">Festival Puja Package</h3>
                         </a>
-                        <p data-i18n="products.items.agarbatti.desc">Natural fragrance incense sticks and dhoop.</p>
-                        <div class="product-meta">
-                            <span class="product-price" data-i18n="products.items.agarbatti.price">Rs. 199</span>
-                            <a href="#" class="service-btn" data-i18n="products.button.order">Order</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Rudraksha Mala -->
-                <div class="product-card">
-                    <div class="product-icon"><i class="fas fa-gem"></i></div>
-                    <div class="product-content">
-                        <a href="#rudraksha" class="service-title-link">
-                            <h3 data-i18n="products.items.rudraksha.title">Rudraksha Mala</h3>
-                        </a>
-                        <p data-i18n="products.items.rudraksha.desc">Authentic rudraksha mala for japa and meditation.</p>
-                        <div class="product-meta">
-                            <span class="product-price" data-i18n="products.items.rudraksha.price">Rs. 1,499</span>
-                            <a href="#" class="service-btn" data-i18n="products.button.order">Order</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Puja Samagri Combo -->
-                <div class="product-card">
-                    <div class="product-icon"><i class="fas fa-box"></i></div>
-                    <div class="product-content">
-                        <a href="#puja-combo" class="service-title-link">
-                            <h3 data-i18n="products.items.combo.title">Puja Samagri Combo</h3>
-                        </a>
-                        <p data-i18n="products.items.combo.desc">All essential puja items in one convenient package.</p>
-                        <div class="product-meta">
-                            <span class="product-price" data-i18n="products.items.combo.price">Rs. 2,999</span>
-                            <a href="#" class="service-btn" data-i18n="products.button.order">Order</a>
-                        </div>
+                        <ul class="course-features">
+                            <li data-i18n="pujaItems.packages.festival.features[0]">Tihar, Teej, Chhath, Navratri</li>
+                            <li data-i18n="pujaItems.packages.festival.features[1]">Customized festival items</li>
+                            <li data-i18n="pujaItems.packages.festival.features[2]">Fresh & pure materials</li>
+                        </ul>
+                        <a href="#" class="service-btn" data-i18n="pujaItems.button.enquire">Enquire Now</a>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- CTA -->
-        <section class="service-cta" id="order">
-            <h2 data-i18n="products.cta.title">Order Authentic Puja Products</h2>
-            <p data-i18n="products.cta.desc">Get genuine spiritual items delivered with care and devotion.</p>
+        <section class="service-cta" id="booking">
+            <h2 data-i18n="pujaItems.cta.title">Book Your Puja Items Package Today</h2>
+            <p data-i18n="pujaItems.cta.desc">Save time and perform your puja with full devotion and peace of mind.</p>
             <a href="#" class="service-btn">
-                <i class="fas fa-whatsapp"></i> <span data-i18n="products.cta.button">Order via WhatsApp</span>
+                <i class="fas fa-phone"></i> <span data-i18n="pujaItems.cta.button">Contact for Booking</span>
             </a>
         </section>
     </main>
@@ -552,8 +530,8 @@
     <!-- Footer -->
     <footer class="service-footer">
         <div class="container">
-            <p data-i18n="products.footer.copyright">© 2023 Vedic Services | Products & Samagri</p>
-            <p data-i18n="products.footer.contact">Contact: +977-9860336777</p>
+            <p data-i18n="pujaItems.footer.copyright">© 2023 Vedic Services | Puja Items & Samagri</p>
+            <p data-i18n="pujaItems.footer.contact">Contact: +91-XXXXXX-XXXX | puja@vedicservices.com</p>
         </div>
     </footer>
 
